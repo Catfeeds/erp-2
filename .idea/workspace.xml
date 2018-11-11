@@ -3,10 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="32004149-f12a-497c-b507-4257550cac68" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/controllers/basedata/contact.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/controllers/basedata/contact.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/application/views/settings/customer-manage.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/settings/customer-manage.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/statics/js/dist/customerList.js" beforeDir="false" afterPath="$PROJECT_DIR$/statics/js/dist/customerList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/statics/js/dist/customerManage.js" beforeDir="false" afterPath="$PROJECT_DIR$/statics/js/dist/customerManage.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -36,17 +33,17 @@
       <file leaf-file-name="customerList.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/statics/js/dist/customerList.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="346">
+            <state relative-caret-position="946">
               <caret line="335" column="22" lean-forward="true" selection-start-line="335" selection-start-column="22" selection-end-line="335" selection-end-column="22" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="customer-manage.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="customer-manage.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/application/views/settings/customer-manage.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="746">
-              <caret line="66" column="64" selection-start-line="66" selection-start-column="56" selection-end-line="66" selection-end-column="64" />
+            <state relative-caret-position="526">
+              <caret line="113" column="12" selection-start-line="113" selection-start-column="12" selection-end-line="113" selection-end-column="12" />
               <folding>
                 <element signature="n#style#0;n#li#7;n#ul#0;n#form#0;n#div#0;n#div#0;n#body#0;n#!!top" expanded="true" />
               </folding>
@@ -54,20 +51,29 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="customerManage.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/statics/js/dist/customerManage.js">
+      <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/views/index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="20">
-              <caret line="1" column="66" selection-start-line="1" selection-start-column="61" selection-end-line="1" selection-end-column="66" />
+            <state relative-caret-position="480">
+              <caret line="769" column="43" selection-start-line="769" selection-start-column="43" selection-end-line="769" selection-end-column="43" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="contact.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="customerManage.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/statics/js/dist/customerManage.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="279">
+              <caret line="188" column="36" selection-start-line="188" selection-start-column="4" selection-end-line="188" selection-end-column="36" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="contact.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/controllers/basedata/contact.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="219">
-              <caret line="221" column="34" selection-start-line="221" selection-start-column="34" selection-end-line="221" selection-end-column="34" />
+            <state relative-caret-position="459">
+              <caret line="194" column="22" lean-forward="true" selection-start-line="194" selection-start-column="22" selection-end-line="194" selection-end-column="22" />
             </state>
           </provider>
         </entry>
@@ -85,8 +91,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>hideFeild</find>
-      <find>ParentCategory</find>
       <find>d</find>
       <find>insert</find>
       <find>userNumber</find>
@@ -114,7 +118,9 @@
       <find>extract</find>
       <find>name</find>
       <find>category</find>
+      <find>query</find>
       <find>number</find>
+      <find>admin</find>
     </findStrings>
     <replaceStrings>
       <replace>货</replace>
@@ -135,7 +141,6 @@
         <option value="$PROJECT_DIR$/application/controllers/scm/invOi.php" />
         <option value="$PROJECT_DIR$/application/views/scm/invPu/initPur.php" />
         <option value="$PROJECT_DIR$/statics/js/dist/purchase.js" />
-        <option value="$PROJECT_DIR$/application/views/index.php" />
         <option value="$PROJECT_DIR$/application/views/settings/vendor-manage.php" />
         <option value="$PROJECT_DIR$/application/views/login.php" />
         <option value="$PROJECT_DIR$/application/views/help/index.php" />
@@ -178,9 +183,10 @@
         <option value="$PROJECT_DIR$/statics/js/dist/categoryList.js" />
         <option value="$PROJECT_DIR$/application/controllers/basedata/assist.php" />
         <option value="$PROJECT_DIR$/statics/js/dist/customerList.js" />
-        <option value="$PROJECT_DIR$/application/views/settings/customer-manage.php" />
         <option value="$PROJECT_DIR$/statics/js/dist/customerManage.js" />
         <option value="$PROJECT_DIR$/application/controllers/basedata/contact.php" />
+        <option value="$PROJECT_DIR$/application/views/index.php" />
+        <option value="$PROJECT_DIR$/application/views/settings/customer-manage.php" />
       </list>
     </option>
   </component>
@@ -225,21 +231,7 @@
               <item name="erp" type="b2602c69:ProjectViewProjectNode" />
               <item name="erp" type="462c0819:PsiDirectoryNode" />
               <item name="application" type="462c0819:PsiDirectoryNode" />
-              <item name="controllers" type="462c0819:PsiDirectoryNode" />
-              <item name="basedata" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="erp" type="b2602c69:ProjectViewProjectNode" />
-              <item name="erp" type="462c0819:PsiDirectoryNode" />
-              <item name="application" type="462c0819:PsiDirectoryNode" />
               <item name="views" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="erp" type="b2602c69:ProjectViewProjectNode" />
-              <item name="erp" type="462c0819:PsiDirectoryNode" />
-              <item name="application" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="settings" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="erp" type="b2602c69:ProjectViewProjectNode" />
@@ -251,13 +243,6 @@
               <item name="erp" type="462c0819:PsiDirectoryNode" />
               <item name="statics" type="462c0819:PsiDirectoryNode" />
               <item name="js" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="erp" type="b2602c69:ProjectViewProjectNode" />
-              <item name="erp" type="462c0819:PsiDirectoryNode" />
-              <item name="statics" type="462c0819:PsiDirectoryNode" />
-              <item name="js" type="462c0819:PsiDirectoryNode" />
-              <item name="dist" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -268,7 +253,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../red" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
   </component>
@@ -324,12 +309,12 @@
       <workItem from="1541768330012" duration="211000" />
       <workItem from="1541822531671" duration="1502000" />
       <workItem from="1541915568800" duration="1712000" />
-      <workItem from="1541922777022" duration="9155000" />
+      <workItem from="1541922777022" duration="13531000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="278470000" />
+    <option name="totallyTimeSpent" value="282846000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -369,13 +354,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/application/views/scm/payment/toPdf.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1287">
-          <caret line="188" column="126" selection-end-line="212" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/application/controllers/scm/receipt.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="340">
@@ -726,34 +704,41 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/settings/customer-manage.php">
+    <entry file="file://$PROJECT_DIR$/application/controllers/basedata/contact.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="746">
-          <caret line="66" column="64" selection-start-line="66" selection-start-column="56" selection-end-line="66" selection-end-column="64" />
-          <folding>
-            <element signature="n#style#0;n#li#7;n#ul#0;n#form#0;n#div#0;n#div#0;n#body#0;n#!!top" expanded="true" />
-          </folding>
+        <state relative-caret-position="459">
+          <caret line="194" column="22" lean-forward="true" selection-start-line="194" selection-start-column="22" selection-end-line="194" selection-end-column="22" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/statics/js/dist/customerList.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="346">
+        <state relative-caret-position="946">
           <caret line="335" column="22" lean-forward="true" selection-start-line="335" selection-start-column="22" selection-end-line="335" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="480">
+          <caret line="769" column="43" selection-start-line="769" selection-start-column="43" selection-end-line="769" selection-end-column="43" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/statics/js/dist/customerManage.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="20">
-          <caret line="1" column="66" selection-start-line="1" selection-start-column="61" selection-end-line="1" selection-end-column="66" />
+        <state relative-caret-position="279">
+          <caret line="188" column="36" selection-start-line="188" selection-start-column="4" selection-end-line="188" selection-end-column="36" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/controllers/basedata/contact.php">
+    <entry file="file://$PROJECT_DIR$/application/views/settings/customer-manage.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="219">
-          <caret line="221" column="34" selection-start-line="221" selection-start-column="34" selection-end-line="221" selection-end-column="34" />
+        <state relative-caret-position="526">
+          <caret line="113" column="12" selection-start-line="113" selection-start-column="12" selection-end-line="113" selection-end-column="12" />
+          <folding>
+            <element signature="n#style#0;n#li#7;n#ul#0;n#form#0;n#div#0;n#div#0;n#body#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

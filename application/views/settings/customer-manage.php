@@ -83,7 +83,7 @@ body{background: #fff;}
     				<div class="label-wrap"><label for="periodReceiveFunds">期初预收款</label></div>
     				<div class="ctn-wrap"><input type="text" value="" class="ui-input" name="periodReceiveFunds" id="periodReceiveFunds"></div>
     			</li>
-                <li class="row-item" style="float: right">
+                <li class="row-item" id="none" style="float: right">
                     <div class="label-wrap"><label for="extract">提成点</label></div>
                     <div class="ctn-wrap"><input type="number" max="100" min="0" step="0.001" value="" class="ui-input" name="extract" id="extract"></div>
                 </li>
@@ -109,6 +109,13 @@ body{background: #fff;}
 	</div>
 </div>
 <script src="<?php echo base_url()?>statics/js/dist/customerManage.js?ver=2017071301"></script>
+<script>
+    $(function () {
+        if(!api.opener.parent.SYSTEM.isAdmin){
+            $('#none').css('display','none')
+        }
+    })
+</script>
 </body>
 </html>
 
