@@ -42,6 +42,12 @@ $(function() {
 				width: 220,
 				classes: "ui-ellipsis"
 			}, {
+                name: "extract",
+                label: "提成点",
+                index: "extract",
+                width: 100,
+                classes: "ui-ellipsis"
+            }, {
 				name: "contacter",
 				label: "联系人",
 				index: "contacter",

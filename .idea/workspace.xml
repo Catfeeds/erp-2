@@ -3,8 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="32004149-f12a-497c-b507-4257550cac68" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/controllers/basedata/assist.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/controllers/basedata/assist.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/statics/js/dist/categoryList.js" beforeDir="false" afterPath="$PROJECT_DIR$/statics/js/dist/categoryList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/controllers/basedata/contact.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/controllers/basedata/contact.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/views/settings/customer-manage.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/settings/customer-manage.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/statics/js/dist/customerList.js" beforeDir="false" afterPath="$PROJECT_DIR$/statics/js/dist/customerList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/statics/js/dist/customerManage.js" beforeDir="false" afterPath="$PROJECT_DIR$/statics/js/dist/customerManage.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -15,133 +17,67 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="invSa.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application/controllers/scm/invSa.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="380">
-              <caret line="19" column="53" selection-start-line="19" selection-start-column="53" selection-end-line="19" selection-end-column="53" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="initSaleList.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application/views/scm/invSa/initSaleList.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1420">
-              <caret line="71" column="56" selection-start-line="71" selection-start-column="56" selection-end-line="71" selection-end-column="56" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="salesList.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/statics/js/dist/salesList.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2620">
-              <caret line="131" column="14" selection-start-line="131" selection-start-column="14" selection-end-line="131" selection-end-column="14" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="sales.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/statics/js/dist/sales.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1129">
-              <caret line="387" column="30" lean-forward="true" selection-start-line="387" selection-start-column="30" selection-end-line="387" selection-end-column="30" />
-              <folding>
-                <element signature="e#573#1213#0" />
-                <element signature="e#1238#10489#0" />
-                <element signature="e#10534#10855#0" />
-                <element signature="e#10879#11035#0" />
-                <element signature="e#11056#11105#0" />
-                <element signature="e#11129#11349#0" />
-                <element signature="e#11366#11422#0" />
-                <element signature="e#11443#11496#0" />
-                <element signature="e#11520#11748#0" />
-                <element signature="e#11765#11825#0" />
-                <element signature="e#11846#11896#0" />
-                <element signature="e#11920#12214#0" />
-                <element signature="e#12231#12288#0" />
-                <element signature="e#12309#12359#0" />
-                <element signature="e#12383#12466#0" />
-                <element signature="e#12483#12532#0" />
-                <element signature="e#12553#12604#0" />
-                <element signature="e#12628#12711#0" />
-                <element signature="e#12728#12786#0" />
-                <element signature="e#12807#12858#0" />
-                <element signature="e#12882#13024#0" />
-                <element signature="e#13041#13099#0" />
-                <element signature="e#13117#15127#0" />
-                <element signature="e#22033#23404#0" />
-                <element signature="e#23435#23517#0" />
-                <element signature="e#23562#27163#0" />
-                <element signature="e#27303#29152#0" />
-                <element signature="e#29197#34652#0" />
-                <element signature="e#34685#34748#0" />
-                <element signature="e#35196#35407#0" />
-                <element signature="e#35441#36334#0" />
-                <element signature="e#36362#38050#0" />
-                <element signature="e#38109#41013#0" />
-                <element signature="e#41041#41640#0" />
-                <element signature="e#41667#42284#0" />
-                <element signature="e#42315#43020#0" />
-                <element signature="e#43045#54022#0" />
-                <element signature="e#54048#54521#0" />
-                <element signature="e#54546#55394#0" />
-                <element signature="e#55427#57649#0" />
-                <element signature="e#57678#60760#0" />
-                <element signature="e#60810#62976#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="settings.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/controllers/settings.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="279">
-              <caret line="138" column="33" selection-start-line="138" selection-start-column="20" selection-end-line="138" selection-end-column="33" />
+              <caret line="15" column="33" selection-start-line="15" selection-start-column="20" selection-end-line="15" selection-end-column="33" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="categoryList.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/statics/js/dist/categoryList.js">
+      <file leaf-file-name="customer-list.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/views/settings/customer-list.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="188">
-              <caret line="104" column="8" lean-forward="true" selection-start-line="104" selection-start-column="8" selection-end-line="104" selection-end-column="8" />
+            <state relative-caret-position="-514" />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="customerList.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/statics/js/dist/customerList.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="346">
+              <caret line="335" column="22" lean-forward="true" selection-start-line="335" selection-start-column="22" selection-end-line="335" selection-end-column="22" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="customer-manage.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/views/settings/customer-manage.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="746">
+              <caret line="66" column="64" selection-start-line="66" selection-start-column="56" selection-end-line="66" selection-end-column="64" />
               <folding>
-                <element signature="n#style#0;n#li#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#li#7;n#ul#0;n#form#0;n#div#0;n#div#0;n#body#0;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="assist.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/application/controllers/basedata/assist.php">
+      <file leaf-file-name="customerManage.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/statics/js/dist/customerManage.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="400">
-              <caret line="26" column="57" selection-start-line="26" selection-start-column="57" selection-end-line="26" selection-end-column="57" />
+            <state relative-caret-position="20">
+              <caret line="1" column="66" selection-start-line="1" selection-start-column="61" selection-end-line="1" selection-end-column="66" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="settlement-category-list.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application/views/settings/settlement-category-list.php">
+      <file leaf-file-name="contact.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/application/controllers/basedata/contact.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-174" />
+            <state relative-caret-position="219">
+              <caret line="221" column="34" selection-start-line="221" selection-start-column="34" selection-end-line="221" selection-end-column="34" />
+            </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="settlementCategory.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/statics/js/dist/settlementCategory.js">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file leaf-file-name="settlement-category-manage.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application/views/settings/settlement-category-manage.php">
+      <file leaf-file-name="mysql_model.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/models/mysql_model.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-274" />
+            <state relative-caret-position="236">
+              <caret line="22" column="20" selection-start-line="22" selection-start-column="20" selection-end-line="22" selection-end-column="20" />
+            </state>
           </provider>
         </entry>
       </file>
@@ -149,11 +85,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>b</find>
-      <find>manage-form</find>
-      <find>hidd</find>
-      <find>hid</find>
-      <find>a</find>
       <find>hideFeild</find>
       <find>ParentCategory</find>
       <find>d</find>
@@ -178,7 +109,12 @@
       <find>select-menu-ul</find>
       <find>amount</find>
       <find>category_list</find>
+      <find>customer_list</find>
+      <find>get_results</find>
       <find>extract</find>
+      <find>name</find>
+      <find>category</find>
+      <find>number</find>
     </findStrings>
     <replaceStrings>
       <replace>货</replace>
@@ -194,9 +130,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/application/views/scm/invOi/exportInvOo.php" />
-        <option value="$PROJECT_DIR$/statics/js/dist/otherOutbound.js" />
-        <option value="$PROJECT_DIR$/application/controllers/scm/invSo.php" />
         <option value="$PROJECT_DIR$/application/controllers/scm/invTf.php" />
         <option value="$PROJECT_DIR$/application/views/scm/invTf/toPdf.php" />
         <option value="$PROJECT_DIR$/application/controllers/scm/invOi.php" />
@@ -220,7 +153,6 @@
         <option value="$PROJECT_DIR$/statics/js/dist/goodsList.js" />
         <option value="$PROJECT_DIR$/statics/js/dist/goodsManage.js" />
         <option value="$PROJECT_DIR$/application/views/settings/brand-manage.php" />
-        <option value="$PROJECT_DIR$/statics/js/dist/customerManage.js" />
         <option value="$PROJECT_DIR$/application/views/scm/invSa/toPdf.php" />
         <option value="$PROJECT_DIR$/application/views/settings/category-list.php" />
         <option value="$PROJECT_DIR$/application/views/report/salesDetail-customerExporter.php" />
@@ -245,6 +177,10 @@
         <option value="$PROJECT_DIR$/statics/js/dist/sales.js" />
         <option value="$PROJECT_DIR$/statics/js/dist/categoryList.js" />
         <option value="$PROJECT_DIR$/application/controllers/basedata/assist.php" />
+        <option value="$PROJECT_DIR$/statics/js/dist/customerList.js" />
+        <option value="$PROJECT_DIR$/application/views/settings/customer-manage.php" />
+        <option value="$PROJECT_DIR$/statics/js/dist/customerManage.js" />
+        <option value="$PROJECT_DIR$/application/controllers/basedata/contact.php" />
       </list>
     </option>
   </component>
@@ -291,13 +227,6 @@
               <item name="application" type="462c0819:PsiDirectoryNode" />
               <item name="controllers" type="462c0819:PsiDirectoryNode" />
               <item name="basedata" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="erp" type="b2602c69:ProjectViewProjectNode" />
-              <item name="erp" type="462c0819:PsiDirectoryNode" />
-              <item name="application" type="462c0819:PsiDirectoryNode" />
-              <item name="controllers" type="462c0819:PsiDirectoryNode" />
-              <item name="scm" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="erp" type="b2602c69:ProjectViewProjectNode" />
@@ -395,12 +324,12 @@
       <workItem from="1541768330012" duration="211000" />
       <workItem from="1541822531671" duration="1502000" />
       <workItem from="1541915568800" duration="1712000" />
-      <workItem from="1541922777022" duration="6570000" />
+      <workItem from="1541922777022" duration="9155000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="275885000" />
+    <option name="totallyTimeSpent" value="278470000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -440,20 +369,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/application/config/config.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="279">
-          <caret line="199" column="13" selection-start-line="199" selection-start-column="8" selection-end-line="199" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/controllers/scm/payment.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="232">
-          <caret line="190" column="58" lean-forward="true" selection-start-line="190" selection-start-column="58" selection-end-line="190" selection-end-column="58" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/application/views/scm/payment/toPdf.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1287">
@@ -541,30 +456,6 @@
         <state relative-caret-position="297">
           <caret line="30" column="20" selection-start-line="30" selection-start-column="20" selection-end-line="30" selection-end-column="20" />
         </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/settings/customer-manage.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1200" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/controllers/basedata/contact.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="417">
-          <caret line="264" column="28" selection-start-line="264" selection-start-column="28" selection-end-line="264" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/statics/js/dist/customerManage.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="557">
-          <caret line="292" column="10" lean-forward="true" selection-start-line="292" selection-start-column="10" selection-end-line="292" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/settings/customer-list.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-513" />
       </provider>
     </entry>
     <entry file="file://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external/lib.es5.d.ts">
@@ -715,7 +606,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/application/controllers/scm/invSa.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="380">
+        <state>
           <caret line="19" column="53" selection-start-line="19" selection-start-column="53" selection-end-line="19" selection-end-column="53" />
         </state>
       </provider>
@@ -734,10 +625,28 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/application/controllers/basedata/assist.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="400">
+          <caret line="20" column="43" selection-start-line="20" selection-start-column="43" selection-end-line="20" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/statics/js/dist/categoryList.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="188">
+          <caret line="104" column="8" lean-forward="true" selection-start-line="104" selection-start-column="8" selection-end-line="104" selection-end-column="8" />
+          <folding>
+            <element signature="n#style#0;n#li#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/statics/js/dist/sales.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1129">
-          <caret line="387" column="30" lean-forward="true" selection-start-line="387" selection-start-column="30" selection-end-line="387" selection-end-column="30" />
+        <state relative-caret-position="420">
+          <caret line="351" column="40" lean-forward="true" selection-start-line="351" selection-start-column="40" selection-end-line="351" selection-end-column="40" />
           <folding>
             <element signature="e#573#1213#0" />
             <element signature="e#1238#10489#0" />
@@ -785,41 +694,66 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/settings/settlement-category-manage.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-274" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/statics/js/dist/settlementCategory.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/application/views/settings/settlement-category-list.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-174" />
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/statics/js/dist/settlementCategory.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/settings/settlement-category-manage.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-274" />
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/application/controllers/settings.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="279">
-          <caret line="138" column="33" selection-start-line="138" selection-start-column="20" selection-end-line="138" selection-end-column="33" />
+          <caret line="15" column="33" selection-start-line="15" selection-start-column="20" selection-end-line="15" selection-end-column="33" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/statics/js/dist/categoryList.js">
+    <entry file="file://$PROJECT_DIR$/application/views/settings/customer-list.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="188">
-          <caret line="104" column="8" lean-forward="true" selection-start-line="104" selection-start-column="8" selection-end-line="104" selection-end-column="8" />
+        <state relative-caret-position="-514" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/models/mysql_model.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="236">
+          <caret line="22" column="20" selection-start-line="22" selection-start-column="20" selection-end-line="22" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/settings/customer-manage.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="746">
+          <caret line="66" column="64" selection-start-line="66" selection-start-column="56" selection-end-line="66" selection-end-column="64" />
           <folding>
-            <element signature="n#style#0;n#li#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#li#7;n#ul#0;n#form#0;n#div#0;n#div#0;n#body#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/controllers/basedata/assist.php">
+    <entry file="file://$PROJECT_DIR$/statics/js/dist/customerList.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="400">
-          <caret line="26" column="57" selection-start-line="26" selection-start-column="57" selection-end-line="26" selection-end-column="57" />
+        <state relative-caret-position="346">
+          <caret line="335" column="22" lean-forward="true" selection-start-line="335" selection-start-column="22" selection-end-line="335" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/statics/js/dist/customerManage.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="20">
+          <caret line="1" column="66" selection-start-line="1" selection-start-column="61" selection-end-line="1" selection-end-column="66" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/controllers/basedata/contact.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="219">
+          <caret line="221" column="34" selection-start-line="221" selection-start-column="34" selection-end-line="221" selection-end-column="34" />
         </state>
       </provider>
     </entry>

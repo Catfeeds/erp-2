@@ -128,6 +128,7 @@ function getCustomerData() {
 		c = {
 			id: cRowId,
 			number: $.trim($("#number").val()),
+			extract: $.trim($("#extract").val()),
 			name: $.trim($("#name").val()),
 			cCategory: categoryCombo.getValue(),
 			cCategoryName: categoryCombo.getText(),
@@ -176,7 +177,7 @@ function getTempData(a) {
 function initField() {
 	if ($("#note").placeholder(), "edit" == oper) {
 		//if ($("#number").val(rowData.number), $("#name").val(rowData.name), $("#category").data("defItem", ["id", rowData.cCategory + ""]), rowData.beginDate) {
-		if ($("#number").val(rowData.number), $("#name").val(rowData.name), $("#category").data("defItem", ["id", rowData.cCategory]), rowData.beginDate) {
+		if ($("#number").val(rowData.number),$("#extract").val(rowData.extract), $("#name").val(rowData.name), $("#category").data("defItem", ["id", rowData.cCategory]), rowData.beginDate) {
 			var a = new Date(rowData.beginDate),
 				b = a.getFullYear(),
 				c = 1 * a.getMonth() + 1,
@@ -449,7 +450,7 @@ function cancleGridEdit() {
 }
 function resetForm(a) {
 	var b = [{}, {}, {}, {}];
-	$("#name").val(""), $("#date").val(""), $("#receiveFunds").val(""), $("#note").val(""), $("#periodReceiveFunds").val(""), $grid.jqGrid("clearGridData").jqGrid("setGridParam", {
+	$("#name").val(""),$("#extract").val(""), $("#date").val(""), $("#receiveFunds").val(""), $("#note").val(""), $("#periodReceiveFunds").val(""), $grid.jqGrid("clearGridData").jqGrid("setGridParam", {
 		data: b
 	}).trigger("reloadGrid"), $("#number").val(Public.getSuggestNum(a.number)).focus().select()
 }

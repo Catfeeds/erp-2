@@ -29,7 +29,8 @@ class Contact extends CI_Controller {
     			$v[$arr]['pinYin']       = $row['pinYin'];
     			$v[$arr]['name']         = $row['name'];
     			$v[$arr]['type']         = $row['type'];
-    			$v[$arr]['delete']       = intval($row['disable'])==1 ? true : false;  
+    			$v[$arr]['extract']      = $row['extract'];
+    			$v[$arr]['delete']       = intval($row['disable'])==1 ? true : false;
     			$v[$arr]['cLevel']       = intval($row['cLevel']);
     			$v[$arr]['amount']       = (float)$row['amount'];
     			$v[$arr]['periodMoney']  = (float)$row['periodMoney'];
@@ -218,6 +219,7 @@ class Contact extends CI_Controller {
 			$info['cCategory']    = intval($data['cCategory']);
 			$info['cLevel']       = intval($data['cLevel']);
 			$info['number']       = $data['number'];
+			$info['extract']      = $data['extract'];
 			$info['name']         = $data['name'];
 			$info['amount']       = (float)$data['amount'];
 			$info['remark']       = $data['remark'];
@@ -273,7 +275,7 @@ class Contact extends CI_Controller {
 		}	
 		$this->mysql_model->get_count('contact',array('isDelete'=>0,'type'=>$data['type'],'number'=>$data['number'])) > 0 && str_alert(-1,'编号重复');
 		$data = elements(array(
-					'name','number','amount','beginDate','cCategory',
+					'name','extract','number','amount','beginDate','cCategory',
 					'cCategoryName','cLevel','cLevelName','linkMans'
 					,'periodMoney','remark','type','difMoney'),$data,NULL);
 		$sql = $this->mysql_model->insert('contact',$data);
@@ -305,7 +307,7 @@ class Contact extends CI_Controller {
 		}	
 		$this->mysql_model->get_count('contact',array('id !='=>$data['id'],'isDelete'=>0,'type'=>$data['type'],'number'=>$data['number'])) > 0 && str_alert(-1,'编号重复');
 		$info = elements(array(
-					'name','number','amount','beginDate','cCategory',
+					'name','extract','number','amount','beginDate','cCategory',
 					'cCategoryName','cLevel','cLevelName','linkMans'
 					,'periodMoney','remark','type','difMoney'),$data,NULL);
 		$sql = $this->mysql_model->update('contact',$info,array('id'=>$data['id']));
