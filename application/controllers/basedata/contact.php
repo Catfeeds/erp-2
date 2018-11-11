@@ -272,7 +272,10 @@ class Contact extends CI_Controller {
 				break;  			 
 			default: 
 				str_alert(-1,'参数错误');
-		}	
+		}
+		if ($data['extract'] == ''){
+            $data['extract'] = 0;
+        }
 		$this->mysql_model->get_count('contact',array('isDelete'=>0,'type'=>$data['type'],'number'=>$data['number'])) > 0 && str_alert(-1,'编号重复');
 		$data = elements(array(
 					'name','extract','number','amount','beginDate','cCategory',
