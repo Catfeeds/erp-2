@@ -99,10 +99,6 @@ function initGrid() {
 			return e + a
 		}
 	}, {
-        name: "extract",
-        label: "提成点",
-        width: 100,
-    }, {
 		name: "id",
 		label: "id",
 		hidden: !0.
@@ -199,8 +195,7 @@ function postData(a) {
 	var b = $.trim($("#category").val()),
 		c = $.trim($("#ParentCategory").val()),
 		d = a ? "update" : "add",
-		e = c ? $("#ParentCategory").data("PID") : "",
-		i = $.trim($("#extract").val());
+		e = c ? $("#ParentCategory").data("PID") : "";
 	if (e === a) return void parent.parent.Public.tips({
 		type: 2,
 		content: "当前分类和上级分类不能相同！"
@@ -208,8 +203,7 @@ function postData(a) {
 	var f = {
 		parentId: e,
 		id: a,
-		name: b,
-		extract: i
+		name: b
 	},
 		g = "add" == d ? "新增" + conditions.name + "类别" : "修改" + conditions.name + "类别";
 	f.typeNumber = conditions.typeNumber, Public.ajaxPost("../basedata/assist/" + d, f, function(a) {
@@ -222,7 +216,7 @@ function postData(a) {
 	})
 }
 function resetForm() {
-	$("#manage-form").validate().resetForm(), $("#ParentCategory").val(""),$("#extract").val(""), $("#category").val("").focus().select()
+	$("#manage-form").validate().resetForm(), $("#ParentCategory").val(""), $("#category").val("").focus().select()
 }
 function verifyRight(a) {
 	var b = rightsType[conditions.typeNumber];
@@ -278,7 +272,7 @@ var conditions = {
 					callback: this.callback
 				})
 			}
-			var d = ['<form id="manage-form" action="">', '<ul class="mod-form-rows manage-wrap" id="manager">', '<li class="row-item" style="position:relative; display:none;">', '<div class="label-wrap"><label for="ParentCategory">上级分类:</label></div>', '<div class="ctn-wrap" style="position:relative;"><input type="text" value="" class="ui-input" name="ParentCategory" id="ParentCategory" readonly></div>', '<div class="dn hideFeild"></div>', "</li>", '<li class="row-item">', '<div class="label-wrap"><label for="category">类别:</label></div>', '<div class="ctn-wrap"><input type="text" value="" class="ui-input" name="category" id="category"></div>', "</li>", '<li class="row-item">', '<div class="label-wrap hidAdd"><label for="extract">提成点:</label></div>', '<div class="ctn-wrap hidAdd"><input type="number" max="100" min="0" step="0.001" value="" class="ui-input" name="extract" id="extract"></div>', "</li>", "</ul>", "</form>"],
+			var d = ['<form id="manage-form" action="">', '<ul class="mod-form-rows manage-wrap" id="manager">', '<li class="row-item" style="position:relative; display:none;">', '<div class="label-wrap"><label for="ParentCategory">上级分类:</label></div>', '<div class="ctn-wrap" style="position:relative;"><input type="text" value="" class="ui-input" name="ParentCategory" id="ParentCategory" readonly></div>', '<div class="dn hideFeild"></div>', "</li>", '<li class="row-item">', '<div class="label-wrap"><label for="category">类别:</label></div>', '<div class="ctn-wrap"><input type="text" value="" class="ui-input" name="category" id="category"></div>', "</ul>", "</form>"],
 				e = 90;
 			showParentCategory && (e = 150), this.dialog = $.dialog({
 				title: c,
@@ -301,7 +295,6 @@ var conditions = {
 					var c = $(".hideFeild"),
 						d = $("#ParentCategory"),
 						e = $("#category");
-						i = $('#extract');
 					if (showParentCategory && (d.closest("li").show(), $("#ParentCategory").click(function() {
 						c.show().data("hasInit") || (c.show().data("hasInit", !0), Public.zTree.init(c, {
 							defaultClass: "ztreeDefault"
@@ -321,7 +314,7 @@ var conditions = {
 						c.hide()
 					}), "add" != a) {
 						var f = $("#grid").data("gridData")[b];
-						e.val(f.name), d.val(f.parentName), d.data("PID", f.parentId), i.val(f.extract)
+						e.val(f.name), d.val(f.parentName), d.data("PID", f.parentId)
 					}
 					// 如果是非客户类型，隐藏提成
                     if($("#grid").data("gridData")[b].typeNumber != 'customertype'){

@@ -25,7 +25,6 @@ class Assist extends CI_Controller {
 			$v[$arr]['sortIndex']   = intval($row['sortIndex']);
 			$v[$arr]['status']      = intval($row['isDelete']);
 			$v[$arr]['typeNumber']  = $row['typeNumber'];
-			$v[$arr]['extract']     = $row['extract'];
 		}
 		$json['status'] = 200;
 		$json['msg']    = 'success';
@@ -78,7 +77,7 @@ class Assist extends CI_Controller {
             default:
 				str_alert(-1,'参数错误');
 		}
-		$sql  = $this->mysql_model->insert('category',elements(array('name','typeNumber','extract'),$data));
+		$sql  = $this->mysql_model->insert('category',elements(array('name','typeNumber'),$data));
 		if ($sql) {
 			$this->common_model->logs($success.$data['name']);
 			die('{"status":200,"msg":"success","data":{"coId":0,"detail":true,"id":'.$sql.',"level":1,"name":"'.$data['name'].'","parentId":0,"remark":"","sortIndex":2,"status":0,"typeNumber":"'.$data['typeNumber'].'","uuid":""}}');
@@ -137,7 +136,7 @@ class Assist extends CI_Controller {
             default:
 				str_alert(-1,'参数错误');
 		}
-		$sql = $this->mysql_model->update('category',elements(array('name','typeNumber','extract'),$data),array('id'=>$data['id']));
+		$sql = $this->mysql_model->update('category',elements(array('name','typeNumber'),$data),array('id'=>$data['id']));
 		if ($sql) {
 			$this->common_model->logs($success.$data['name']);
 			die('{"status":200,"msg":"success","data":{"coId":0,"detail":true,"id":'.$data['id'].',"level":1,"name"
