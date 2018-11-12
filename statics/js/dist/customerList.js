@@ -80,6 +80,12 @@ $(function() {
 				width: 80,
 				title: !1
 			}, {
+                    name: "taobao",
+                    label: "淘宝账号",
+                    index: "taobao",
+                    width: 80,
+                    title: !1
+                },{
 				name: "difMoney",
 				label: "期初往来余额",
 				index: "difMoney",
