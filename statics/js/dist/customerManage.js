@@ -88,6 +88,7 @@ function initValidator() {
 			return $(a).closest(".row-item").find("label").text()
 		},
 		valid: function(a) {
+
 			var b = $.trim($("#name").val());
 			Public.ajaxPost("../basedata/contact/checkName?action=checkName", {
 				name: b,
@@ -96,7 +97,17 @@ function initValidator() {
 				-1 == a.status ? parent.$.dialog.confirm('客户名称 "' + b + '" 已经存在！是否继续？', function() {
 					postCustomerData()
 				}, function() {}) : postCustomerData()
-			})
+			});
+
+            // var e = $.trim($("#taobao").val());
+            // Public.ajaxPost("../basedata/contact/checkTaobao?action=checkTaobao", {
+            //     taobao: e,
+            //     id: cRowId
+            // }, function(a) {
+            //     -1 == a.status ? parent.$.dialog.confirm('淘宝账户 "' + e + '" 已经存在！是否继续？', function() {
+            //         postCustomerData()
+            //     }, function() {}) : postCustomerData()
+            // });
 		},
 		ignore: ":hidden",
 		theme: "yellow_bottom",
@@ -109,6 +120,7 @@ function postCustomerData() {
 		b = getCustomerData(),
 		c = b.firstLink || {};
 	delete b.firstLink, Public.ajaxPost("../basedata/contact/" + ("add" == oper ? "add" : "update"), b, function(d) {
+		
 		if (200 == d.status) {
 			if (parent.parent.Public.tips({
 				content: a + "成功！"
@@ -129,6 +141,7 @@ function getCustomerData() {
 			id: cRowId,
 			number: $.trim($("#number").val()),
 			extract: $.trim($("#extract").val()),
+            taobao: $.trim($("#taobao").val()),
 			name: $.trim($("#name").val()),
 			cCategory: categoryCombo.getValue(),
 			cCategoryName: categoryCombo.getText(),
@@ -450,7 +463,7 @@ function cancleGridEdit() {
 }
 function resetForm(a) {
 	var b = [{}, {}, {}, {}];
-	$("#name").val(""),$("#extract").val(""), $("#date").val(""), $("#receiveFunds").val(""), $("#note").val(""), $("#periodReceiveFunds").val(""), $grid.jqGrid("clearGridData").jqGrid("setGridParam", {
+	$("#name").val(""),$("#extract").val(""),$("#taobao").val(""), $("#date").val(""), $("#receiveFunds").val(""), $("#note").val(""), $("#periodReceiveFunds").val(""), $grid.jqGrid("clearGridData").jqGrid("setGridParam", {
 		data: b
 	}).trigger("reloadGrid"), $("#number").val(Public.getSuggestNum(a.number)).focus().select()
 }

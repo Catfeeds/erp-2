@@ -29,6 +29,7 @@ class Contact extends CI_Controller {
     			$v[$arr]['pinYin']       = $row['pinYin'];
     			$v[$arr]['name']         = $row['name'];
     			$v[$arr]['type']         = $row['type'];
+                $v[$arr]['taobao']         = $row['taobao'];
     			$v[$arr]['extract']      = $row['extract'];
     			$v[$arr]['delete']       = intval($row['disable'])==1 ? true : false;
     			$v[$arr]['cLevel']       = intval($row['cLevel']);
@@ -167,8 +168,8 @@ class Contact extends CI_Controller {
 		}
 		str_alert(200,'success'); 
 	}
-	
-	function my_filter($item){
+
+    function my_filter($item){
 	    if($item['linkFirst'] === 1)
 	        return true;
 	    else
@@ -219,6 +220,7 @@ class Contact extends CI_Controller {
 			$info['cCategory']    = intval($data['cCategory']);
 			$info['cLevel']       = intval($data['cLevel']);
 			$info['number']       = $data['number'];
+            $info['taobao']       = $data['taobao'];
 			$info['extract']      = $data['extract'];
 			$info['name']         = $data['name'];
 			$info['amount']       = (float)$data['amount'];
@@ -277,8 +279,9 @@ class Contact extends CI_Controller {
             $data['extract'] = 0;
         }
 		$this->mysql_model->get_count('contact',array('isDelete'=>0,'type'=>$data['type'],'number'=>$data['number'])) > 0 && str_alert(-1,'编号重复');
+        $this->mysql_model->get_count('contact',array('isDelete'=>0,'type'=>$data['type'],'taobao'=>$data['taobao'])) > 0 && str_alert(-1,'淘宝账号重复');
 		$data = elements(array(
-					'name','extract','number','amount','beginDate','cCategory',
+					'name','extract','taobao','number','amount','beginDate','cCategory',
 					'cCategoryName','cLevel','cLevelName','linkMans'
 					,'periodMoney','remark','type','difMoney'),$data,NULL);
 		$sql = $this->mysql_model->insert('contact',$data);

@@ -87,6 +87,10 @@ body{background: #fff;}
                     <div class="label-wrap"><label for="extract">提成点</label></div>
                     <div class="ctn-wrap"><input type="number" max="100" min="0" step="0.001" value="" class="ui-input" name="extract" id="extract"></div>
                 </li>
+                <li class="row-item">
+    				<div class="label-wrap"><label for="taobao">淘宝账号</label></div>
+    				<div class="ctn-wrap"><input type="text" value="" class="ui-input" name="taobao" id="taobao"></div>
+    			</li>
     		</ul>
     		<div class="contacters">
     			<h3 class="dn">联系方式</h3>
