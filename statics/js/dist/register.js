@@ -29,7 +29,7 @@ function(a) {
 		})
 	}
 	function d() {
-        console.log(a.trim(a("#realName").val()));
+        // console.log(a.trim(a("#realName").val()));
 		var b = {
 			userName: a.trim(a("#realName").val()),
 			userNumber: a.trim(a("#userName").val()),
@@ -69,7 +69,7 @@ function(a) {
 		return c
 	}
 	function g(b) {
-		console.log(b);
+
 		var c = b.attr("id"),
 			d = j[c];
 		if (d && d.required) {

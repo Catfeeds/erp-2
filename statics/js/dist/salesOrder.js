@@ -572,7 +572,7 @@ var curRow, curCol, loading, SYSTEM = system = parent.SYSTEM,
 							return THISPAGE.$_barCodeInsert.hasClass("active") ? Business.cacheManage.getGoodsInfoByBarCode(c, h, !0) : Business.cacheManage.getGoodsInfoByNumber(c, h, !0), g ? g : ($.dialog({
 								width: 775,
 								height: 510,
-								title: "选择商品",
+								title: "aa选择商品",
 								content: "url:../settings/goods_batch",
 								data: {
 									skuMult: SYSTEM.enableAssistingProp,

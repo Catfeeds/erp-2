@@ -69,8 +69,15 @@ class Right extends CI_Controller {
 				 'mobile'   => $data['userMobile'],
 				 'extract'  => $data['extract']
 			);
+			$info_2 = array(
+                'name' => $data['userNumber'],
+                'username'     => $data['userName'],
+                'mobile'   => $data['userMobile'],
+                'extract'  => $data['extract']
+            );
 		    $sql = $this->mysql_model->insert('admin',$info);
-			if ($sql) {
+            $sq2 = $this->mysql_model->insert('staff',$info_2);
+			if ($sql && $sq2) {
 			    $this->common_model->logs('新增用户:'.$data['userNumber']);
 				die('{"status":200,"msg":"注册成功","userNumber":"'.$data['userNumber'].'"}');
 			}

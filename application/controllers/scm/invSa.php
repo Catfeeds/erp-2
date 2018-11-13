@@ -9,11 +9,14 @@ class InvSa extends CI_Controller {
     }
 
 	public function index() {
+
 	    $action = $this->input->get('action',TRUE);
 		switch ($action) {
 			case 'initSale':
+
 			    $this->common_model->checkpurview(7);
 			    $data['billNo'] = str_no('XS');
+
 			    $this->load->view('scm/invSa/initSale',$data);
 				break;
 			case 'editSale':
@@ -30,6 +33,7 @@ class InvSa extends CI_Controller {
 			    $this->load->view('scm/invSa/initSaleList');
 				break;
 			default:
+
 			    $this->common_model->checkpurview(6);
 			    $this->saleList();
 		}

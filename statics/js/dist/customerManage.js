@@ -120,7 +120,7 @@ function postCustomerData() {
 		b = getCustomerData(),
 		c = b.firstLink || {};
 	delete b.firstLink, Public.ajaxPost("../basedata/contact/" + ("add" == oper ? "add" : "update"), b, function(d) {
-		
+
 		if (200 == d.status) {
 			if (parent.parent.Public.tips({
 				content: a + "成功！"

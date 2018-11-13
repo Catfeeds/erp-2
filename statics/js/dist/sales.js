@@ -12,22 +12,29 @@ var curRow, curCol, loading, SYSTEM = system = parent.SYSTEM,
 	pricePlaces = Number(parent.SYSTEM.pricePlaces),
 	amountPlaces = Number(parent.SYSTEM.amountPlaces),
 	THISPAGE = {
+
 		init: function(a) {
+            defaultPage = Public.getDefaultPage(),
+
 			"150602" == urlParam.transType ? this.mod_PageConfig = Public.mod_PageConfig.init("salesBack") : this.mod_PageConfig = Public.mod_PageConfig.init("sales"), SYSTEM.isAdmin !== !1 || SYSTEM.rights.AMOUNT_OUTAMOUNT || (hiddenAmount = !0, $("#amountArea").hide()), this.initDom(a), this.loadGrid(a), this.initCombo(), a.id > 0 && a.checked ? this.disableEdit() : (this.editable = !0, $("#grid").jqGrid("setGridParam", {
 				cellEdit: !0
 			})), this.addEvent(), setTimeout(function() {
 				$("#grid").jqGrid("nextCell", 1, 1)
-			}, 10), $.cookie("BarCodeInsert") && THISPAGE.$_barCodeInsert.addClass("active"), this.goodsEdittypeInit()
+			}, 10), $.cookie("BarCodeInsert") && THISPAGE.$_barCodeInsert.addClass("active"), this.goodsEdittypeInit();
+
+
 		},
 		initDom: function(a) {
 			var b = this;
-			if (this.$_customer = $("#customer"), 
+
+			if (this.$_customer = $("#customer"),
 				//add by michen 20170724 begin
 				this.$linkMan = $("#linkMan"),
 				this.$linkPhone = $("#linkPhone"),
 				this.$linkAddress = $("#linkAddress"),
 				//add by michen 20170724 end
-					this.$_date = $("#date").val(system.endDate), this.$_number = $("#number"), this.$_note = $("#note"), this.$_discountRate = $("#discountRate"), this.$_deduction = $("#deduction"), this.$_discount = $("#discount"), this.$_payment = $("#payment"), this.$_arrears = $("#arrears"), this.$_totalArrears = $("#totalArrears"), this.$_toolTop = $("#toolTop"), this.$_toolBottom = $("#toolBottom"), this.$_paymentTxt = $("#paymentTxt"), this.$_accountInfo = $("#accountInfo"), this.$_userName = $("#userName"), this.$_modifyTime = $("#modifyTime"), this.$_createTime = $("#createTime"), this.$_checkName = $("#checkName"), this.$_customerFree = $("#customerFree"), this.customerArrears = 0, this.$_note.placeholder(), "150602" == originalData.transType) {
+					this.$_date = $("#date").val(system.endDate), this.$_number = $("#number"), this.$_note = $("#note"), this.$_discountRate = $("#discountRate"), this.$_deduction = $("#deduction"), this.$_discount = $("#discount"), this.$_payment = $("#payment"), this.$_arrears = $("#arrears"), this.$_totalArrears = $("#totalArrears"), this.$_toolTop = $("#toolTop"), this.$_toolBottom = $("#toolBottom"), this.$_paymentTxt = $("#paymentTxt"), this.$_accountInfo = $("#accountInfo"), this.$_userName = $("#userName"), this.$_modifyTime = $("#modifyTime"),this.$_sales = $("#sales"), this.$_createTime = $("#createTime"), this.$_checkName = $("#checkName"), this.$_customerFree = $("#customerFree"),this.customerArrears = 0, this.$_note.placeholder(), "150602" == originalData.transType)
+			{
 				parent.$("#page-tab").find("li.l-selected").children("a").html("销货退货单");
 				$("#paymentTxt").html("本次退款")
 			} else {
@@ -36,6 +43,7 @@ var curRow, curCol, loading, SYSTEM = system = parent.SYSTEM,
 			}
 			if ("add" !== a.status || a.salesId) var c = ["id", a.salesId];
 			else var c = 0;
+
 			if (this.salesCombo = Business.billSalesCombo($("#sales"), {
 				defaultSelected: c
 			}), this.customerCombo = Business.billCustomerCombo($("#customer"), {
@@ -50,31 +58,32 @@ var curRow, curCol, loading, SYSTEM = system = parent.SYSTEM,
 						linkMen=$.grep(linkMen,function(n,i){
 							return n.linkFirst==1;
 						});
-						
-						linkMan=linkMen[0];	
+
+						linkMan=linkMen[0];
 						if(linkMan){
 							//b.$linkMan.find("input").val(linkMan.linkName);
 							//b.$linkPhone.find("input").val(linkMan.linkMobile?linkMan.linkMobile:linkMan.linkPhone);
 							//b.$linkAddress.find("input").val(linkMan.province+linkMan.city+linkMan.county+linkMan.address);
 							THISPAGE.linkCombo.selectByValue(linkMan.linkName);
 						}
-						
+
 						}
 						//add by michen 20170724 end
 						a ? ($("#customer").data("contactInfo", a), b.setSaleByContact(a)) : $("#customer").removeData("contactInfo")
 					}
 				}
 			}), "add" !== a.status || a.buId) {
+
 				var d = {
 					id: a.buId,
 					name: a.contactName,
 					cLevel: a.cLevel
 				};
-				this.$_customer.data("contactInfo", d), 
+				this.$_customer.data("contactInfo", d),
 				this.customerCombo.input.val(a.contactName);
 				//add by michen 20170724 begin
 				SYSTEM.mbuId = a.buId;
-				debugger;
+
 				this.linkCombo = Business.linkCombo(this);
 				setTimeout(function(){THISPAGE.linkCombo.selectByValue(a.udf01)},10);
 				//add by michen 20170724 end
@@ -82,7 +91,11 @@ var curRow, curCol, loading, SYSTEM = system = parent.SYSTEM,
 					this.salesCombo.input.val(SYSTEM.salesInfo[e].name);
 					break
 				}
-			} else Public.ajaxPost("../basedata/contact/getRecentlyContact?action=getRecentlyContact", 
+
+
+			} else
+
+				Public.ajaxPost("../basedata/contact/getRecentlyContact?action=getRecentlyContact",
 					{
 						transType: originalData.transType,
 						billType: "SALE"
@@ -101,8 +114,8 @@ var curRow, curCol, loading, SYSTEM = system = parent.SYSTEM,
 						linkMen=$.grep(linkMen,function(n,i){
 							return n.linkFirst==1;
 						});
-						
-						linkMan=linkMen[0];	
+
+						linkMan=linkMen[0];
 						if(linkMan){
 							b.$linkMan.find("input").val(linkMan.linkName);
 							b.$linkPhone.find("input").val(linkMan.linkMobile?linkMan.linkMobile:linkMan.linkPhone);
@@ -113,10 +126,10 @@ var curRow, curCol, loading, SYSTEM = system = parent.SYSTEM,
 						//add by michen 20170724 end
 					}
 			});
-			hideCustomerCombo && this.customerCombo.disable(), 
+			hideCustomerCombo && this.customerCombo.disable(),
 			$("#customer").data("callback", function(a) {
 				b.setSaleByContact(a)
-			}), 
+			}),
 			this.$_date.datepicker({
 				onSelect: function(a) {
 					if (!(originalData.id > 0)) {
@@ -132,7 +145,7 @@ var curRow, curCol, loading, SYSTEM = system = parent.SYSTEM,
 						})
 					}
 				}
-			}), 
+			}),
 			a.description && this.$_note.val(a.description),
 			//add by michen 20170724 begin
 			/*this.linkCombo = Business.linkCombo(this),
@@ -143,11 +156,11 @@ var curRow, curCol, loading, SYSTEM = system = parent.SYSTEM,
 			//a.udf02 && this.$linkPhone.find("input").val(a.udf02),
 			//a.udf03 && this.$linkAddress.find("input").val(a.udf03),
 			//add by michen 20170724 end
-			this.$_discountRate.val(a.disRate), 
-			this.$_deduction.val(a.disAmount), 
-			this.$_discount.val(a.amount), 
-			this.$_payment.val(a.rpAmount), 
-			this.$_arrears.val(a.arrears), 
+			this.$_discountRate.val(a.disRate),
+			this.$_deduction.val(a.disAmount),
+			this.$_discount.val(a.amount),
+			this.$_payment.val(a.rpAmount),
+			this.$_arrears.val(a.arrears),
 			this.$_customerFree.val(a.customerFree),
 			requiredMoney && ($("#accountWrap").show(), SYSTEM.isAdmin !== !1 || SYSTEM.rights.SettAcct_QUERY ? this.accountCombo = Business.accountCombo($("#account"), {
 				width: 112,
@@ -206,6 +219,7 @@ var curRow, curCol, loading, SYSTEM = system = parent.SYSTEM,
 			disEditable && (THISPAGE.disableEdit(), this.$_toolBottom.hide())
 		},
 		loadGrid: function(a) {
+
 			function b(a) {
 				if (taxRequiredCheck) {
 					var b = $("#grid").jqGrid("getRowData", a),
@@ -305,7 +319,9 @@ var curRow, curCol, loading, SYSTEM = system = parent.SYSTEM,
 				$("#initCombo").append($(".priceAuto").val(""))
 			}
 			function v(a) {
+
 				var b = $("#" + a).data("goodsInfo");
+
 				if (b) {
 					if (b.batch || $("#grid").jqGrid("setCell", a, "batch", "&#160;"), b.safeDays || ($("#grid").jqGrid("setCell", a, "prodDate", "&#160;"), $("#grid").jqGrid("setCell", a, "safeDays", "&#160;"), $("#grid").jqGrid("setCell", a, "validDate", "&#160;")), 1 == b.isWarranty && $("#grid").jqGrid("showCol", "batch"), b.safeDays > 0 && ($("#grid").jqGrid("showCol", "prodDate"), $("#grid").jqGrid("showCol", "safeDays"), $("#grid").jqGrid("showCol", "validDate")), !b.price) {
 						var c = w.$_customer.data("contactInfo");
@@ -315,6 +331,7 @@ var curRow, curCol, loading, SYSTEM = system = parent.SYSTEM,
 							d = c.cLevel < 3 ? e[c.cLevel] : (1e4 * b.salePrice * e[c.cLevel] / 1e6).toFixed(2), b.price = d
 						}
 					}
+
 					var f = {
 						skuName: b.skuName || "",
 						mainUnit: b.mainUnit || b.unitName,
@@ -328,8 +345,11 @@ var curRow, curCol, loading, SYSTEM = system = parent.SYSTEM,
 						locationId: b.locationId,
 						taxRate: b.taxRate || taxRequiredInput,
 						serNumList: b.serNumList,
-						safeDays: b.safeDays
+						safeDays: b.safeDays,
+                        extract :b.extract
+                        // extractCount:4
 					};
+
 					if (SYSTEM.ISSERNUM && 1 == b.isSerNum && (f.qty = f.serNumList ? f.serNumList.length : 0), f.qty > 0) {
 						var g = parseFloat(f.qty),
 							h = parseFloat(f.price),
@@ -338,6 +358,7 @@ var curRow, curCol, loading, SYSTEM = system = parent.SYSTEM,
 					}
 					f.amount = f.amount ? f.amount : f.price * f.qty;
 					var j = Number(f.amount);
+					f.extractCount = f.amount * f.extract;
 					if (taxRequiredCheck) {
 						var k = f.taxRate,
 							l = j * k / 100,
@@ -373,6 +394,7 @@ var curRow, curCol, loading, SYSTEM = system = parent.SYSTEM,
 				formatter: c,
 				editable: !0,
 				enterCallback: function() {
+
 					if (THISPAGE.$_barCodeInsert.hasClass("active")) {
 						var a = function(a) {
 								var b = $("#" + a),
@@ -670,7 +692,9 @@ var curRow, curCol, loading, SYSTEM = system = parent.SYSTEM,
 					id: "id"
 				},
 				loadComplete: function(a) {
+
 					if (THISPAGE.$_barCodeInsert = $("#barCodeInsert"), urlParam.id > 0) {
+
 						var b = a.rows,
 							c = b.length,
 							d = "";
@@ -706,6 +730,7 @@ var curRow, curCol, loading, SYSTEM = system = parent.SYSTEM,
 					}
 				},
 				gridComplete: function() {
+
 					setTimeout(function() {
 						Public.autoGrid($("#grid"))
 					}, 10)
@@ -783,9 +808,11 @@ var curRow, curCol, loading, SYSTEM = system = parent.SYSTEM,
 				formatCell: function(a, b, c, d, e) {},
 				beforeSubmitCell: function(a, b, c, d, e) {},
 				beforeSaveCell: function(a, b, c, d, e) {
+
 					switch (b) {
 					case "goods":
 						var f = $("#" + a).data("goodsInfo");
+
 						if (!f) {
 							w.skey = c;
 							var g, h = function(b) {
@@ -812,6 +839,7 @@ var curRow, curCol, loading, SYSTEM = system = parent.SYSTEM,
 									}
 								},
 								init: function() {
+
 									w.skey = ""
 								},
 								lock: !0,
@@ -842,68 +870,101 @@ var curRow, curCol, loading, SYSTEM = system = parent.SYSTEM,
 					return c
 				},
 				afterSaveCell: function(a, c, d, e, f) {
+
+					//c是改变的字段名 d是改变后的值
 					switch (c) {
 					case "goods":
 						break;
 					case "qty":
-						var d = parseFloat(d),
-							g = parseFloat($("#grid").jqGrid("getCell", a, f + 1)),
-							h = parseFloat($("#grid").jqGrid("getCell", a, f + 2));
-						if ($.isNumeric(g)) if ($.isNumeric(h)) var i = d * g * h / 100,
-							j = d * g - i,
-							k = $("#grid").jqGrid("setRowData", a, {
-								deduction: i,
-								amount: j
-							});
-						else var k = $("#grid").jqGrid("setRowData", a, {
-							amount: d * g
-						});
-						b(a), k && THISPAGE.calTotal();
-						break;
+
+					var d = parseFloat(d),  //数量
+						g = parseFloat($("#grid").jqGrid("getCell", a, f + 1)),  //单价
+						h = parseFloat($("#grid").jqGrid("getCell", a, f + 2));  //折扣率
+                        z = parseFloat($("#grid").jqGrid("getCell", a, f + 3));  //折扣率
+                        t = parseFloat($("#grid").jqGrid("getCell", a, f + 5));  //提成点
+
+                        if ($.isNumeric(g)) if ($.isNumeric(h)) var i = d * g * h / 100,  //折扣额
+						j = d * g - i,  //实际价格
+						k = $("#grid").jqGrid("setRowData", a, {
+							deduction: i,
+							amount: j
+						}),
+                        tt = j * t,
+						k1 = $("#grid").jqGrid("setRowData", a, {
+                            extractCount: tt.toFixed(2),
+						})
+
+                    else var k = $("#grid").jqGrid("setRowData", a, {
+						amount: d * g
+					});
+
+					b(a), k && THISPAGE.calTotal();
+					break;
 					case "price":
-						var d = parseFloat(d),
-							l = parseFloat($("#grid").jqGrid("getCell", a, f - 1)),
-							h = parseFloat($("#grid").jqGrid("getCell", a, f + 1));
+						var d = parseFloat(d), //改变后的单价
+							l = parseFloat($("#grid").jqGrid("getCell", a, f - 1)), //数量
+							h = parseFloat($("#grid").jqGrid("getCell", a, f + 1));  //折扣率
+                            t = parseFloat($("#grid").jqGrid("getCell", a, f + 4));  //提成点
+
 						if ($.isNumeric(l)) if ($.isNumeric(h)) var i = d * l * h / 100,
 							j = d * l - i,
 							k = $("#grid").jqGrid("setRowData", a, {
 								deduction: i,
 								amount: j
-							});
+							}),
+                        	tt = j * t,
+                            k1 = $("#grid").jqGrid("setRowData", a, {
+                                extractCount: tt.toFixed(2),
+                            });
 						else var k = $("#grid").jqGrid("setRowData", a, {
 							amount: d * l
 						});
 						b(a), k && THISPAGE.calTotal();
 						break;
 					case "discountRate":
-						var d = parseFloat(d),
-							l = parseFloat($("#grid").jqGrid("getCell", a, f - 2)),
-							g = parseFloat($("#grid").jqGrid("getCell", a, f - 1));
+						var d = parseFloat(d),  //改变后的折扣率
+							l = parseFloat($("#grid").jqGrid("getCell", a, f - 2)), //数量
+							g = parseFloat($("#grid").jqGrid("getCell", a, f - 1));  //单价
+							t = parseFloat($("#grid").jqGrid("getCell", a, f + 3));  //折扣点
+
 						if ($.isNumeric(l) && $.isNumeric(g)) var m = l * g,
 							i = m * d / 100,
 							j = m - i,
 							k = $("#grid").jqGrid("setRowData", a, {
 								deduction: i,
 								amount: j
-							});
+							}),
+                            tt = j * t,
+                            k1 = $("#grid").jqGrid("setRowData", a, {
+                                extractCount: tt.toFixed(2),
+                            });
 						b(a), k && THISPAGE.calTotal();
 						break;
 					case "deduction":
-						var d = parseFloat(d),
-							l = parseFloat($("#grid").jqGrid("getCell", a, f - 3)),
-							g = parseFloat($("#grid").jqGrid("getCell", a, f - 2));
+						var d = parseFloat(d),  //改变后的折扣额
+							l = parseFloat($("#grid").jqGrid("getCell", a, f - 3)),  //数量
+							g = parseFloat($("#grid").jqGrid("getCell", a, f - 2)); //单价
+							t = parseFloat($("#grid").jqGrid("getCell", a, f + 2));  //折扣点
+
 						if ($.isNumeric(l) && $.isNumeric(g)) var m = l * g,
 							j = m - d,
 							h = m ? (100 * d / m).toFixed(amountPlaces) : 0,
 							k = $("#grid").jqGrid("setRowData", a, {
 								discountRate: h,
 								amount: j
-							});
+							}),
+							tt = j * t,
+                                k1 = $("#grid").jqGrid("setRowData", a, {
+                                    extractCount: tt,
+                                });
 						b(a), k && THISPAGE.calTotal();
 						break;
 					case "amount":
 						var d = parseFloat(d),
 							n = $("#grid").jqGrid("getRowData", a);
+
+                        	t = n.extract;  //提成点
+
 						if ($.isNumeric(d)) {
 							var i = parseFloat(n.deduction),
 								o = parseFloat(n.qty),
@@ -913,7 +974,11 @@ var curRow, curCol, loading, SYSTEM = system = parent.SYSTEM,
 									h = m ? (100 * i / m).toFixed(amountPlaces) : 0;
 								$("#grid").jqGrid("setRowData", a, {
 									discountRate: h
-								})
+								}),
+								tt = d * t,
+								k1 = $("#grid").jqGrid("setRowData", a, {
+									extractCount: tt.toFixed(2),
+								});
 							}
 							$("#grid").jqGrid("setRowData", a, {
 								discountRate: h,
@@ -921,6 +986,40 @@ var curRow, curCol, loading, SYSTEM = system = parent.SYSTEM,
 							})
 						}
 						b(a), THISPAGE.calTotal();
+						break;
+					case "extract":
+						var d = parseFloat(d), //改变后的提成点
+
+							h = parseFloat($("#grid").jqGrid("getCell", a, f - 1));  //交易金额
+
+						if ($.isNumeric(h)) var i = h * d,
+
+							k = $("#grid").jqGrid("setRowData", a, {
+                                extractCount: i.toFixed(2),
+
+							})
+
+						else var k = $("#grid").jqGrid("setRowData", a, {
+                            extractCount: 0
+						});
+						b(a), k && THISPAGE.calTotal();
+						break;
+					case "extractCount":
+						var d = parseFloat(d), //改变后的提成
+
+							h = parseFloat($("#grid").jqGrid("getCell", a, f - 2));  //交易金额
+
+						if ($.isNumeric(h)) var i = d / h,
+
+							k = $("#grid").jqGrid("setRowData", a, {
+                                extract: i.toFixed(4),
+
+							})
+
+						else var k = $("#grid").jqGrid("setRowData", a, {
+                            extract: 0
+							});
+						b(a), k && THISPAGE.calTotal();
 						break;
 					case "taxRate":
 						var p = d,
@@ -1035,6 +1134,7 @@ var curRow, curCol, loading, SYSTEM = system = parent.SYSTEM,
 			})
 		},
 		setSaleByContact: function(a) {
+
 			var b = this;
 			b.salesCombo && Public.ajaxGet("../scm/invSa/findNearSaEmp?action=findNearSaEmp", {
 				buid: a.id
@@ -1069,9 +1169,11 @@ var curRow, curCol, loading, SYSTEM = system = parent.SYSTEM,
 					handle: c,
 					trigger: "ui-icon-ellipsis"
 				}
-			})
+			});
+
 		},
 		reloadData: function(a) {
+
 			function b() {
 				c.$_customer.data("contactInfo", {
 					id: a.buId,
@@ -1088,6 +1190,7 @@ var curRow, curCol, loading, SYSTEM = system = parent.SYSTEM,
 			originalData = a;
 			var d = 8 - a.entries.length;
 			if (d > 0) for (var e = 0; d > e; e++) a.entries.push({});
+
 			$("#grid").jqGrid("setGridParam", {
 				data: a.entries,
 				userData: {
@@ -1095,7 +1198,8 @@ var curRow, curCol, loading, SYSTEM = system = parent.SYSTEM,
 					deduction: a.totalDiscount,
 					amount: a.totalAmount,
 					tax: a.totalTax,
-					taxAmount: a.totalTaxAmount
+					taxAmount: a.totalTaxAmount,
+
 				}
 			}).trigger("reloadGrid"), b(), "edit" === a.status ? this.editable || (c.enableEdit(), $("#groupBtn").html(c.btn_edit + c.btn_audit), $("#mark").removeClass("has-audit")) : this.editable && (c.disableEdit(), $("#groupBtn").html(c.btn_view + c.btn_reaudit), $("#mark").addClass("has-audit"))
 		},
@@ -1311,10 +1415,13 @@ var curRow, curCol, loading, SYSTEM = system = parent.SYSTEM,
 				}))
 			}), $(".wrapper").on("click", "#savaAndAdd", function(b) {
 				b.preventDefault();
+
 				var c = $(this),
 					d = THISPAGE.getPostData();
+
 				d && c.ajaxPost("../scm/invSa/addNew?action=addNew", {
 					postData: JSON.stringify(d)
+
 				}, function(b) {
 					if (200 === b.status) {
 						a.$_number.text(b.data.billNo), $("#grid").clearGridData(), $("#grid").clearGridData(!0);
@@ -1467,23 +1574,26 @@ var curRow, curCol, loading, SYSTEM = system = parent.SYSTEM,
 			a.$_note.val(""), a.$_discountRate.val(originalData.disRate), a.$_deduction.val(originalData.disAmount), a.$_discount.val(originalData.amount), a.$_payment.val(originalData.rpAmount), a.$_arrears.val(originalData.arrears), a.$_customerFree.val(originalData.customerFree)
 		},
 		calTotal: function() {
-			for (var a = $("#grid").jqGrid("getDataIDs"), b = 0, c = 0, d = 0, e = 0, f = 0, g = 0, h = a.length; h > g; g++) {
+
+			for (var a = $("#grid").jqGrid("getDataIDs"), b = 0, c = 0, d = 0, e = 0, f = 0, g = 0,t =0, h = a.length; h > g; g++) {
 				var i = a[g],
 					j = $("#grid").jqGrid("getRowData", i);
-				j.qty && (b += parseFloat(j.qty)), j.deduction && (c += parseFloat(j.deduction)), j.amount && (d += parseFloat(j.amount)), j.tax && (e += parseFloat(j.tax)), j.taxAmount && (f += parseFloat(j.taxAmount))
+				j.qty && (b += parseFloat(j.qty)), j.deduction && (c += parseFloat(j.deduction)), j.extractCount && (t += parseFloat(j.extractCount)), j.amount && (d += parseFloat(j.amount)), j.tax && (e += parseFloat(j.tax)), j.taxAmount && (f += parseFloat(j.taxAmount))
 			}
 			if ($("#grid").jqGrid("footerData", "set", {
 				qty: b,
 				deduction: c,
 				amount: d,
 				tax: e,
-				taxAmount: f
+				taxAmount: f,
+                extractCount:t,
 			}), taxRequiredCheck) var k = (f - Number(this.$_deduction.val())).toFixed(2);
 			else var k = (d - Number(this.$_deduction.val())).toFixed(2);
 			var l = (Number(k) + Number(this.$_customerFree.val()) - Number(this.$_payment.val())).toFixed(2);
 			l = Number(l) ? l : "0.00", this.$_discount.val(k), this.$_arrears.val(l)
 		},
 		_getEntriesData: function(a) {
+
 			a = a || {};
 			for (var b = [], c = $("#grid").jqGrid("getDataIDs"), d = 0, e = c.length; e > d; d++) {
 				var f, g = c[d],
@@ -1514,7 +1624,7 @@ var curRow, curCol, loading, SYSTEM = system = parent.SYSTEM,
 								}), $("#grid").jqGrid("editCellByColName", g, "qty"), !1
 							}
 						}
-                        console.log(i);
+
 						f = {
 							invId: i.id,
 							invNumber: i.number,
@@ -1551,13 +1661,17 @@ var curRow, curCol, loading, SYSTEM = system = parent.SYSTEM,
 			return b
 		},
 		getPostData: function(a) {
+
 			var b = this,
 				c = this;
 			null !== curRow && null !== curCol && ($("#grid").jqGrid("saveCell", curRow, curCol), curRow = null, curCol = null);
 			var d = c.$_customer.find("input");
-			if ("" === d.val()) return c.$_customer.removeData("contactInfo"), parent.Public.tips({
+            var dd = c.$_sales.find("input");
+
+
+			if ("" === d.val() || dd.val() === '(空)') return c.$_customer.removeData("contactInfo"), parent.Public.tips({
 				type: 2,
-				content: "请选择客户！"
+				content: "请选择客户的和正确的销货员！"
 			}), c.customerCombo.active = !0, c.customerCombo.doQuery(), c.customerCombo.input.focus(), !1;
 			var e = c.$_customer.data("contactInfo");
 			if (!e || !e.id) return setTimeout(function() {
@@ -1569,13 +1683,15 @@ var curRow, curCol, loading, SYSTEM = system = parent.SYSTEM,
 			var f = this._getEntriesData(a);
 			if (!f) return !1;
 			if (f.length > 0) {
+
 				var g = $.trim(b.$_note.val()),
+                    defaultPage = Public.getDefaultPage(),
 					h = {
 						id: originalData.id,
 						buId: e.id,
 						contactName: e.name,
-						salesId: b.salesCombo.getValue(),
-						salesName: b.salesCombo.getText(),
+                        salesId: b.salesCombo.getValue(),
+                        salesName: b.salesCombo.getText(),
 						date: $.trim(b.$_date.val()),
 						billNo: $.trim(b.$_number.text()),
 						transType: originalData.transType,
@@ -1632,13 +1748,15 @@ var curRow, curCol, loading, SYSTEM = system = parent.SYSTEM,
 	hasLoaded = !1,
 	originalData;
 $(function() {
+
 	if (urlParam.id) {
+
 		if (!hasLoaded) {
 			var a = $(".bills").hide();
 			urlParam.turn ? Public.ajaxGet("../scm/invSo/queryDetails?action=queryDetails", {
 				id: urlParam.id
 			}, function(b) {
-				200 === b.status ? (originalData = b.data, originalData.id = -1, originalData.orderId = b.data.id, originalData.orderNo = b.data.billNo, originalData.status = "add", THISPAGE.init(b.data), a.show(), hasLoaded = !0) : 
+				200 === b.status ? (originalData = b.data, originalData.id = -1, originalData.orderId = b.data.id, originalData.orderNo = b.data.billNo, originalData.status = "add", THISPAGE.init(b.data), a.show(), hasLoaded = !0) :
 				(parent.Public.tips({
 					type: 1,
 					content: b.msg

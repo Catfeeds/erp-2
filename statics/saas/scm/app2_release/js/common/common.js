@@ -988,14 +988,19 @@ Business.billSalesCombo = function($_obj, opts){
 			}
 		}
 	}, opts);
+// console.log(Business.salesCombo($_obj, opts));
 	return Business.salesCombo($_obj, opts);
 }
+
 Business.salesCombo = function($_obj, opts){
 	if ($_obj.length == 0) { return };
 	var defaultPage = Public.getDefaultPage();
+
 	var opts = $.extend(true, {
 		data: function(){
+
 			if(defaultPage.SYSTEM.salesInfo) {
+
 				return defaultPage.SYSTEM.salesInfo;
 			} else {
 				return '../basedata/employee?action=list';
@@ -1005,7 +1010,7 @@ Business.salesCombo = function($_obj, opts){
 			formatData: function(data){
 				defaultPage.SYSTEM.salesInfo = data.data.items;	//更新
 				return data.data.items;
-			}	
+			}
 		},
 		width: 120,
 		height: 300,
@@ -1022,8 +1027,8 @@ Business.salesCombo = function($_obj, opts){
 		},
 		extraListHtml: '<a href="javascript:void(0);" id="quickAddSales" class="quick-add-link"><i class="ui-icon-add"></i>新增职员</a>'
 	}, opts);
-	
-	var salesCombo = $_obj.combo(opts).getCombo();	
+
+	var salesCombo = $_obj.combo(opts).getCombo();
 	//新增客户
 	$('#quickAddSales').on('click', function(e){
 		e.preventDefault();
@@ -1047,8 +1052,13 @@ Business.salesCombo = function($_obj, opts){
 			lock: true
 		});
 	});
+
 	return salesCombo;
 };
+
+
+
+
 Business.billSupplierCombo = function($_obj, opts){
 	var defaultPage = Public.getDefaultPage();
 	opts = $.extend(true, {

@@ -172,6 +172,7 @@ var api = frameElement.api,
 	skuMult = data.skuMult,
 	THISPAGE = {
 		init: function() {
+
 			this.initDom(), this.loadGrid(), this.initZtree(), this.addEvent()
 		},
 		initDom: function() {
@@ -190,6 +191,7 @@ var api = frameElement.api,
 			})
 		},
 		loadGrid: function() {
+
 			function a(a, b, c) {
 				var d = '<div class="operating" data-id="' + c.id + '"><a class="ui-icon ui-icon-search" title="查询"></a><span class="ui-icon ui-icon-copy" title="商品图片"></span></div>';
 				return d
@@ -375,6 +377,7 @@ var api = frameElement.api,
 					}
 				},
 				gridComplete: function() {
+
 					for (_item in addList) {
 						var a = $("#" + addList[_item].id);
 						!a.length && a.find("input:checkbox")[0].checked && $grid.jqGrid("setSelection", _item, !1)
@@ -383,6 +386,7 @@ var api = frameElement.api,
 			})
 		},
 		reloadData: function(a) {
+
 			addList = {}, $("#grid").jqGrid("setGridParam", {
 				url: "../basedata/inventory?action=list",
 				datatype: "json",
@@ -390,6 +394,7 @@ var api = frameElement.api,
 			}).trigger("reloadGrid")
 		},
 		addEvent: function() {
+
 			var a = this;
 			$(".grid-wrap").on("click", ".ui-icon-search", function(a) {
 				a.preventDefault();
