@@ -1418,7 +1418,7 @@ var curRow, curCol, loading, SYSTEM = system = parent.SYSTEM,
 
 				var c = $(this),
 					d = THISPAGE.getPostData();
-console.log(d);
+
 				d && c.ajaxPost("../scm/invSa/addNew?action=addNew", {
 					postData: JSON.stringify(d)
 

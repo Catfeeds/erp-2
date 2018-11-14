@@ -807,7 +807,6 @@ class InvSa extends CI_Controller {
 			$v[$arr]['qty']           = $data['transType']==150601 ? -abs($row['qty']) :abs($row['qty']);
 			$v[$arr]['amount']        = $data['transType']==150601 ? abs($row['amount']) :-abs($row['amount']);
 			$v[$arr]['price']         = abs($row['price']);
-
 			$v[$arr]['discountRate']  = $row['discountRate'];
 			$v[$arr]['deduction']     = $row['deduction'];
 			$v[$arr]['serialno']      = $row['serialno'];
