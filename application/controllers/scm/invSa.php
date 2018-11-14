@@ -13,11 +13,18 @@ class InvSa extends CI_Controller {
 	    $action = $this->input->get('action',TRUE);
 		switch ($action) {
 			case 'initSale':
+                $id = $this->jxcsys['uid'];
+                $query = $this->db->select('extract')
+                    ->from($this->db->dbprefix("admin"))
+                    ->where('(uid="'.$id.'")')
+                    ->get();
+                $data['id'] = $id;
+                $data['extract'] = $query->row_array()['extract'];
 
-			    $this->common_model->checkpurview(7);
+                $this->common_model->checkpurview(7);
 			    $data['billNo'] = str_no('XS');
-
-			    $this->load->view('scm/invSa/initSale',$data);
+                $data['username'] = $this->jxcsys['username'];
+                $this->load->view('scm/invSa/initSale',$data);
 				break;
 			case 'editSale':
 			    $this->common_model->checkpurview(6);

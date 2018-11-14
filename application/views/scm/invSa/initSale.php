@@ -87,9 +87,12 @@ $(function() {
         </dd>
         <dd id="identifier" class="pct20 tc">
           <label>销售人员:</label>
-          <span class="ui-combo-wrap" id="sales">
+          <span class="ui-combo-wrap" id="sales" style="display: none">
               <input type="text" class="input-txt" autocomplete="off">
           <i class="trigger"></i></span>
+
+            <span class="ui-combo-wrap"><input type="text" id="Sextract" class="input-txt" autocomplete="off" value="<?php echo $username ?>" readonly></span>
+            <input type="text" id="id" style="display: none" class="input-txt" autocomplete="off" value="<?php echo $id ?>" readonly>
         </dd>
         <dd class="pct20 tc">
           <label>单据日期:</label>
@@ -139,7 +142,7 @@ $(function() {
         <dd class="pct25 tc">
           <label>我的提成点:</label>
           <span id="extract">
-            <input type="text" class="ui-input" value="" readonly>
+            <input type="text" class="ui-input" value="<?php echo $extract ?>" readonly>
           </span>
         </dd>
       </dl>
@@ -243,6 +246,9 @@ $(function() {
   </div>
 </div>
 <script src="<?php echo base_url()?>statics/js/dist/sales.js?ver=2017082001"></script>
+<script>
+
+</script>
 </body>
 </html>
 

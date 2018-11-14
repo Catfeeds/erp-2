@@ -1674,8 +1674,8 @@ var curRow, curCol, loading, SYSTEM = system = parent.SYSTEM,
 				c = this;
 			null !== curRow && null !== curCol && ($("#grid").jqGrid("saveCell", curRow, curCol), curRow = null, curCol = null);
 			var d = c.$_customer.find("input");
-            var dd = c.$_sales.find("input");
-
+            // var dd = c.$_sales.find("input");
+			var dd = $('#Sextract');
 
 			if ("" === d.val() || dd.val() === '(空)') return c.$_customer.removeData("contactInfo"), parent.Public.tips({
 				type: 2,
@@ -1698,8 +1698,10 @@ var curRow, curCol, loading, SYSTEM = system = parent.SYSTEM,
 						id: originalData.id,
 						buId: e.id,
 						contactName: e.name,
-                        salesId: b.salesCombo.getValue(),
-                        salesName: b.salesCombo.getText(),
+                        // salesId: b.salesCombo.getValue(),
+                        salesId: $('#id').val(),
+                        // salesName: b.salesCombo.getText(),
+                        salesName: $('#Sextract').val(),
 						date: $.trim(b.$_date.val()),
 						billNo: $.trim(b.$_number.text()),
 						transType: originalData.transType,
