@@ -33,7 +33,7 @@ var curRow, curCol, loading, SYSTEM = system = parent.SYSTEM,
 				this.$linkPhone = $("#linkPhone"),
 				this.$linkAddress = $("#linkAddress"),
 				//add by michen 20170724 end
-					this.$_date = $("#date").val(system.endDate), this.$_number = $("#number"), this.$_note = $("#note"), this.$_discountRate = $("#discountRate"), this.$_deduction = $("#deduction"), this.$_discount = $("#discount"), this.$_payment = $("#payment"), this.$_arrears = $("#arrears"), this.$_totalArrears = $("#totalArrears"), this.$_toolTop = $("#toolTop"), this.$_toolBottom = $("#toolBottom"), this.$_paymentTxt = $("#paymentTxt"), this.$_accountInfo = $("#accountInfo"), this.$_userName = $("#userName"), this.$_modifyTime = $("#modifyTime"),this.$_sales = $("#sales"), this.$_createTime = $("#createTime"), this.$_checkName = $("#checkName"), this.$_customerFree = $("#customerFree"),this.customerArrears = 0, this.$_note.placeholder(), "150602" == originalData.transType)
+					this.$_date = $("#date").val(system.endDate), this.$_number = $("#number"), this.$_note = $("#note"), this.$_discountRate = $("#discountRate"), this.$_deduction = $("#deduction"), this.$_discount = $("#discount"), this.$_payment = $("#payment"), this.$_arrears = $("#arrears"), this.$_totalArrears = $("#totalArrears"), this.$_toolTop = $("#toolTop"), this.$_toolBottom = $("#toolBottom"), this.$_paymentTxt = $("#paymentTxt"), this.$_accountInfo = $("#accountInfo"), this.$_userName = $("#userName"), this.$_modifyTime = $("#modifyTime"),this.$_sales = $("#sales"),this.$_Cextract = $("#Cextract"),this.$_extract_me = $("#extract_me"), this.$_createTime = $("#createTime"), this.$_checkName = $("#checkName"), this.$_customerFree = $("#customerFree"),this.customerArrears = 0, this.$_note.placeholder(), "150602" == originalData.transType)
 			{
 				parent.$("#page-tab").find("li.l-selected").children("a").html("销货退货单");
 				$("#paymentTxt").html("本次退款")
@@ -359,8 +359,10 @@ var curRow, curCol, loading, SYSTEM = system = parent.SYSTEM,
 						$.isNumeric(h) && ($.isNumeric(i) ? (f.deduction = f.deduction || g * h * i / 100, f.amount = f.amount || g * h - f.deduction) : f.amount = f.amount || g * h)
 					}
 					f.amount = f.amount ? f.amount : f.price * f.qty;
+                    var cextract = $("#Cextract").val();
+                    var  extract_me = $("#extract_me").val();
 					var j = Number(f.amount);
-					f.extractCount = f.amount * f.extract;
+					f.extractCount = f.amount * f.extract *cextract * extract_me;
 					if (taxRequiredCheck) {
 						var k = f.taxRate,
 							l = j * k / 100,
@@ -870,7 +872,8 @@ var curRow, curCol, loading, SYSTEM = system = parent.SYSTEM,
 					return c
 				},
 				afterSaveCell: function(a, c, d, e, f) {
-
+                    var cextract = $("#Cextract").val();
+                    var  extract_me = $("#extract_me").val();
 					//c是改变的字段名 d是改变后的值
 					switch (c) {
 					case "goods":
@@ -889,7 +892,7 @@ var curRow, curCol, loading, SYSTEM = system = parent.SYSTEM,
 							deduction: i,
 							amount: j
 						}),
-                        tt = j * t,
+                        tt = j * t * cextract * extract_me ,
 						k1 = $("#grid").jqGrid("setRowData", a, {
                             extractCount: tt.toFixed(2),
 						})
@@ -912,7 +915,7 @@ var curRow, curCol, loading, SYSTEM = system = parent.SYSTEM,
 								deduction: i,
 								amount: j
 							}),
-                        	tt = j * t,
+                        	tt = j * t * cextract * extract_me,
                             k1 = $("#grid").jqGrid("setRowData", a, {
                                 extractCount: tt.toFixed(2),
                             });
@@ -934,7 +937,7 @@ var curRow, curCol, loading, SYSTEM = system = parent.SYSTEM,
 								deduction: i,
 								amount: j
 							}),
-                            tt = j * t,
+                            tt = j * t * cextract * extract_me ,
                             k1 = $("#grid").jqGrid("setRowData", a, {
                                 extractCount: tt.toFixed(2),
                             });
@@ -953,7 +956,7 @@ var curRow, curCol, loading, SYSTEM = system = parent.SYSTEM,
 								discountRate: h,
 								amount: j
 							}),
-							tt = j * t,
+							tt = j * t * cextract * extract_me ,
                                 k1 = $("#grid").jqGrid("setRowData", a, {
                                     extractCount: tt,
                                 });
@@ -975,7 +978,7 @@ var curRow, curCol, loading, SYSTEM = system = parent.SYSTEM,
 								$("#grid").jqGrid("setRowData", a, {
 									discountRate: h
 								}),
-								tt = d * t,
+								tt = d * t * cextract * extract_me ,
 								k1 = $("#grid").jqGrid("setRowData", a, {
 									extractCount: tt.toFixed(2),
 								});
@@ -992,7 +995,7 @@ var curRow, curCol, loading, SYSTEM = system = parent.SYSTEM,
 
 							h = parseFloat($("#grid").jqGrid("getCell", a, f - 1));  //交易金额
 
-						if ($.isNumeric(h)) var i = h * d,
+						if ($.isNumeric(h)) var i = h * d * cextract * extract_me,
 
 							k = $("#grid").jqGrid("setRowData", a, {
                                 extractCount: i.toFixed(2),
@@ -1581,7 +1584,7 @@ var curRow, curCol, loading, SYSTEM = system = parent.SYSTEM,
 			for (var a = $("#grid").jqGrid("getDataIDs"), b = 0, c = 0, d = 0, e = 0, f = 0, g = 0,t =0, h = a.length; h > g; g++) {
 					var i = a[g],
 					j = $("#grid").jqGrid("getRowData", i);
-				j.qty && (b += parseFloat(j.qty)), j.deduction && (c += parseFloat(j.deduction)), j.extractCount && (t += parseFloat(j.extractCount)), j.amount && (d += parseFloat(j.amount)), j.tax && (e += parseFloat(j.tax)), j.taxAmount && (f += parseFloat(j.taxAmount))
+				j.qty && (b += parseFloat(j.qty)), j.deduction && (c += parseFloat(j.deduction)), j.extractCount && (t += parseFloat(j.extractCount) ), j.amount && (d += parseFloat(j.amount)), j.tax && (e += parseFloat(j.tax)), j.taxAmount && (f += parseFloat(j.taxAmount))
 			}
 			if ($("#grid").jqGrid("footerData", "set", {
 				qty: b,

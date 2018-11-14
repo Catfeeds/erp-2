@@ -142,7 +142,7 @@ $(function() {
         <dd class="pct25 tc">
           <label>我的提成点:</label>
           <span id="extract">
-            <input type="text" class="ui-input" value="<?php echo $extract ?>" readonly>
+            <input type="text" id ="extract_me" class="ui-input" value="<?php echo $extract ?>" readonly>
           </span>
         </dd>
       </dl>
