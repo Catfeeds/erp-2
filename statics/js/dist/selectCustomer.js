@@ -84,6 +84,13 @@ var urlParam = Public.urlParam(),
 				align: "center",
 				classes: "ui-ellipsis"
 			}, {
+				name: "extract",
+				label: "提成点",
+				index: "contacter",
+				width: 100,
+				align: "center",
+				classes: "ui-ellipsis"
+			}, {
 				name: "mobile",
 				label: "手机",
 				index: "mobile",

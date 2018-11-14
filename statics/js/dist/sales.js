@@ -1576,26 +1576,6 @@ var curRow, curCol, loading, SYSTEM = system = parent.SYSTEM,
 			a.$_note.val(""), a.$_discountRate.val(originalData.disRate), a.$_deduction.val(originalData.disAmount), a.$_discount.val(originalData.amount), a.$_payment.val(originalData.rpAmount), a.$_arrears.val(originalData.arrears), a.$_customerFree.val(originalData.customerFree)
 		},
 		calTotal: function() {
-            var z = $(this);
-            var t = this;
-            var t_customer = t.$_customer.find("input");
-            var t_sales = t.$_sales.find("input");
-            // Public.ajaxPost("../basedata/contact/find?action=find", {
-            //     customer: t_customer,
-				// sales:t_sales
-            // }, function(b) {
-            //     console.log(b);
-            // });
-            $.ajax({
-                url : "../basedata/contact/find?action=find",
-                data : {
-                    // customer:t_customer
-                },
-                dataType : "json",
-                complete:function(data){
-                    // console.log(data);
-                }
-            });
 
 
 			for (var a = $("#grid").jqGrid("getDataIDs"), b = 0, c = 0, d = 0, e = 0, f = 0, g = 0,t =0, h = a.length; h > g; g++) {
