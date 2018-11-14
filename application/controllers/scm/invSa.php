@@ -436,7 +436,7 @@ class InvSa extends CI_Controller {
 			$info = elements(array(
 				'billType','transType','transTypeName','buId','billDate','checked','checkName',
 				'description','totalQty','amount','arrears','rpAmount','totalAmount','hxStateCode',
-				'totalArrears','disRate','postData','disAmount','accId','modifyTime'),$data,NULL);
+				'totalArrears','disRate','postData','disAmount','accId','modifyTime','totalExtractCount'),$data,NULL);
 			$this->db->trans_begin();
 
 			//特殊情况
@@ -445,7 +445,7 @@ class InvSa extends CI_Controller {
 						'billNo','billType','transType','transTypeName','buId','billDate','checked','checkName','hxStateCode',
 						'description','totalQty','amount','arrears','rpAmount','totalAmount','srcOrderNo','srcOrderId',
 						'totalArrears','disRate','disAmount','postData','createTime',
-						'salesId','uid','userName','accId','modifyTime'),$data,NULL);
+						'salesId','uid','userName','accId','modifyTime','totalExtractCount'),$data,NULL);
 			    $iid = $this->mysql_model->insert('invoice',$info);
 			    $this->invoice_info($iid,$data);
 				$data['id'] = $iid;
