@@ -68,6 +68,7 @@ class InvSa extends CI_Controller {
 		$where .= $endDate      ? ' and a.billDate<="'.$endDate.'"' : '';
 		$where .= $this->common_model->get_admin_purview();
 		$list = $this->data_model->get_invoice($where.' order by '.$order.' limit '.$rows*($page-1).','.$rows);
+
 		foreach ($list as $arr=>$row) {
 		    $v[$arr]['hxStateCode']  = intval($row['hxStateCode']);
 		    //add begin
@@ -98,6 +99,7 @@ class InvSa extends CI_Controller {
 			$v[$arr]['description']  = $row['description'];
 			$v[$arr]['billNo']       = $row['billNo'];
 			$v[$arr]['totalAmount']  = (float)abs($row['totalAmount']);
+            $v[$arr]['totalExtractCount']  = (float)abs($row['totalExtractCount']);
 			$v[$arr]['userName']     = $row['userName'];
 			$v[$arr]['transTypeName']= $row['transTypeName'];
 			//add by michen 20170724 begin
@@ -106,6 +108,7 @@ class InvSa extends CI_Controller {
 			$v[$arr]['udf03']        = $row['udf03'];
 			//add by michen 20170724 end
 		}
+
 		$json['status'] = 200;
 		$json['msg']    = 'success';
 		$json['data']['page']      = $page;
@@ -233,7 +236,7 @@ class InvSa extends CI_Controller {
 				'billNo','billType','transType','transTypeName','buId','billDate','srcOrderNo','srcOrderId',
 				'description','totalQty','amount','arrears','rpAmount','totalAmount','hxStateCode',
 				'totalArrears','disRate','disAmount','postData','createTime',
-				'salesId','uid','userName','accId','modifyTime','udf01','udf02','udf03'),$data,NULL);
+				'salesId','uid','userName','accId','modifyTime','udf01','udf02','udf03','totalExtractCount'),$data,NULL);
 			$this->db->trans_begin();
 			$iid = $this->mysql_model->insert('invoice',$info);
 			$this->invoice_info($iid,$data);

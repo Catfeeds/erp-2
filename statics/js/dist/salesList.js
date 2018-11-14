@@ -14,12 +14,14 @@ var THISPAGE = {
 		this.$_matchCon = $("#matchCon"), this.$_beginDate = $("#beginDate").val(system.beginDate), this.$_endDate = $("#endDate").val(system.endDate), this.$_matchCon.placeholder(), this.$_beginDate.datepicker(), this.$_endDate.datepicker()
 	},
 	loadGrid: function() {
+
 		function a(a, b, c) {
 			var d = '<div class="operating" data-id="' + c.id + '"><a class="ui-icon ui-icon-pencil" title="修改"></a><a class="ui-icon ui-icon-trash" title="删除"></a></div>';
 			return d
 		}
 		var b = Public.setGrid();
 		queryConditions.beginDate = this.$_beginDate.val(), queryConditions.endDate = this.$_endDate.val();
+
 		var c = "150601" == queryConditions.transType ? "收" : "退",
 			d = [{
 				name: "operating",
@@ -75,6 +77,14 @@ var THISPAGE = {
 				align: "right",
 				formatter: "currency"
 			}, {
+                    name: "totalExtractCount",
+                    label: "提成",
+                	hidden: hiddenAmount,
+                    index: "totalExtractCount",
+                    width: 80,
+                    align: "right",
+                    formatter: "currency"
+                },{
 				name: "rpAmount",
 				label: "已" + c + "款",
 				hidden: hiddenAmount,
