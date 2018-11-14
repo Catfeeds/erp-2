@@ -195,25 +195,12 @@ $("#username").text(parent.SYSTEM.realName);
   </div>
   <div class="col-extra">
     <div class="extra-wrap">
-      <h2>快速查看</h2>
+      <h2>提成排行榜</h2>
       <div class="list">
         <ul>
-            <li><!--<span class="bulk-import">导入</span>--><a tabid="setting-goodsList" data-right="INVENTORY_QUERY" tabTxt="商品管理" parentOpen="true" rel="pageTab" href="<?=site_url('settings/goods_list')?>">商品管理</a></li>
-            <li><!--<span class="bulk-import">导入</span>--><a tabid="setting-customerList" data-right="BU_QUERY" tabTxt="客户管理" parentOpen="true" rel="pageTab" href="<?=site_url('settings/customer_list')?>">客户管理</a></li>
-            <li><!--<span class="bulk-import">导入</span>--><a tabid="setting-vendorList" data-right="PUR_QUERY" tabTxt="供应商管理" parentOpen="true" rel="pageTab" href="<?=site_url('settings/vendor_list')?>">供应商管理</a></li>
-            <li><a tabid="sales-salesList" data-right="SA_QUERY" tabTxt="销货记录" parentOpen="true" rel="pageTab" href="<?=site_url('scm/invSa?action=initSaleList')?>">销售记录</a></li>
-            <li><a tabid="purchase-salesList" data-right="PU_QUERY" tabTxt="采购记录" parentOpen="true" rel="pageTab" href="<?=site_url('scm/invPu?action=initPurList')?>">采购记录</a></li>
-        	<li><a href="<?=site_url('scm/receipt?action=initReceipt')?>" rel="pageTab" tabid="money-receiptList" tabTxt="收款记录" data-right="RECEIPT_QUERY" parentOpen="true">收款记录</a></li>
-            <li><a href="<?=site_url('scm/payment?action=initPay')?>" rel="pageTab" tabid="money-paymentList" tabTxt="付款记录" data-right="PAYMENT_QUERY" parentOpen="true">付款记录</a></li>
-        	<li><a href="<?=site_url('report/sales_detail')?>" rel="pageTab" tabid="report-salesDetail" tabTxt="销售明细表" data-right="SAREPORTDETAIL_QUERY" parentOpen="true">销售明细表</a></li>
-            <li><a href="<?=site_url('report/pu_detail_new')?>" rel="pageTab" tabid="report-puDetail" tabTxt="采购明细表" data-right="PUREOORTDETAIL_QUERY" parentOpen="true">采购明细表</a></li>
-        	<li style="border-bottom:none; line-height: 42px; "><a tabid="storage-transfersList" data-right="TF_QUERY" tabTxt="调拨记录" parentOpen="true" rel="pageTab" href="<?=site_url('scm/invTf?action=initTfList')?>">调拨记录</a></li>
-        	<!--
-        	<li><a tabid="storage-otherWarehouseList" data-right="IO_QUERY" tabTxt="其他入库记录" parentOpen="true" rel="pageTab" href="/scm/invOi.do?action=initOiList&type=in">其他入库记录</a></li>
-        	<li><a tabid="storage-otherOutboundList" data-right="OO_QUERY" tabTxt="其他出库记录" parentOpen="true" rel="pageTab" href="/scm/invOi.do?action=initOiList&type=out">其他出库记录</a></li>
-        	<li><a tabid="report-initialBalance" data-right="InvBalanceReport_QUERY" tabTxt="商品库存余额" parentOpen="true" rel="pageTab" href="/report/invBalance.do?action=detail">商品库存余额</a></li>
-        	<li><a tabid="report-contactDebt" data-right="ContactDebtReport_QUERY" tabTxt="往来单位欠款表" parentOpen="true" rel="pageTab" href="/report/contactDebt.do?action=detail">往来单位欠款</a></li>
-        	-->
+
+            <li><a tabid="setting-goodsList" data-right="INVENTORY_QUERY" tabTxt="商品管理" parentOpen="true" rel="pageTab" href="<?=site_url('settings/goods_list')?>">商品管理</a></li>
+
         </ul>
       </div>
     </div>
@@ -392,6 +379,9 @@ $('#manageAcct').click(function(e){
 		}
 	});
 })();
+</script>
+<script>
+
 </script>
 </body>
 </html>
