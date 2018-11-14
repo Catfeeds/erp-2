@@ -80,7 +80,7 @@ $(function() {
     <div class="con-header">
       <dl class="cf">
         <dd class="pct25">
-          <label>客&nbsp;&nbsp;&nbsp;&nbsp;户：</label>
+          <label>客户：</label>
           <span class="ui-combo-wrap" id="customer">
           <input type="text" name="" class="input-txt" autocomplete="off" value="" data-ref="date">
           <i class="ui-icon-ellipsis"></i></span>
@@ -243,18 +243,6 @@ $(function() {
   </div>
 </div>
 <script src="<?php echo base_url()?>statics/js/dist/sales.js?ver=2017082001"></script>
-<script>
-    var customer = $('#customer').find("input");
-    customer.bind("input propertychange",function(event){
-        alert(1111);
-        console.log($("#input1").val())
-    });
-    function fun() {
-        var q = $('#customer').find("input").val();
-        alert(q);
-    }
-
-</script>
 </body>
 </html>
 

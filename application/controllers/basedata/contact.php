@@ -18,8 +18,8 @@ class Contact extends CI_Controller {
 		$where  = '(isDelete=0) and type='.$type;
 		$where .= $this->common_model->get_contact_purview();
 	    $where .= $skey ? ' and (number like "%'.$skey.'%" or name like "%'.$skey.'%" or linkMans like "%'.$skey.'%")' : '';
-		$where .= $categoryid>0 ? ' and cCategory = '.$categoryid.'' : '';                
-		$list = $this->mysql_model->get_results('contact',$where,'id desc',$rows*($page-1),$rows); 
+		$where .= $categoryid>0 ? ' and cCategory = '.$categoryid.'' : '';
+		$list = $this->mysql_model->get_results('contact',$where,'id desc',$rows*($page-1),$rows);
 		//if($type == 10){
     		foreach ($list as $arr=>$row) {
     		    $v[$arr]['id']           = intval($row['id']);
@@ -40,30 +40,29 @@ class Contact extends CI_Controller {
     			$v[$arr]['taxRate']      = (float)$row['taxRate'];
     			$v[$arr]['links']        = '';
     			$v[$arr]['linkMen']      = $row['linkMans'];//add by michen 20170724
-    			if (strlen($row['linkMans'])>0) {                            
+    			if (strlen($row['linkMans'])>0) {
     				$list = (array)json_decode($row['linkMans'],true);
     				foreach ($list as $arr1=>$row1) {
     					if ($row1['linkFirst']==1) {
-    						$v[$arr]['contacter']            = $row1['linkName']; 
-    						$v[$arr]['mobile']               = $row1['linkMobile']; 
+    						$v[$arr]['contacter']            = $row1['linkName'];
+    						$v[$arr]['mobile']               = $row1['linkMobile'];
     						$v[$arr]['place']                = $row1['linkPlace'];
-    						$v[$arr]['telephone']            = $row1['linkPhone']; 
-    						$v[$arr]['extract']              = $row1['extract'];
+    						$v[$arr]['telephone']            = $row1['linkPhone'];
     						$v[$arr]['linkIm']               = $row1['linkIm'];
-    						$v[$arr]['city']                 = $row1['city']; 
-    						$v[$arr]['county']               = $row1['county']; 
-    			            $v[$arr]['province']             = $row1['province']; 
-    						$v[$arr]['deliveryAddress']      = $row1['address']; 
-    						$v[$arr]['firstLink']['first']   = $row1['linkFirst']; 
+    						$v[$arr]['city']                 = $row1['city'];
+    						$v[$arr]['county']               = $row1['county'];
+    			            $v[$arr]['province']             = $row1['province'];
+    						$v[$arr]['deliveryAddress']      = $row1['address'];
+    						$v[$arr]['firstLink']['first']   = $row1['linkFirst'];
     					}
-    				} 
+    				}
     		    }
     		}
 		$json['status'] = 200;
-		$json['msg']    = 'success'; 
-		$json['data']['page']      = $page;                                                      
-		$json['data']['records']   = $this->mysql_model->get_count('contact',$where);  
-		$json['data']['total']     = ceil($json['data']['records']/$rows);   
+		$json['msg']    = 'success';
+		$json['data']['page']      = $page;
+		$json['data']['records']   = $this->mysql_model->get_count('contact',$where);
+		$json['data']['total']     = ceil($json['data']['records']/$rows);
 		$json['data']['rows']      = isset($v) ? array_values($v) : array();
 		die(json_encode($json));
 	}
@@ -133,7 +132,54 @@ class Contact extends CI_Controller {
  
  
 	//获取信息
-
+	public function query() {
+	    $id   = intval($this->input->get_post('id',TRUE));
+		$type = intval($this->input->get_post('type',TRUE));
+		$data = $this->mysql_model->get_rows('contact',array('isDelete'=>0,'id'=>$id));
+		if (count($data)>0) {
+			$info['id']           = $id;
+			$info['cCategory']    = intval($data['cCategory']);
+			$info['cLevel']       = intval($data['cLevel']);
+			$info['number']       = $data['number'];
+            $info['taobao']       = $data['taobao'];
+			$info['extract']      = $data['extract'];
+			$info['name']         = $data['name'];
+			$info['amount']       = (float)$data['amount'];
+			$info['remark']       = $data['remark'];
+			$info['beginDate']    = $data['beginDate'];
+			$info['periodMoney']  = (float)$data['periodMoney'];
+			$info['difMoney']     = (float)$data['difMoney'];
+			if ($type==10) {
+			    $info['taxRate']  = (float)$data['taxRate'];
+			}
+			$info['pinYin']       = $data['pinYin'];
+			if (strlen($data['linkMans'])>0) {
+				$list = (array)json_decode($data['linkMans'],true);
+				foreach ($list as $arr=>$row) {
+					$v[$arr]['address']         = $row['address'];
+					$v[$arr]['city']            = $row['city'];
+					$v[$arr]['contactId']       = time();
+					$v[$arr]['county']          = $row['county'];
+					$v[$arr]['email']           = isset($row['email']) ? $row['email'] : '';
+					$v[$arr]['first']           = $row['linkFirst']==1 ? true : '';
+					$v[$arr]['id']              = $arr+1;
+					$v[$arr]['im']              = $row['linkIm'];
+					$v[$arr]['mobile']          = $row['linkMobile'];
+					$v[$arr]['place']          = $row['linkPlace'];
+					$v[$arr]['name']            = $row['linkName'];
+					$v[$arr]['phone']           = $row['linkPhone'];
+					$v[$arr]['province']        = $row['province'];
+					$v[$arr]['tempId']          = 0;
+				}
+		    }
+			$info['links']  = isset($v) ? $v : array();
+			$json['status'] = 200;
+			$json['msg']    = 'success';
+			$json['data']   = $info;
+			die(json_encode($json));
+		}
+		str_alert(-1,'没有数据');
+	}
 	
 	//新增
 	public function add(){
@@ -269,12 +315,6 @@ class Contact extends CI_Controller {
 		return $data;
 	}  
 
-	public function find(){
-        $data = "wjc";
-        return $data;
-    }
-	 
-   
 }
 
 /* End of file welcome.php */
