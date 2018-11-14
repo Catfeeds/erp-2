@@ -568,16 +568,16 @@ var curRow, curCol, loading, SYSTEM = system = parent.SYSTEM,
 				editable: !0
 			} ,{
                 name: "extract",
-                label: "提成点",
+                label: "商品提成点",
                 width: 100,
                 title: !0,
-                editable: !0
+                editable: !1
             },{
                 name: "extractCount",
                 label: "提成",
                 width: 100,
                 title: !0,
-                editable: !0
+                editable: !1
             }];
 			this.calAmount = "amount", taxRequiredCheck && (B.pop(), B.push({
 				name: "amount",
@@ -1121,7 +1121,8 @@ var curRow, curCol, loading, SYSTEM = system = parent.SYSTEM,
 					deduction: a.totalDiscount,
 					amount: a.totalAmount,
 					tax: a.totalTax,
-					taxAmount: a.totalTaxAmount
+					taxAmount: a.totalTaxAmount,
+					extractCount:a.extractCount
 				},
 				userDataOnFooter: !0,
 				loadError: function(a, b, c) {
@@ -1402,6 +1403,7 @@ var curRow, curCol, loading, SYSTEM = system = parent.SYSTEM,
 				b.preventDefault();
 				var c = $(this),
 					d = THISPAGE.getPostData();
+
 				d && ("edit" === originalData.stata && (d.id = originalData.id, d.stata = "edit"), c.ajaxPost("../scm/invSa/add?action=add", {
 					postData: JSON.stringify(d)
 				}, function(b) {
@@ -1437,6 +1439,7 @@ var curRow, curCol, loading, SYSTEM = system = parent.SYSTEM,
 				if (b.preventDefault(), Business.verifyRight("SA_UPDATE")) {
 					var c = $(this),
 						d = THISPAGE.getPostData();
+
 					d && c.ajaxPost("../scm/invSa/updateInvSa?action=updateInvSa", {
 						postData: JSON.stringify(d)
 					}, function(b) {
@@ -1620,6 +1623,7 @@ var curRow, curCol, loading, SYSTEM = system = parent.SYSTEM,
 					h = $("#grid").jqGrid("getRowData", g);
 				if ("" !== h.goods) {
 					var i = $("#" + g).data("goodsInfo");
+
 					if (i) {
 						var j = $("#" + g).data("skuInfo") || {};
 						if (i.invSkus && i.invSkus.length > 0 && !j.id) return parent.Public.tips({
@@ -1719,6 +1723,7 @@ var curRow, curCol, loading, SYSTEM = system = parent.SYSTEM,
 						totalQty: $("#grid").jqGrid("footerData", "get").qty.replace(/,/g, ""),
 						totalDiscount: $("#grid").jqGrid("footerData", "get").deduction.replace(/,/g, ""),
 						totalAmount: $("#grid").jqGrid("footerData", "get").amount.replace(/,/g, ""),
+                        totalExtractCount: $("#grid").jqGrid("footerData", "get").extractCount.replace(/,/g, ""),
 						description: g === b.$_note[0].defaultValue ? "" : g,
 						disRate: $.trim(b.$_discountRate.val() || 0),
 						disAmount: $.trim(b.$_deduction.val() || 0),
@@ -1733,6 +1738,7 @@ var curRow, curCol, loading, SYSTEM = system = parent.SYSTEM,
 						udf03:$.trim(b.$linkAddress.find("input").val())
 						//add by michen 20170724 -end-
 					};
+
 				if (h.disRate < 0) return defaultPage.Public.tips({
 					type: 2,
 					content: "优惠率不能为负数！"
