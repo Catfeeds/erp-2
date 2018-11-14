@@ -129,6 +129,20 @@ $(function() {
           </span>
         </dd>
       </dl>
+      <dl class="cf">
+        <dd class="pct20">
+          <label>客户提成点：</label>
+          <span class="ui-combo-wrap" id="customer">
+              <input type="number" name="" class="input-txt" readonly value="">
+          </span>
+        </dd>
+        <dd class="pct25 tc">
+          <label>我的提成点:</label>
+          <span id="extract">
+            <input type="number" class="ui-input" value="" readonly>
+          </span>
+        </dd>
+      </dl>
       <!-- add by michen 20170724 end -->
     </div>
     <div class="grid-wrap">

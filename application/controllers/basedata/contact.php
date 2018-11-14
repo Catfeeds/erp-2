@@ -46,9 +46,10 @@ class Contact extends CI_Controller {
     					if ($row1['linkFirst']==1) {
     						$v[$arr]['contacter']            = $row1['linkName']; 
     						$v[$arr]['mobile']               = $row1['linkMobile']; 
-    						$v[$arr]['place']               = $row1['linkPlace'];
+    						$v[$arr]['place']                = $row1['linkPlace'];
     						$v[$arr]['telephone']            = $row1['linkPhone']; 
-    						$v[$arr]['linkIm']               = $row1['linkIm']; 
+    						$v[$arr]['extract']              = $row1['extract'];
+    						$v[$arr]['linkIm']               = $row1['linkIm'];
     						$v[$arr]['city']                 = $row1['city']; 
     						$v[$arr]['county']               = $row1['county']; 
     			            $v[$arr]['province']             = $row1['province']; 
@@ -58,86 +59,6 @@ class Contact extends CI_Controller {
     				} 
     		    }
     		}
-		/*}else{
-		    //add by michen 20170720 begin
-		    $gid = 1;
-		    foreach ($list as $arr=>$row) {
-		        $v[$arr]['id']           = intval($row['id']);
-		        $v[$arr]['number']       = $row['number'];
-		        $v[$arr]['cCategory']    = intval($row['cCategory']);
-		        $v[$arr]['customerType'] = $row['cCategoryName'];
-		        $v[$arr]['pinYin']       = $row['pinYin'];
-		        $v[$arr]['name']         = $row['name'];
-		        $v[$arr]['type']         = $row['type'];
-		        $v[$arr]['delete']       = intval($row['disable'])==1 ? true : false;
-		        $v[$arr]['cLevel']       = intval($row['cLevel']);
-		        $v[$arr]['amount']       = (float)$row['amount'];
-		        $v[$arr]['periodMoney']  = (float)$row['periodMoney'];
-		        $v[$arr]['difMoney']     = (float)$row['difMoney'];
-		        $v[$arr]['remark']       = $row['remark'];
-		        $v[$arr]['taxRate']      = (float)$row['taxRate'];
-		        $v[$arr]['links']        = '';
-		        $i = 1;
-		        if (strlen($row['linkMans'])>0) {
-		        				$list = (array)json_decode($row['linkMans'],true);
-		        				foreach ($list as $arr1=>$row1) {
-		        				    if ($i==1) {
-		        				        $v[$arr]['contacter']            = $row1['linkName'];
-		        				        $v[$arr]['mobile']               = $row1['linkMobile'];
-		        				        $v[$arr]['place']                = $row1['linkPlace'];
-		        				        $v[$arr]['telephone']            = $row1['linkPhone'];
-		        				        $v[$arr]['linkIm']               = $row1['linkIm'];
-		        				        $v[$arr]['city']                 = $row1['city'];
-		        				        $v[$arr]['county']               = $row1['county'];
-		        				        $v[$arr]['province']             = $row1['province'];
-		        				        $v[$arr]['deliveryAddress']      = $row1['address'];
-		        				        $v[$arr]['firstLink']['first']   = $row1['linkFirst'];
-		        				        $v[$arr]['isFirst']              = $row1['linkFirst']==1?1:2;
-		        				        $v[$arr]['gid']      = $gid;
-		        				    }else{
-		        				        $v[$arr.$i]['id']           = intval($row['id']);
-		        				        $v[$arr.$i]['number']       = $row['number'];
-		        				        $v[$arr.$i]['cCategory']    = intval($row['cCategory']);
-		        				        $v[$arr.$i]['customerType'] = $row['cCategoryName'];
-		        				        $v[$arr.$i]['pinYin']       = $row['pinYin'];
-		        				        $v[$arr.$i]['name']         = $row['name'];
-		        				        $v[$arr.$i]['type']         = $row['type'];
-		        				        $v[$arr.$i]['delete']       = intval($row['disable'])==1 ? true : false;
-		        				        $v[$arr.$i]['cLevel']       = intval($row['cLevel']);
-		        				        $v[$arr.$i]['amount']       = (float)$row['amount'];
-		        				        $v[$arr.$i]['periodMoney']  = (float)$row['periodMoney'];
-		        				        $v[$arr.$i]['difMoney']     = (float)$row['difMoney'];
-		        				        $v[$arr.$i]['remark']       = $row['remark'];
-		        				        $v[$arr.$i]['taxRate']      = (float)$row['taxRate'];
-		        				        $v[$arr.$i]['links']        = '';
-		        				        $v[$arr.$i]['contacter']            = $row1['linkName'];
-		        				        $v[$arr.$i]['mobile']               = $row1['linkMobile'];
-		        				        $v[$arr.$i]['place']                = $row1['linkPlace'];
-		        				        $v[$arr.$i]['telephone']            = $row1['linkPhone'];
-		        				        $v[$arr.$i]['linkIm']               = $row1['linkIm'];
-		        				        $v[$arr.$i]['city']                 = $row1['city'];
-		        				        $v[$arr.$i]['county']               = $row1['county'];
-		        				        $v[$arr.$i]['province']             = $row1['province'];
-		        				        $v[$arr.$i]['deliveryAddress']      = $row1['address'];
-		        				        $v[$arr.$i]['firstLink']['first']   = $row1['linkFirst'];
-		        				        $v[$arr.$i]['isFirst']              = $row1['linkFirst']==1?1:2;
-		        				        $v[$arr]['gid']      = $gid;
-		        				    }
-		        				    $i++;
-		        				    $gid++;
-		        				}
-		        }
-		    }
-		    //add by michen 20170720 end
-		}
-		//add by michen 20170720 begin
-		uasort($v,function ($x,$y){
-                  return strcasecmp($x['id'].$x['isFirst'],$y['id'].$x['isFirst']);
-                }
-		      );
-		$values = array_values($v);
-		//add by michen 20170720 end
-		*/
 		$json['status'] = 200;
 		$json['msg']    = 'success'; 
 		$json['data']['page']      = $page;                                                      
