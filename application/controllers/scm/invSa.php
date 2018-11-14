@@ -263,7 +263,7 @@ class InvSa extends CI_Controller {
 	public function updateInvSa(){
 	    $this->common_model->checkpurview(8);
 	    $data = $this->input->post('postData',TRUE);
-        var_dump($data);
+
 		if (strlen($data)>0) {
 			$data = $this->validform((array)json_decode($data, true));
 		    $info = elements(array(
@@ -292,6 +292,7 @@ class InvSa extends CI_Controller {
 	    $this->common_model->checkpurview(6);
 	    $id   = intval($this->input->get_post('id',TRUE));
 		$data =  $this->data_model->get_invoice('a.id='.$id.' and a.billType="SALE"',1);
+
 		if (count($data)>0) {
 			$info['status'] = 200;
 			$info['msg']    = 'success';

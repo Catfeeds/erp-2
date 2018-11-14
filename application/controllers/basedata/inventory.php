@@ -231,6 +231,7 @@ class Inventory extends CI_Controller {
 	public function add(){
 		$this->common_model->checkpurview(69);
 		$data = $this->input->post(NULL,TRUE);
+	
 		if ($data) {
 			$data = $this->validform($data);
 			$this->mysql_model->get_count('goods',array('isDelete'=>0,'number'=>$data['number'])) > 0 && str_alert(-1,'商品编号重复');
@@ -270,6 +271,8 @@ class Inventory extends CI_Controller {
 					$v[$arr]['qty']           = (float)$row['quantity'];
 					$v[$arr]['price']         = (float)$row['unitCost'];
 					$v[$arr]['amount']        = (float)$row['amount'];
+                    $v[$arr]['extract']        = (float)$row['extract'];
+                    $v[$arr]['extractCount']   = (float)$row['extractCount'];
 					$v[$arr]['skuId']         = intval($row['skuId']);
 					$v[$arr]['billDate']      = date('Y-m-d');;
 					$v[$arr]['billNo']        = '期初数量';
