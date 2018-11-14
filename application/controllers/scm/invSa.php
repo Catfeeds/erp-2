@@ -277,7 +277,7 @@ class InvSa extends CI_Controller {
 				'billType','transType','transTypeName','buId','billDate','description','hxStateCode',
 				'totalQty','amount','arrears','rpAmount','totalAmount','uid','userName',
 				'totalArrears','disRate','disAmount','postData',
-				'salesId','accId','modifyTime','udf01','udf02','udf03'),$data,NULL);
+				'salesId','accId','modifyTime','udf01','udf02','udf03','totalExtractCount'),$data,NULL);
 			$this->db->trans_begin();
 			$this->mysql_model->update('invoice',$info,array('id'=>$data['id']));
 			$this->invoice_info($data['id'],$data);
@@ -381,7 +381,8 @@ class InvSa extends CI_Controller {
     				$v[$arr]['locationName'] = $row['locationName'];
     				$v[$arr]['amount']       = (float)abs($row['amount']);
     				$v[$arr]['taxAmount']    = (float)$row['taxAmount'];
-
+                    $v[$arr]['extract']    = (float)$row['extract'];
+                    $v[$arr]['extractCount']    = (float)$row['extractCount'];
     				$v[$arr]['price']        = (float)$row['price'];
     				$v[$arr]['tax']          = (float)$row['tax'];
     				$v[$arr]['mainUnit']     = $row['mainUnit'];
@@ -815,6 +816,8 @@ class InvSa extends CI_Controller {
 			$v[$arr]['qty']           = $data['transType']==150601 ? -abs($row['qty']) :abs($row['qty']);
 			$v[$arr]['amount']        = $data['transType']==150601 ? abs($row['amount']) :-abs($row['amount']);
 			$v[$arr]['price']         = abs($row['price']);
+            $v[$arr]['extract']     = $row['extract'];
+            $v[$arr]['extractCount']    = $row['extractCount'];
 			$v[$arr]['discountRate']  = $row['discountRate'];
 			$v[$arr]['deduction']     = $row['deduction'];
 			$v[$arr]['serialno']      = $row['serialno'];

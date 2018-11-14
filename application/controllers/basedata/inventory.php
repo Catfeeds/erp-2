@@ -231,7 +231,7 @@ class Inventory extends CI_Controller {
 	public function add(){
 		$this->common_model->checkpurview(69);
 		$data = $this->input->post(NULL,TRUE);
-	
+
 		if ($data) {
 			$data = $this->validform($data);
 			$this->mysql_model->get_count('goods',array('isDelete'=>0,'number'=>$data['number'])) > 0 && str_alert(-1,'商品编号重复');
@@ -265,6 +265,7 @@ class Inventory extends CI_Controller {
 			$data['id'] = $this->mysql_model->insert('goods',$info);
 			if (strlen($data['propertys'])>0) {
 				$list = (array)json_decode($data['propertys'],true);
+				var_dump($list);
 				foreach ($list as $arr=>$row) {
 					$v[$arr]['invId']         = $data['id'];
 					$v[$arr]['locationId']    = intval($row['locationId']);
