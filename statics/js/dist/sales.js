@@ -200,7 +200,7 @@ var curRow, curCol, loading, SYSTEM = system = parent.SYSTEM,
 			var f = '<!--<a id="original" class="ui-btn ui-btn-sc">选择源单</a>--><a id="savaAndAdd" class="ui-btn ui-btn-sp">保存并新增</a><a id="save" class="ui-btn">保存</a>',
 				g = '<!--<a id="original" class="ui-btn ui-btn-sc">选择源单</a>--><a id="add" class="ui-btn ui-btn-sp">新增</a><a href="../scm/invSa/toPdf?action=toPdf&id=' + a.id + '" target="_blank" id="print" class="ui-btn">打印</a><a id="edit" class="ui-btn">保存</a>',
 				h = '<a id="add" class="ui-btn ui-btn-sp">新增</a><a href="../scm/invSa/toPdf?action=toPdf&id=' + a.id + '" target="_blank" id="print" class="ui-btn">打印</a>',
-				i = "",
+				i = "",a
 				j = "",
 				k = "";
 			billRequiredCheck ? (i = '<a class="ui-btn" id="audit">已确认</a>', j = '<a class="ui-btn" id="reAudit">可修改</a>') : this.$_checkName.parent().hide();
@@ -345,7 +345,8 @@ var curRow, curCol, loading, SYSTEM = system = parent.SYSTEM,
 						taxRate: b.taxRate || taxRequiredInput,
 						serNumList: b.serNumList,
 						safeDays: b.safeDays,
-                        extract :b.extract
+                        extract :b.extract,
+                        extractCount :b.extractCount
                         // extractCount:4
 					};
 
@@ -466,7 +467,6 @@ var curRow, curCol, loading, SYSTEM = system = parent.SYSTEM,
 				editable: !0,
 				align: "left",
 				edittype: "custom",
-				edittype: "custom",
 				editoptions: {
 					custom_element: p,
 					custom_value: q,
@@ -480,7 +480,6 @@ var curRow, curCol, loading, SYSTEM = system = parent.SYSTEM,
 				hidden: !0,
 				title: !1,
 				editable: !0,
-				edittype: "custom",
 				edittype: "custom",
 				editoptions: {
 					custom_element: m,
@@ -1621,6 +1620,7 @@ var curRow, curCol, loading, SYSTEM = system = parent.SYSTEM,
 			for (var b = [], c = $("#grid").jqGrid("getDataIDs"), d = 0, e = c.length; e > d; d++) {
 				var f, g = c[d],
 					h = $("#grid").jqGrid("getRowData", g);
+
 				if ("" !== h.goods) {
 					var i = $("#" + g).data("goodsInfo");
 
@@ -1655,6 +1655,7 @@ var curRow, curCol, loading, SYSTEM = system = parent.SYSTEM,
 							invName: i.name,
 							brand: i.brand,
                             extract: i.extract,
+                            extractCount: h.extractCount,
 							invSpec: i.spec || "",
 							skuId: j.id || -1,
 							skuName: j.name || "",
@@ -1682,6 +1683,7 @@ var curRow, curCol, loading, SYSTEM = system = parent.SYSTEM,
 					}
 				}
 			}
+
 			return b
 		},
 		getPostData: function(a) {

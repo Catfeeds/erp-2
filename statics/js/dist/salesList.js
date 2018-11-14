@@ -187,6 +187,7 @@ var THISPAGE = {
 		})
 	},
 	reloadData: function(a) {
+
 		$("#grid").jqGrid("setGridParam", {
 			datatype: "json",
 			postData: a
@@ -201,6 +202,7 @@ var THISPAGE = {
 				d = 1 == c.disEditable ? "&disEditable=true" : "",
 				e = ($("#grid").jqGrid("getDataIDs"), "销货单"),
 				f = "sales-sales";
+			console.log(c);
 			if ("150602" == queryConditions.transType) {
 				var e = "销货退货单",
 					f = "sales-salesBack";

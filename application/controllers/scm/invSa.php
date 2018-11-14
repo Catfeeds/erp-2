@@ -23,6 +23,7 @@ class InvSa extends CI_Controller {
 			    $this->common_model->checkpurview(6);
 			    $id = intval($this->input->get_post('id',TRUE));
 			    $data['billNo'] = $this->mysql_model->get_row('invoice',array('id'=>$id,'billType'=>'SALE'),'billNo');
+
 			    $this->load->view('scm/invSa/initSale',$data);
 				break;
 			case 'initUnhxList':
@@ -325,6 +326,7 @@ class InvSa extends CI_Controller {
 			//add by michen 20170724 end
 
 			$list = $this->data_model->get_invoice_info('a.iid='.$id.' order by a.id');
+
 			$arr = 0;
 			foreach ($list as $arrkey=>$row) {
 			    //add by michen 20170717 begin
