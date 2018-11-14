@@ -119,7 +119,7 @@ class Contact extends CI_Controller {
 		        }
 		    }*/
 		    //add by michen 20170724 end
-			die('{"status":200,"msg":"success","data":{"linkMen":'.$data['linkMans'].',"contactName":"'.$data['name'].'","buId":'.$data['id'].',"cLevel":0}}');
+			die('{"status":200,"msg":"success","data":{"linkMen":'.$data['linkMans'].',"contactName":"'.$data['name'].'","number":"'.$data['number'].'","extract":"'.$data['extract'].'","buId":'.$data['id'].',"cLevel":0}}');
 		} else {
 		    str_alert(-1,''); 
 		}
@@ -133,54 +133,7 @@ class Contact extends CI_Controller {
  
  
 	//获取信息
-	public function query() {    
-	    $id   = intval($this->input->get_post('id',TRUE));
-		$type = intval($this->input->get_post('type',TRUE));
-		$data = $this->mysql_model->get_rows('contact',array('isDelete'=>0,'id'=>$id));
-		if (count($data)>0) {
-			$info['id']           = $id;
-			$info['cCategory']    = intval($data['cCategory']);
-			$info['cLevel']       = intval($data['cLevel']);
-			$info['number']       = $data['number'];
-            $info['taobao']       = $data['taobao'];
-			$info['extract']      = $data['extract'];
-			$info['name']         = $data['name'];
-			$info['amount']       = (float)$data['amount'];
-			$info['remark']       = $data['remark'];
-			$info['beginDate']    = $data['beginDate'];
-			$info['periodMoney']  = (float)$data['periodMoney'];
-			$info['difMoney']     = (float)$data['difMoney'];
-			if ($type==10) {
-			    $info['taxRate']  = (float)$data['taxRate'];
-			}
-			$info['pinYin']       = $data['pinYin'];
-			if (strlen($data['linkMans'])>0) {                            
-				$list = (array)json_decode($data['linkMans'],true);
-				foreach ($list as $arr=>$row) {
-					$v[$arr]['address']         = $row['address'];
-					$v[$arr]['city']            = $row['city'];
-					$v[$arr]['contactId']       = time();
-					$v[$arr]['county']          = $row['county'];
-					$v[$arr]['email']           = isset($row['email']) ? $row['email'] : '';
-					$v[$arr]['first']           = $row['linkFirst']==1 ? true : ''; 
-					$v[$arr]['id']              = $arr+1;
-					$v[$arr]['im']              = $row['linkIm'];
-					$v[$arr]['mobile']          = $row['linkMobile'];
-					$v[$arr]['place']          = $row['linkPlace']; 
-					$v[$arr]['name']            = $row['linkName'];
-					$v[$arr]['phone']           = $row['linkPhone'];
-					$v[$arr]['province']        = $row['province'];
-					$v[$arr]['tempId']          = 0;
-				} 
-		    }
-			$info['links']  = isset($v) ? $v : array();
-			$json['status'] = 200;
-			$json['msg']    = 'success'; 
-			$json['data']   = $info;                                                      
-			die(json_encode($json));
-		}  
-		str_alert(-1,'没有数据');
-	}
+
 	
 	//新增
 	public function add(){

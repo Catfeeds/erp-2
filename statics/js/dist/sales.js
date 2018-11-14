@@ -106,7 +106,8 @@ var curRow, curCol, loading, SYSTEM = system = parent.SYSTEM,
 							name: a.contactName,
 							cLevel: a.cLevel
 						};
-						b.$_customer.data("contactInfo", c), b.customerCombo.input.val(a.contactName), b.setSaleByContact(c);
+                        b.$_customer.data("contactInfo", c), b.customerCombo.input.val(a.number + ' '+a.contactName), b.setSaleByContact(c);
+                        $('#Cextract').val(a.extract);
 						//add by michen 20170724 begin
 						var linkMen=a.linkMen;//json字符串直接转对象
 						SYSTEM.linkinfo = linkMen;

@@ -132,14 +132,14 @@ $(function() {
       <dl class="cf">
         <dd class="pct20">
           <label>客户提成点：</label>
-          <span class="ui-combo-wrap" id="customer">
-              <input type="number" name="" class="input-txt" readonly value="">
+          <span class="ui-combo-wrap">
+              <input type="text" name="" id="Cextract" class="input-txt" readonly value="" onclick="fun()">
           </span>
         </dd>
         <dd class="pct25 tc">
           <label>我的提成点:</label>
           <span id="extract">
-            <input type="number" class="ui-input" value="" readonly>
+            <input type="text" class="ui-input" value="" readonly>
           </span>
         </dd>
       </dl>
@@ -243,6 +243,18 @@ $(function() {
   </div>
 </div>
 <script src="<?php echo base_url()?>statics/js/dist/sales.js?ver=2017082001"></script>
+<script>
+    var customer = $('#customer').find("input");
+    customer.bind("input propertychange",function(event){
+        alert(1111);
+        console.log($("#input1").val())
+    });
+    function fun() {
+        var q = $('#customer').find("input").val();
+        alert(q);
+    }
+
+</script>
 </body>
 </html>
 
