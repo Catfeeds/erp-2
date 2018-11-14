@@ -6,7 +6,8 @@ function callback(a) {
 		d.id = c;
 		var e = d.number + " " + d.name,//  + " " + d.contacter,//add by michen 20170720 for add d.contacter
 			f = parent.THISPAGE.$_customer;
-		f.find("input").val(e), 
+		f.find("input").val(e),
+		parent.THISPAGE.$Cextract.val(d.extract);
 		//add by michen 20170724 begin
 		linkMen=JSON.parse(d.linkMen),
 		SYSTEM.linkinfo = linkMen,

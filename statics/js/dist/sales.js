@@ -27,6 +27,7 @@ var curRow, curCol, loading, SYSTEM = system = parent.SYSTEM,
 			var b = this;
 
 			if (this.$_customer = $("#customer"),
+				this.$Cextract = $("#Cextract"),
 				//add by michen 20170724 begin
 				this.$linkMan = $("#linkMan"),
 				this.$linkPhone = $("#linkPhone"),
