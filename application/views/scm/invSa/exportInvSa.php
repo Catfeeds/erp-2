@@ -23,11 +23,12 @@
 					<th width="60" align="center">品牌</th>
 					<th width="60" align="center">单位</th>
 					<th width="60" align="center">数量</th>	
-					<th width="60" align="center">销售单价</th>	
+					<th width="60" align="center">销售单价</th>
 					<th width="60" align="center">折扣率(%)</th>
 					<th width="60" align="center">折扣额</th>	
 					<th width="60" align="center">金额</th>	
-					<th width="60" align="center">仓库</th>	
+					<th width="60" align="center">提成</th>
+					<th width="60" align="center">仓库</th>
 					<th width="100" align="center">备注</th>	
 					<th width="100" align="center">源单号</th>
 				</tr>
@@ -71,6 +72,7 @@
 					<td ><?php echo $row1['discountRate']?></td>
 					<td ><?php echo $row1['deduction']?></td>
 					<td ><?php echo abs($row1['amount'])?></td>
+					<td ><?php echo $row1['extractCount']?></td>
 					<td ><?php echo $row1['locationName']?></td>
 					<td ><?php echo $row1['description']?></td>
 					<td ></td>
@@ -86,6 +88,7 @@
 					<td ><?php echo $row1['discountRate']?></td>
 					<td ><?php echo $row1['deduction']?></td>
 					<td ><?php echo abs($row1['amount'])?></td>
+                    <td ><?php echo $row1['extractCount']?></td>
 					<td ><?php echo $row1['locationName']?></td>
 					<td ><?php echo $row1['description']?></td>
 					<td ></td>
@@ -94,12 +97,13 @@
 				<tr target="id">
 					<td >合计</td>
 					<td ></td>
+                    <td ></td>
 					<td ><?php echo $qty?></td>
 					<td ></td>
 					<td ></td>
-					<td ></td>
+                    <td ></td>
 					<td ><?php echo $amount?></td>
-					<td ></td>
+					<td ><?php echo $row['totalExtractCount'] ?></td>
 					<td ></td>
 					<td ></td>
 				</tr>
