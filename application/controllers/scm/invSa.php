@@ -263,6 +263,7 @@ class InvSa extends CI_Controller {
 	public function updateInvSa(){
 	    $this->common_model->checkpurview(8);
 	    $data = $this->input->post('postData',TRUE);
+        var_dump($data);
 		if (strlen($data)>0) {
 			$data = $this->validform((array)json_decode($data, true));
 		    $info = elements(array(
@@ -342,6 +343,7 @@ class InvSa extends CI_Controller {
                         $v[$arr]['qty']          = (float)abs($dopey['qty']);
                         $v[$arr]['locationName'] = $dopey['locationName'];
                         $v[$arr]['amount']       = (float)abs($dopey['amount']);
+
                         $v[$arr]['taxAmount']    = (float)0;
                         $v[$arr]['price']        = (float)$dopey['price'];
                         $v[$arr]['tax']          = (float)0;
@@ -371,6 +373,7 @@ class InvSa extends CI_Controller {
     				$v[$arr]['locationName'] = $row['locationName'];
     				$v[$arr]['amount']       = (float)abs($row['amount']);
     				$v[$arr]['taxAmount']    = (float)$row['taxAmount'];
+
     				$v[$arr]['price']        = (float)$row['price'];
     				$v[$arr]['tax']          = (float)$row['tax'];
     				$v[$arr]['mainUnit']     = $row['mainUnit'];
@@ -804,6 +807,7 @@ class InvSa extends CI_Controller {
 			$v[$arr]['qty']           = $data['transType']==150601 ? -abs($row['qty']) :abs($row['qty']);
 			$v[$arr]['amount']        = $data['transType']==150601 ? abs($row['amount']) :-abs($row['amount']);
 			$v[$arr]['price']         = abs($row['price']);
+
 			$v[$arr]['discountRate']  = $row['discountRate'];
 			$v[$arr]['deduction']     = $row['deduction'];
 			$v[$arr]['serialno']      = $row['serialno'];

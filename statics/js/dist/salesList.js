@@ -173,7 +173,9 @@ var THISPAGE = {
 				repeatitems: !1,
 				id: "id"
 			},
+
 			loadComplete: function(a) {
+
 				if (billRequiredCheck) for (var b = a.data.rows, c = 0; c < b.length; c++) {
 					var d = b[c];
 					d.checked || $("#" + d.id).addClass("gray")
@@ -182,6 +184,7 @@ var THISPAGE = {
 			},
 			loadError: function() {},
 			ondblClickRow: function(a) {
+
 				$("#" + a).find(".ui-icon-pencil").trigger("click")
 			}
 		})
@@ -194,20 +197,23 @@ var THISPAGE = {
 		}).trigger("reloadGrid")
 	},
 	addEvent: function() {
+
 		var a = this;
 		if ($(".grid-wrap").on("click", ".ui-icon-pencil", function(a) {
+
 			a.preventDefault();
 			var b = $(this).parent().data("id"),
 				c = $("#grid").jqGrid("getRowData", b),
 				d = 1 == c.disEditable ? "&disEditable=true" : "",
 				e = ($("#grid").jqGrid("getDataIDs"), "销货单"),
 				f = "sales-sales";
-			console.log(c);
+
 			if ("150602" == queryConditions.transType) {
 				var e = "销货退货单",
 					f = "sales-salesBack";
 				parent.cacheList.salesBackId = $("#grid").jqGrid("getDataIDs")
 			} else parent.cacheList.salesId = $("#grid").jqGrid("getDataIDs");
+
 			parent.tab.addTabItem({
 				tabid: f,
 				text: e,
