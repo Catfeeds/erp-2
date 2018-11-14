@@ -362,7 +362,7 @@ var curRow, curCol, loading, SYSTEM = system = parent.SYSTEM,
                     var cextract = $("#Cextract").val();
                     var  extract_me = $("#extract_me").val();
 					var j = Number(f.amount);
-					f.extractCount = f.amount * f.extract *cextract * extract_me;
+					f.extractCount = f.amount * f.extract * cextract * extract_me;
 					if (taxRequiredCheck) {
 						var k = f.taxRate,
 							l = j * k / 100,

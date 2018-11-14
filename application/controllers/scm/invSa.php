@@ -245,8 +245,16 @@ class InvSa extends CI_Controller {
 				'description','totalQty','amount','arrears','rpAmount','totalAmount','hxStateCode',
 				'totalArrears','disRate','disAmount','postData','createTime',
 				'salesId','uid','userName','accId','modifyTime','udf01','udf02','udf03','totalExtractCount'),$data,NULL);
+//            $info_singer = elements(array(
+//               'totalExtractCount'),$data,NULL);
+
 			$this->db->trans_begin();
 			$iid = $this->mysql_model->insert('invoice',$info);
+            $salesId = $data['salesId'];
+            $sql ="SELECT * FROM `ci_admin` WHERE uid = ".$salesId;
+            $info_singer_res = $this->mysql_model->query($sql);
+            $total =$info_singer_res['extractCount'] + $data['totalExtractCount'];
+            $info_singer_res = $this->mysql_model->update('admin',array('extractCount'=>$total),array('uid'=>$salesId));
 			$this->invoice_info($iid,$data);
 			$this->account_info($iid,$data);
 			if ($this->db->trans_status() === FALSE) {
