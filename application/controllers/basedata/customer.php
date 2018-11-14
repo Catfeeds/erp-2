@@ -21,6 +21,9 @@ class Customer extends CI_Controller {
 		$this->load->view('settings/customer-export',$data);
 	}
 
+	public function find(){
+        return "aa";
+    }
 }
 
 /* End of file welcome.php */

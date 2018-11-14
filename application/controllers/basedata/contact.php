@@ -177,6 +177,7 @@ class Contact extends CI_Controller {
 	}
 	
 	public function getRecentlyContact(){
+
 		$billType  = str_enhtml($this->input->post('billType',TRUE));
 		$transType = intval($this->input->post('transType',TRUE));
 		$where = '(isDelete=0)'; 
@@ -393,7 +394,11 @@ class Contact extends CI_Controller {
 		$data['cCategory'] < 1 && str_alert(-1,'类别名称不能为空');
 		return $data;
 	}  
-	
+
+	public function find(){
+        $data = "wjc";
+        return $data;
+    }
 	 
    
 }

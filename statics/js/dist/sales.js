@@ -14,7 +14,6 @@ var curRow, curCol, loading, SYSTEM = system = parent.SYSTEM,
 	THISPAGE = {
 
 		init: function(a) {
-            defaultPage = Public.getDefaultPage(),
 
 			"150602" == urlParam.transType ? this.mod_PageConfig = Public.mod_PageConfig.init("salesBack") : this.mod_PageConfig = Public.mod_PageConfig.init("sales"), SYSTEM.isAdmin !== !1 || SYSTEM.rights.AMOUNT_OUTAMOUNT || (hiddenAmount = !0, $("#amountArea").hide()), this.initDom(a), this.loadGrid(a), this.initCombo(), a.id > 0 && a.checked ? this.disableEdit() : (this.editable = !0, $("#grid").jqGrid("setGridParam", {
 				cellEdit: !0
@@ -1574,9 +1573,30 @@ var curRow, curCol, loading, SYSTEM = system = parent.SYSTEM,
 			a.$_note.val(""), a.$_discountRate.val(originalData.disRate), a.$_deduction.val(originalData.disAmount), a.$_discount.val(originalData.amount), a.$_payment.val(originalData.rpAmount), a.$_arrears.val(originalData.arrears), a.$_customerFree.val(originalData.customerFree)
 		},
 		calTotal: function() {
+            var z = $(this);
+            var t = this;
+            var t_customer = t.$_customer.find("input");
+            var t_sales = t.$_sales.find("input");
+            // Public.ajaxPost("../basedata/contact/find?action=find", {
+            //     customer: t_customer,
+				// sales:t_sales
+            // }, function(b) {
+            //     console.log(b);
+            // });
+            $.ajax({
+                url : "../basedata/contact/find?action=find",
+                data : {
+                    // customer:t_customer
+                },
+                dataType : "json",
+                complete:function(data){
+                    // console.log(data);
+                }
+            });
+
 
 			for (var a = $("#grid").jqGrid("getDataIDs"), b = 0, c = 0, d = 0, e = 0, f = 0, g = 0,t =0, h = a.length; h > g; g++) {
-				var i = a[g],
+					var i = a[g],
 					j = $("#grid").jqGrid("getRowData", i);
 				j.qty && (b += parseFloat(j.qty)), j.deduction && (c += parseFloat(j.deduction)), j.extractCount && (t += parseFloat(j.extractCount)), j.amount && (d += parseFloat(j.amount)), j.tax && (e += parseFloat(j.tax)), j.taxAmount && (f += parseFloat(j.taxAmount))
 			}
@@ -1685,7 +1705,7 @@ var curRow, curCol, loading, SYSTEM = system = parent.SYSTEM,
 			if (f.length > 0) {
 
 				var g = $.trim(b.$_note.val()),
-                    defaultPage = Public.getDefaultPage(),
+
 					h = {
 						id: originalData.id,
 						buId: e.id,
