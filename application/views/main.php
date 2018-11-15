@@ -8,7 +8,7 @@ try{
 }catch(e){
 }
 </script>
-
+<link href="<?php echo base_url()?>statics/k/css/index.css" rel="stylesheet" type="text/css">
 <link href="<?php echo base_url()?>statics/css/<?php echo sys_skin()?>/index.css?2" rel="stylesheet" type="text/css" id="indexFile">
 <script src="<?php echo base_url()?>statics/js/dist/template.js?2"></script>
 
@@ -163,34 +163,8 @@ $("#username").text(parent.SYSTEM.realName);
 		  </tr>
 		</table>
       </div>
-        <div id="chang">常用功能</div>
-      <ul class="quick-links">
-        <li class="purchase-purchase">
-        	<a tabid="purchase-purchase" data-right="PU_ADD" tabTxt="购货单" parentOpen="true" rel="pageTab" href="<?php echo site_url('scm/invPu?action=initPur')?>"><span><i class="iconfont">&#xe607;</i></span>采购入库</a>
-        </li>
-        <li class="sales-sales">
-        	<a tabid="sales-sales" data-right="SA_ADD" tabTxt="销货单" parentOpen="true" rel="pageTab" href="<?php echo site_url('scm/invSa?action=initSale')?>"><span><i class="iconfont">&#xe602;</i></span>销货出库</a>
-        </li>
-        <li class="storage-transfers">
-        	<a tabid="storage-transfers" data-right="TF_ADD" tabTxt="调拨单" parentOpen="true" rel="pageTab" href="<?php echo site_url('scm/invTf?action=initTf')?>"><span><i class="iconfont">&#xe660;</i></span>仓库调拨</a>
-        </li>
-        <li class="storage-inventory">
-        	<a tabid="storage-inventory" data-right="PD_GENPD" tabTxt="盘点" parentOpen="true" rel="pageTab" href="<?php echo site_url('storage/inventory')?>"><span><i class="iconfont">&#xe655;</i></span>库存盘点</a>
-        </li>
-        <li class="storage-otherWarehouse">
-        	<a tabid="storage-otherWarehouse" data-right="IO_ADD" tabTxt="其他入库" parentOpen="true" rel="pageTab" href="<?php echo site_url('scm/invOi?action=initOi&type=in')?>"><span><i class="iconfont">&#xe9ef;</i></span>其他入库</a>
-        </li>
-        <li class="storage-otherOutbound">
-        	<a tabid="storage-otherOutbound" data-right="OO_ADD" tabTxt="其他出库" parentOpen="true" rel="pageTab" href="<?php echo site_url('scm/invOi?action=initOi&type=out')?>"><span><i class="iconfont">&#xe9f3;</i></span>其他出库</a>
-        </li>
-        <li class="added-service">
-        	<!--<a tabid="setting-addedServiceList" tabTxt="增值服务" parentOpen="true" rel="pageTab" href="<?php echo site_url('settings/addedServiceList')?>"><span></span>增值服务</a>-->
-			<a href="<?php echo site_url('settings/vendor_list')?>" tabTxt="供应商管理" parentOpen="true" rel="pageTab" ><span><i class="iconfont">&#xe628;</i></span>供应商管理</a>
-        </li>
-        <li class="feedback">
-        	<a href="<?php echo site_url('help/index')?>" tabTxt="帮助" parentOpen="true" rel="pageTab" ><span><i class="iconfont">&#xe608;</i></span>帮助</a>
-        </li>
-      </ul>
+        <div id="k">K线图</div>
+         <div id="line" style="width:822px;height:492px;"></div>
     </div>
   </div>
   <div class="col-extra">
@@ -205,6 +179,10 @@ $("#username").text(parent.SYSTEM.realName);
     </div>
   </div>
 </div>
+
+<script type="text/javascript" src="<?php echo base_url()?>statics/k/js/jquery-1.7.2-min.js"></script>
+<script type="text/javascript" src="<?php echo base_url()?>statics/k/js/echarts.min.js"></script>
+<script type="text/javascript" src="<?php echo base_url()?>statics/k/js/index.js"></script>
 
 
 <script id="profile" type="text/html">
