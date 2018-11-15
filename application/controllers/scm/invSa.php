@@ -48,6 +48,7 @@ class InvSa extends CI_Controller {
 	}
 
 	public function saleList(){
+
 		$page = max(intval($this->input->get_post('page',TRUE)),1);
 		$rows = max(intval($this->input->get_post('rows',TRUE)),100);
 		$sidx = str_enhtml($this->input->get_post('sidx',TRUE));
@@ -123,6 +124,7 @@ class InvSa extends CI_Controller {
 		$json['data']['records']   = $this->data_model->get_invoice($where,3);
 		$json['data']['total']     = ceil($json['data']['records']/$rows);
 		$json['data']['rows']      = isset($v) ? $v : array();
+
 		die(json_encode($json));
 	}
 

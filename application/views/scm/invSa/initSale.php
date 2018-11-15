@@ -135,7 +135,7 @@ $(function() {
         <dd class="pct20">
           <label>客户提成点：</label>
           <span class="ui-combo-wrap">
-              <input type="text" name="" id="Cextract" class="input-txt" readonly value="">
+              <input type="text" name="" id="Cextract" class="input-txt"  value="">
           </span>
         </dd>
         <dd class="pct25 tc">

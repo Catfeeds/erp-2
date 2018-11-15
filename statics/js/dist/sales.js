@@ -14,6 +14,7 @@ var curRow, curCol, loading, SYSTEM = system = parent.SYSTEM,
 	THISPAGE = {
 
 		init: function(a) {
+			console.log(a);
 			"150602" == urlParam.transType ? this.mod_PageConfig = Public.mod_PageConfig.init("salesBack") : this.mod_PageConfig = Public.mod_PageConfig.init("sales"), SYSTEM.isAdmin !== !1 || SYSTEM.rights.AMOUNT_OUTAMOUNT || (hiddenAmount = !0, $("#amountArea").hide()), this.initDom(a), this.loadGrid(a), this.initCombo(), a.id > 0 && a.checked ? this.disableEdit() : (this.editable = !0, $("#grid").jqGrid("setGridParam", {
 				cellEdit: !0
 			})), this.addEvent(), setTimeout(function() {
@@ -112,6 +113,7 @@ var curRow, curCol, loading, SYSTEM = system = parent.SYSTEM,
 						};
 						b.$_customer.data("contactInfo", c), b.customerCombo.input.val(a.number+ ' ' +a.contactName), b.setSaleByContact(c);
 						$('#Cextract').val(a.extract);
+
 						//add by michen 20170724 begin
 						var linkMen=a.linkMen;//json字符串直接转对象
 						SYSTEM.linkinfo = linkMen;

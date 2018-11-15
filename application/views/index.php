@@ -929,7 +929,7 @@ var _hmt = _hmt || [];
         });
         var num = 0;
         var width =  document.body.clientWidth;
-        console.log(width);
+
         function goLeft() {
 
             if (num == - width) {//120是根据你给的尺寸，可变的
