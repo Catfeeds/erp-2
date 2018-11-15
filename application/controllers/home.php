@@ -76,10 +76,77 @@ class Home extends CI_Controller {
             $ret[$k]['salesName'] = $rets['username'];
 
         }
-//        var_dump($ret);
+
         die(json_encode($ret));
     }
+//获取折线图所需的数据
+    public function k($id,$e){
+        if(!$id){
+            $id = $this->jxcsys['uid'];
+        }
+        if(!$e){
+            $e = 7;
+        }
+        $res = $this->getData($id,$e);
+        die(json_encode($res));
+    }
 
+    public function getData($id,$i){
+
+        $day = date('d',time());
+        $month = date('m',time());
+        $year = date('Y',time());
+        $res = array();
+        $ri = array();
+        for ($t=0;$t < $i;$t++){
+
+            if($day == 1 && $month == 1){
+                $year = $year - 1;
+                $month = 12;
+                $day = 31;
+            }elseif ($day == 1 && ($month == 2 || $month == 4 || $month == 6 || $month == 9 || $month == 11) ){
+                $year = $year;
+                $month = $month-1;
+                $day = 31;
+            }elseif ($day == 1 && ($month == 5 || $month == 7 || $month == 8 || $month == 10 || $month == 12) ){
+                $year = $year;
+                $month = $month-1;
+                $day = 30;
+            }elseif ($day == 1 && $month == 3){
+                if(($year%4==0&&$year%100!=0)||($year%400==0)){
+                    $year = $year;
+                    $month = $month-1;
+                    $day = 29;
+                }else{
+                    $year = $year;
+                    $month = $month-1;
+                    $day = 28;
+                }
+
+            }else{
+                $year = $year;
+                $month = $month;
+                $day = $day-1;
+            }
+
+            $sql = "select * from `ci_invoice` where salesId = $id and year(createTime) = $year and month(createTime) = $month and day(createTime) = $day";
+            $data = $this->mysql_model->query($sql,2);
+            $S = $year.'年'.$month.'月'.$day.'日';
+            foreach ($data as $k=>$v){
+                $res[$t] += $v['totalExtractCount'];
+            }
+
+            if(!$res[$t]){
+                $res[$t] = 0;
+            }
+            $ri[$t] = $S;
+        }
+
+        $g = array();
+        $g['extract'] = $res;
+        $g['time'] = $ri;
+        return $g  ;
+    }
 }
 
 /* End of file welcome.php */
