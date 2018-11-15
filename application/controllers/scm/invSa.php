@@ -589,6 +589,7 @@ class InvSa extends CI_Controller {
 				$v[$arr]['discountRate']    = $row['discountRate'];
 				$v[$arr]['locationName']    = $row['locationName'];
 				$v[$arr]['description']     = $row['description'];
+				$v[$arr]['extractCount']     = $row['extractCount'];
 			}
 			$data['countpage']  = ceil(count($postData['entries'])/$data['num']); ;
 			$data['list']       = isset($v) ? $v : array();
