@@ -80,7 +80,9 @@ class Home extends CI_Controller {
         die(json_encode($ret));
     }
 //获取折线图所需的数据
-    public function k($id,$e){
+    public function k(){
+        $id = $this->input->get_post('id',true);
+        $e = $this->input->get_post('time',true);
         if(!$id){
             $id = $this->jxcsys['uid'];
         }
