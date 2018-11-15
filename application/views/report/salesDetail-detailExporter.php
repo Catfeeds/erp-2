@@ -20,15 +20,17 @@
   				<th>数量</th>
   				<th>单价</th>
   				<th>销售收入</th>
+  				<th>提成</th>
 				<th>备注</th>
   				</tr>
   			</thead>
   			<tbody>
 				 <?php 
-				 $sum1 = $sum2 = $sum3 = 0;
+				 $sum1 = $sum2 = $sum3 = $sum4 = 0;
 				 foreach($list as $arr=>$row){
 				     $sum1 += $qty    = $row['qty']>0 ? -abs($row['qty']) : abs($row['qty']);   
-					 $sum3 += $amount = $row['amount'];        
+					 $sum3 += $amount = $row['amount'];
+					 $sum4 += $extract = $row['extractCount'];
 				 ?>
   			       <tr>
   			       <td><?php echo $row['billDate']?></td>
@@ -45,6 +47,7 @@
 				   <td class="R"><?php echo str_money($qty,$this->systems['qtyPlaces'])?></td>
   			       <td class="R"><?php echo str_money($row['price'],$this->systems['qtyPlaces'])?></td>
   			       <td class="R"><?php echo str_money($amount,2)?></td>
+				   <td class="R"><?php echo $row['extractCount']?></td>
 				   <td class="R"><?php echo $row['description']?></td>
   			       </tr>
 				 <?php 
@@ -55,7 +58,7 @@
 				<td class="R B"><?php echo str_money($sum1,$this->systems['qtyPlaces'])?></td>
   				<td class="R B"><?php echo $sum1>0 ? str_money($sum3/$sum1,$this->systems['qtyPlaces']) : 0?></td>
   				<td class="R B"><?php echo str_money($sum3,2)?></td>
-				<td class="R B"></td>
+				<td class="R B"><?php echo $sum4 ?></td>
   				</tr>
   			</tbody>
   		</table>

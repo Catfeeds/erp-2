@@ -15,6 +15,7 @@
   				<th>数量</th>
   				<th>单价</th>
   				<th>销售收入</th>
+  				<th>提成</th>
 				<?php if ($profit==1) {?>
 				<th>单位成本</th>
   				<th>销售成本</th>
@@ -25,10 +26,11 @@
   			</thead>
   			<tbody>
 				 <?php 
-				 $sum1 = $sum2 = $sum3 = $sum4 = $sum5 = $sum6 = $sum7 = 0;
+				 $sum1 = $sum2 = $sum3 = $sum4 = $sum5 = $sum6 = $sum7 = $sum8 = 0;
 				 foreach($list as $arr=>$row){
 				     $sum1 += $qty = $row['sumqty']>0 ? -abs($row['sumqty']) : abs($row['sumqty']);   
-					 $sum3 += $amount = $row['sumamount'];                   
+					 $sum3 += $amount = $row['sumamount'];
+					 $sum8 += $extract = $row['extractCount'];
 					 $unitPrice = $qty!=0 ? $amount/$qty : 0;               
 					 if ($profit==1) {
 						$sum4 += $unitcost = isset($info['inprice'][$row['invId']][$row['locationId']]) ? $info['inprice'][$row['invId']][$row['locationId']] : 0;
@@ -47,6 +49,7 @@
 				   <td class="R"><?php echo str_money($qty,$this->systems['qtyPlaces'])?></td>
   			       <td class="R"><?php echo str_money($unitPrice,$this->systems['qtyPlaces'])?></td>
   			       <td class="R"><?php echo str_money($amount,2)?></td>
+  			       <td class="R"><?php echo $row['extractCount']?></td>
 				   <?php if ($profit==1) {?>
 				   <td class="R"><?php echo str_money($unitcost,2)?></td>
   				   <td class="R"><?php echo str_money($cost,2)?></td>
@@ -62,6 +65,7 @@
   				<td class="R B"><?php echo str_money($sum1,$this->systems['qtyPlaces'])?></td>
   				<td class="R B"><?php echo $sum1>0 ? str_money($sum3/$sum1,$this->systems['qtyPlaces']) : 0?></td>
   				<td class="R B"><?php echo str_money($sum3,2)?></td>
+  				<td class="R B"><?php echo str_money($sum8,2)?></td>
 				<?php if ($profit==1) {?>
 				<td class="R B"><?php echo str_money($sum4,2)?></td>
   				<td class="R B"><?php echo str_money($sum5,2)?></td>

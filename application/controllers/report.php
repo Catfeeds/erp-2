@@ -395,7 +395,7 @@ class Report extends CI_Controller {
 
 	public function salesDetail_detail() {
 	    $this->common_model->checkpurview(31);
-		$sum1 = $sum2 = $sum3 = $sum4 = $sum5 = $sum6 = $sum7 = 0;
+		$sum1 = $sum2 = $sum3 = $sum4 = $sum5 = $sum6 = $sum7 = $sum8 = 0;
 	    $data['status'] = 200;
 		$data['msg']    = 'success';
 		$page = max(intval($this->input->get_post('page',TRUE)),1);
@@ -426,6 +426,7 @@ class Report extends CI_Controller {
 		foreach ($list as $arr=>$row) {
 		    $sum1 += $qty    = $row['qty']>0 ? -abs($row['qty']) : abs($row['qty']);   //销售在数据库中是负数 在统计的时候应该是正数
 			$sum3 += $amount = $row['amount'];                      //销售收入
+            $sum8 += $extract = $row['extractCount'];
 			$v[$arr]['billId']        = intval($row['iid']);
 		    $v[$arr]['billNo']        = $row['billNo'];
 			$v[$arr]['billType']      = $row['billType'];
@@ -434,7 +435,8 @@ class Report extends CI_Controller {
 			$v[$arr]['buName']        = $row['contactName'];
 			$v[$arr]['invNo']         = $row['invNumber'];
 			$v[$arr]['invName']       = $row['invName'];
-			$v[$arr]['invBrand']       = $row['invBrand'];
+			$v[$arr]['invBrand']      = $row['invBrand'];
+			$v[$arr]['extractCount']  = $row['extractCount'];
 			$v[$arr]['spec']          = $row['invSpec'];
 			$v[$arr]['unit']          = $row['mainUnit'];
 			$v[$arr]['location']      = $row['locationName'];
@@ -457,6 +459,7 @@ class Report extends CI_Controller {
 		$data['data']['userdata']['qty']         = round($sum1,$this->systems['qtyPlaces']);
 		$data['data']['userdata']['unitPrice']   = $sum1>0 ? round($sum3/$sum1,$this->systems['qtyPlaces']) : 0;
 		$data['data']['userdata']['amount']      = round($sum3,2);
+		$data['data']['userdata']['extractCount']      = round($sum8,2);
 		$data['data']['userdata']['cost']        = '';
 		$data['data']['userdata']['unitCost']    = '';
 		$data['data']['userdata']['saleProfit']      = '';
@@ -502,7 +505,7 @@ class Report extends CI_Controller {
 
 	public function salesDetail_inv() {
 	    $this->common_model->checkpurview(34);
-		$sum1 = $sum2 = $sum3 = $sum4 = $sum5 = $sum6 = $sum7 = 0;
+		$sum1 = $sum2 = $sum3 = $sum4 = $sum5 = $sum6 = $sum7 = $sum8 = 0;
 		$page = max(intval($this->input->get_post('page',TRUE)),1);
 		$rows = max(intval($this->input->get_post('rows',TRUE)),100);
 		$profit     = intval($this->input->get_post('profit',TRUE));
@@ -530,6 +533,7 @@ class Report extends CI_Controller {
 		foreach ($list as $arr=>$row) {
 		    $sum1 += $qty = $row['sumqty']>0 ? -abs($row['sumqty']):abs($row['sumqty']);
 			$sum3 += $amount = $row['sumamount'];
+			$sum8 += $extract = $row['extractCount'];
 			$unitPrice = $qty!=0 ? $amount/$qty : 0;
 			if ($profit==1) {
 				$sum4 += $unitcost = isset($info['inprice'][$row['invId']][$row['locationId']]) ? $info['inprice'][$row['invId']][$row['locationId']] : 0;   //单位成本
@@ -545,6 +549,7 @@ class Report extends CI_Controller {
 			$v[$arr]['buName']        = $row['contactName'];
 			$v[$arr]['invNo']         = $row['invNumber'];
 			$v[$arr]['invName']       = $row['invName'];
+			$v[$arr]['extractCount']  = $row['extractCount'];
 			$v[$arr]['spec']          = $row['invSpec'];
 			$v[$arr]['unit']          = $row['mainUnit'];
 			$v[$arr]['invBrand']      = $row['invBrand'];
@@ -576,6 +581,7 @@ class Report extends CI_Controller {
 		$data['data']['userdata']['qty']         = round($sum1,$this->systems['qtyPlaces']);
 		$data['data']['userdata']['unitPrice']   = $sum1>0 ? round($sum3/$sum1,2) : 0;
 		$data['data']['userdata']['amount']      = round($sum3,2);
+		$data['data']['userdata']['extractCount']      = round($sum8,2);
 		if ($profit==1) {
 			$data['data']['userdata']['cost']        = round($sum5,2);
 			$data['data']['userdata']['unitCost']    = round($sum4,2);
@@ -739,7 +745,7 @@ class Report extends CI_Controller {
 
 	public function salesDetail_customer() {
 	    $this->common_model->checkpurview(37);
-		$sum1 = $sum2 = $sum3 = $sum4 = $sum5 = $sum6 = $sum7 = 0;
+		$sum1 = $sum2 = $sum3 = $sum4 = $sum5 = $sum6 = $sum7 = $sum8 = 0;
 		$page = max(intval($this->input->get_post('page',TRUE)),1);
 		$rows = max(intval($this->input->get_post('rows',TRUE)),100);
 		$profit     = intval($this->input->get_post('profit',TRUE));
@@ -766,6 +772,7 @@ class Report extends CI_Controller {
 		foreach ($list as $arr=>$row) {
 		    $sum1 += $qty = $row['sumqty']>0 ? -abs($row['sumqty']):abs($row['sumqty']);
 			$sum3 += $amount = $row['sumamount'];
+			$sum8 += $extract = $row['extractCount'];
 			$unitPrice = $qty!=0 ? $amount/$qty : 0;
 			if ($profit==1) {
 				$sum4 += $unitcost = isset($info['inprice'][$row['invId']][$row['locationId']]) ? $info['inprice'][$row['invId']][$row['locationId']] : 0;   //单位成本
@@ -782,6 +789,7 @@ class Report extends CI_Controller {
 			$v[$arr]['invNo']         = $row['invNumber'];
 			$v[$arr]['invName']       = $row['invName'];
 			$v[$arr]['invBrand']      = $row['invBrand'];
+			$v[$arr]['extractCount']  = $row['extractCount'];
 			$v[$arr]['spec']          = $row['invSpec'];
 			$v[$arr]['unit']          = $row['mainUnit'];
 			$v[$arr]['location']      = $row['locationName'];
@@ -822,6 +830,7 @@ class Report extends CI_Controller {
 		$data['data']['total']['qty']         = round($sum1,$this->systems['qtyPlaces']);
 		$data['data']['total']['unitPrice']   = $sum1>0 ? $sum3/$sum1 : 0;
 		$data['data']['total']['amount']      = round($sum3,2);
+		$data['data']['total']['extractCount']      = round($sum8,2);
         if ($profit==1) {
 			$data['data']['total']['cost']        = round($sum5,2);
 			$data['data']['total']['unitCost']    = round($sum4,2);

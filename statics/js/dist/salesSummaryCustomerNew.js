@@ -110,6 +110,17 @@ define(["jquery", "print"], function(a, b, c) {
 				decimalPlaces: Number(l.amountPlaces)
 			}
 		}, {
+			name: "extractCount",
+			label: "提成",
+			width: 60,
+			align: "right",
+			hidden: b,
+			formatter: "currency",
+			formatoptions: {
+				thousandsSeparator: ",",
+				decimalPlaces: Number(l.amountPlaces)
+			}
+		}, {
 			name: "unitCost",
 			label: "单位成本",
 			width: 60,
@@ -190,6 +201,7 @@ define(["jquery", "print"], function(a, b, c) {
 			jsonReader: {
 				root: "data.list",
 				userdata: "data.total",
+				extractCount: "data.total",
 				repeatitems: !1,
 				id: "0"
 			},

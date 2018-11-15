@@ -103,6 +103,13 @@ define(["jquery", "print"], function(a, b, c) {
 			hidden: a,
 			align: "right",
 			sortable: !0
+		},  {
+			name: "extractCount",
+			label: "提成",
+			width: 100,
+			hidden: a,
+			align: "right",
+			sortable: !0
 		}, {
 			name: "unitCost",
 			label: "单位成本",
@@ -158,6 +165,7 @@ define(["jquery", "print"], function(a, b, c) {
 				records: "data.records",
 				total: "data.total",
 				userdata: "data.userdata",
+				extractCount: "data.extractCount",
 				repeatitems: !1,
 				id: "0"
 			},

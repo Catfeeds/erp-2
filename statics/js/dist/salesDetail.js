@@ -131,6 +131,13 @@ define(["jquery", "print"], function(a, b, c) {
 			fixed: !0,
 			hidden: a,
 			align: "right"
+		},{
+			name: "extractCount",
+			label: "提成",
+			width: 100,
+			fixed: !0,
+			hidden: a,
+			align: "right"
 		}, {
 			name: "unitCost",
 			label: "单位成本",
@@ -193,6 +200,7 @@ define(["jquery", "print"], function(a, b, c) {
 				records: "data.records",
 				total: "data.total",
 				userdata: "data.userdata",
+                extractCount: "data.extractCount",
 				repeatitems: !1,
 				id: "0"
 			},
@@ -224,6 +232,7 @@ define(["jquery", "print"], function(a, b, c) {
 			}
 		}), n.autoSearch ? (l(".no-query").remove(), l(".ui-print").show()) : l(".ui-print").hide()
 	}
+	// 设置高度
 	function h(a) {
 		a && (h.h = a);
 		var b = i(),
