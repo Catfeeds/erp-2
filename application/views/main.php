@@ -141,6 +141,7 @@ $("#username").text(parent.SYSTEM.realName);
 <script type="text/javascript" src="<?php echo base_url()?>statics/k/js/echarts.min.js"></script>
 <script type="text/javascript" src="<?php echo base_url()?>statics/k/js/index.js"></script>
 
+
 <script id="profile" type="text/html">
 		<table width="100%" border="0" cellspacing="0" cellpadding="20">
 		  <tr>
