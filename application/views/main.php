@@ -205,6 +205,8 @@ $("#username").text(parent.SYSTEM.realName);
     </div>
   </div>
 </div>
+
+
 <script id="profile" type="text/html">
 		<table width="100%" border="0" cellspacing="0" cellpadding="20">
 		  <tr>
@@ -393,7 +395,7 @@ $('#manageAcct').click(function(e){
                         extract += extract1 + val.username +extract2;
                     });
                 $('#extract_ul').html(extract);
-                    console.log(res.responseJSON);
+
             }
         });
     })

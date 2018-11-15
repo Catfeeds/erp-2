@@ -1,5 +1,5 @@
 <?php $this->load->view('header');?>
- 
+
 
 <script type="text/javascript">
 var DOMAIN = document.domain;
@@ -27,8 +27,8 @@ $(document).keydown(function(event) {
 	}
 });
 
-$(function() { 
-	$("#Contract").click(function (){  
+$(function() {
+	$("#Contract").click(function (){
 		$.dialog({
 			content: "url:../settings/Contract",
 			data: {
@@ -44,8 +44,8 @@ $(function() {
 			cache: !1,
 			lock: !0
 		})
-	}); 
-	$("#Contract1").click(function (){  
+	});
+	$("#Contract1").click(function (){
 		$.dialog({
 			content: "url:../settings/Contract",
 			data: {
@@ -62,7 +62,7 @@ $(function() {
 			lock: !0
 		})
 	})
-}); 
+});
 </script>
 
 <link href="<?php echo base_url()?>statics/css/<?php echo sys_skin()?>/bills.css?ver=20150522" rel="stylesheet" type="text/css">
@@ -135,7 +135,7 @@ $(function() {
         <dd class="pct20">
           <label>客户提成点：</label>
           <span class="ui-combo-wrap">
-              <input type="text" name="" id="Cextract" class="input-txt" readonly value="">
+              <input type="text" name="" id="Cextract" class="input-txt"  value="">
           </span>
         </dd>
         <dd class="pct25 tc">
@@ -190,16 +190,16 @@ $(function() {
         <li>
           <label>销售附件:</label>
           <!-- <input type="text" class="ui-input ui-input-dis" disabled> -->
-		  <?php 
+		  <?php
 		  if ($this->common_model->checkpurviews(203)){
 		  ?>
 		  <a id="Contract" class="ui-btn">上传</a>
-		  <?php 
+		  <?php
 		  }
 		  if ($this->common_model->checkpurviews(204)){
 		  ?>
 		  <a id="Contract1" class="ui-btn">查看</a>
-		  <?php 
+		  <?php
 		  }
 		  ?>
         </li>
@@ -243,6 +243,7 @@ $(function() {
   <div id="storageBox" class="shadow target_box dn">
   </div>
 </div>
+
 <script src="<?php echo base_url()?>statics/js/dist/sales.js?ver=2017082001"></script>
 </body>
 </html>
