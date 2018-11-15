@@ -64,82 +64,6 @@ $("#username").text(parent.SYSTEM.realName);
     .extra-wrap h2 {
         color: rgb(87,132,187);
     }
-    /*常用功能*/
-    #chang{
-        box-sizing: border-box;
-        width: 98%;
-        padding-bottom: 10px;
-        font-size: 10px;
-        font-weight: bold;
-        color: rgb(43,43,43);
-        margin: 0 auto;
-        border-bottom: 1px solid rgb(194,203,220);
-    }
-    .quick-links{
-        border: none;
-    }
-    .quick-links li{
-        width: 12.5%;
-        border: none;
-    }
-    .quick-links li a{
-        border: none;
-        color: black;
-        font-weight: bold;
-    }
-    .quick-links li a:hover{
-        background-color: white;
-    }
-    .quick-links li a span{
-        border: 1px solid #eee;
-        border-radius: 50%;
-    }
-    .quick-links li:nth-child(1) a span{
-        background: url() no-repeat center;
-        background-color: rgb(69,211,231);
-        box-shadow: 0 0 3px rgb(69,211,231);
-    }
-    .quick-links li:nth-child(2) a span{
-        background: url() no-repeat center;
-        background-color: rgb(156,248,240);
-        box-shadow: 0 0 3px rgb(156,248,240);
-    }
-    .quick-links li:nth-child(3) a span{
-        background: url() no-repeat center;
-        background-color: rgb(65,200,248);
-        box-shadow: 0 0 3px rgb(65,200,248);
-    }
-    .quick-links li:nth-child(4) a span{
-        background: url() no-repeat center;
-        background-color: rgb(69,211,231);
-        box-shadow: 0 0 3px rgb(69,211,231);
-    }
-    .quick-links li:nth-child(5) a span{
-        background: url() no-repeat center;
-        background-color: rgb(248,120,120);
-        box-shadow: 0 0 3px rgb(248,120,120);
-    }
-    .quick-links li:nth-child(6) a span{
-        background: url() no-repeat center;
-        background-color: rgb(65,200,248);
-        box-shadow: 0 0 3px rgb(65,200,248);
-    }
-    .quick-links li:nth-child(7) a span{
-        background: url() no-repeat center;
-        background-color: rgb(156,143,240);
-        box-shadow: 0 0 3px rgb(156,143,240);
-    }
-    .quick-links li:nth-child(8) a span{
-        background: url() no-repeat center;
-        background-color: rgb(250,195,77);
-        box-shadow: 0 0 3px rgb(250,195,77);
-    }
-    .quick-links li a span i{
-        line-height: 48px;
-        color: #fff;
-        font-size: 35px;
-        font-weight: normal;
-    }
 </style>
 <div id="bd" class="index-body cf">
   <div class="col-main">
@@ -163,8 +87,8 @@ $("#username").text(parent.SYSTEM.realName);
 		  </tr>
 		</table>
       </div>
-        <div id="k">K线图</div>
-         <div id="line" style="width:822px;height:492px;"></div>
+        <p>提成折线图</p>
+        <div id="line" style="width:822px;height:492px;"></div>
     </div>
   </div>
   <div class="col-extra">
