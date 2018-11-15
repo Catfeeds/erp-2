@@ -286,8 +286,17 @@ class InvSa extends CI_Controller {
 				'totalQty','amount','arrears','rpAmount','totalAmount','uid','userName',
 				'totalArrears','disRate','disAmount','postData',
 				'salesId','accId','modifyTime','udf01','udf02','udf03','totalExtractCount'),$data,NULL);
+
 			$this->db->trans_begin();
 			$this->mysql_model->update('invoice',$info,array('id'=>$data['id']));
+
+            $salesId = $data['salesId'];
+            $sql ="SELECT * FROM `ci_admin` WHERE uid = ".$salesId;
+            $info_singer_res = $this->mysql_model->query($sql);
+            $total = $info_singer_res['extractCount'] - $info_singer_res['extractCount_before'] + $data['totalExtractCount'];
+
+            $this->mysql_model->update('admin',array('extractCount'=>$total),array('uid'=>$salesId));
+
 			$this->invoice_info($data['id'],$data);
 			$this->account_info($data['id'],$data);
 			if ($this->db->trans_status() === FALSE) {
@@ -307,6 +316,8 @@ class InvSa extends CI_Controller {
 	    $this->common_model->checkpurview(6);
 	    $id   = intval($this->input->get_post('id',TRUE));
 		$data =  $this->data_model->get_invoice('a.id='.$id.' and a.billType="SALE"',1);
+//        var_dump($data);
+        $this->mysql_model->update('admin',array('extractCount_before'=>$data['totalExtractCount']),array('uid'=>$data['salesId']));
 
 		if (count($data)>0) {
 			$info['status'] = 200;
