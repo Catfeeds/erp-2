@@ -63,7 +63,23 @@ class Home extends CI_Controller {
 
         die(json_encode($ret));
     }
-	
+
+    public function run(){
+
+        $sql =" SELECT * FROM `ci_invoice` WHERE checked = 1 and billType = 'SALE' order by `modifyTime` DESC limit 3";
+        $ret = $this->mysql_model->query($sql,2);
+
+        foreach($ret as $k=>$v){
+            $salesId = $v['salesId'];
+            $sql =" SELECT * FROM `ci_admin` where uid = ".$salesId;
+            $rets = $this->mysql_model->query($sql,1);
+            $ret[$k]['salesName'] = $rets['username'];
+
+        }
+//        var_dump($ret);
+        die(json_encode($ret));
+    }
+
 }
 
 /* End of file welcome.php */

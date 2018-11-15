@@ -652,9 +652,37 @@ var _hmt = _hmt || [];
         display: block;
         top: 33px;
     }
+    .box {
+        padding-left:0px;
+        margin-top:0px;
+        margin-left:0px;
+
+
+    }
+    .Box {
+        width:100%;
+        height:25px;
+        overflow:hidden;
+        position:relative;
+        background:pink;
+        z-index: 999;
+    }
+    .scroll {
+        width:100%;/*width的大小是根据下面li的长度和li个数而定的！*/
+        position:absolute;
+        left:0;
+        top:0 ;
+    }
+    .scroll li {
+        /*width:50%;*/
+        float:right;
+        line-height:25px;
+        text-align:right;
+    }
 </style>
 </head>
 <body>
+
 <div id="container" class="cf">
   <div id="col-side">
     <ul id="nav" class="cf">
@@ -837,6 +865,7 @@ var _hmt = _hmt || [];
 <!--                        <li><a parentOpen="true" rel="pageTab" href="--><?php //echo site_url('settings/backup')?><!--">备份与恢复</a></li>-->
                     </ul>
                 </div>
+
                 <div class="nav_r">
                     <ul class="clearfix">
 <!--                        <li><a href="javascript:void(0);"><i class="iconfont" style="color: #fff">&#xe504;</i></a></li>-->
@@ -845,14 +874,25 @@ var _hmt = _hmt || [];
                 </div>
 
             </div>
-            <div class="nav_bottom"></div>
+            <div class="nav_bottom">
+                <div class="box">
+                    <div class="Box">
+                        <ul class="scroll" id = "run">
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
         </div>
 
       <div class="page-tab" id="page-tab">
       </div>
     </div>
   </div>
+
 </div>
+
 <!--<div id="selectSkin" class="shadow dn">-->
 <!--	<ul class="cf">-->
 <!--    	<li><a id="skin-default"><span></span><small>经典</small></a></li>-->
@@ -861,6 +901,57 @@ var _hmt = _hmt || [];
 <!--    </ul>-->
 <!--</div>-->
 <script src="<?php echo base_url()?>statics/js/dist/default.js?ver=20170711"></script>
+<script>
+    $(function() {
+        $.ajax({
+            url: '../home/run?action=run',
+            type: 'post',
+            dataType: 'json',
+            complete:function (res) {
+
+                var extract = ''
+                var extract1 = '<li><a href="">恭喜销货员';
+                var extract2 = '完成了一笔金额为&nbsp;';
+                var extract3 = '&nbsp;的销货单！！！&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
+                var extract4 = '</a></li>';
+
+
+
+
+                $.each(res.responseJSON,function(index,val){
+
+                    extract += extract1 + val.salesName + extract2 + val.totalAmount + extract3 + extract4;
+                });
+
+                $('#run').html(extract);
+
+            }
+        });
+        var num = 0;
+        var width =  document.body.clientWidth;
+        console.log(width);
+        function goLeft() {
+
+            if (num == - width) {//120是根据你给的尺寸，可变的
+                num = 0;
+            }
+            num -= 1;
+            $(".scroll").css({
+                left: num
+            })
+        }
+        //滚动速度
+        var timer = setInterval(goLeft, 10);
+        //鼠标经过时滚动停止
+        $(".box").hover(function() {
+                clearInterval(timer);
+            },
+            function() {
+                timer = setInterval(goLeft, 50);
+            })
+    })
+</script>
+
 <script>
     $('#manageAcct').click(function(e){
         e.preventDefault();
