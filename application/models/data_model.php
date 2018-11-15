@@ -94,13 +94,13 @@ class Data_model extends CI_Model{
 	public function get_invoice($where='',$type=2) {
 	    $sql = 'select 
 		            a.*,
-					b.name as contactName,b.number as contactNo,   
+					b.name as contactName,b.number as contactNo, b.extract as contactExtract,  
 					c.number as salesNo ,c.name as salesName, 
 					d.number as accountNumber ,d.name as accountName,
 					(a.rpAmount + ifnull(e.nowCheck,0)) as hasCheck
 				from '.$this->db->dbprefix('invoice').' as a 
 					left join 
-						(select id,number, name from '.$this->db->dbprefix('contact').' where isDelete=0) as b
+						(select id,number, name,extract from '.$this->db->dbprefix('contact').' where isDelete=0) as b
 					on a.buId=b.id 
 					left join 
 						(select id,name,number from '.$this->db->dbprefix('staff').' where isDelete=0) as c

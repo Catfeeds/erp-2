@@ -14,7 +14,6 @@ var curRow, curCol, loading, SYSTEM = system = parent.SYSTEM,
 	THISPAGE = {
 
 		init: function(a) {
-
 			"150602" == urlParam.transType ? this.mod_PageConfig = Public.mod_PageConfig.init("salesBack") : this.mod_PageConfig = Public.mod_PageConfig.init("sales"), SYSTEM.isAdmin !== !1 || SYSTEM.rights.AMOUNT_OUTAMOUNT || (hiddenAmount = !0, $("#amountArea").hide()), this.initDom(a), this.loadGrid(a), this.initCombo(), a.id > 0 && a.checked ? this.disableEdit() : (this.editable = !0, $("#grid").jqGrid("setGridParam", {
 				cellEdit: !0
 			})), this.addEvent(), setTimeout(function() {
@@ -81,6 +80,7 @@ var curRow, curCol, loading, SYSTEM = system = parent.SYSTEM,
 				};
 				this.$_customer.data("contactInfo", d),
 				this.customerCombo.input.val(a.contactName);
+				$('#Cextract').val(a.contactExtract);
 				//add by michen 20170724 begin
 				SYSTEM.mbuId = a.buId;
 
@@ -88,7 +88,10 @@ var curRow, curCol, loading, SYSTEM = system = parent.SYSTEM,
 				setTimeout(function(){THISPAGE.linkCombo.selectByValue(a.udf01)},10);
 				//add by michen 20170724 end
 				for (var e = 0; e < SYSTEM.salesInfo.length; e++) if (SYSTEM.salesInfo[e].id === a.salesId) {
-					this.salesCombo.input.val(SYSTEM.salesInfo[e].name);
+					// this.salesCombo.input.val(SYSTEM.salesInfo[e].name);
+					$('#Sextract').val(SYSTEM.salesInfo[e].name);
+					$('#id').val(SYSTEM.salesInfo[e].id);
+					$('#extract_me').val(SYSTEM.salesInfo[e].extract);
 					break
 				}
 

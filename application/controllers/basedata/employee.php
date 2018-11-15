@@ -30,6 +30,7 @@ class Employee extends CI_Controller {
 			$v[$arr]['parentId']     = $row['parentId'];
 			$v[$arr]['sex']          = $row['sex'];
 			$v[$arr]['userName']     = $row['userName'];
+			$v[$arr]['extract']      = $row['extract'];
 			$v[$arr]['delete']       = intval($row['disable'])==1 ? true : false;   //是否禁用
 		}
 		$json['status'] = 200;
