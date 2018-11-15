@@ -1,13 +1,9 @@
 $(function () {
-    // var time = ['周一','周二','周三','周四','周五','周六','周日'];
-    // var data = [23, 42, 18, 45, 48, 49,100];
-    // echart(time,data);
-    // console.log()
    show("week");
 });
 function show(time) {
     $.ajax({
-        url:"",
+        url:"../home/k?action=k",
         method:"POST",
         data:{time:time},
         dataType:"json",
@@ -60,7 +56,7 @@ function echart(time,extract) {
         },
         series: [
             {
-                name:'成绩',
+                name:'提成',
                 type:'line',
                 data:extract,
                 markLine: {data: [{type: 'average', name: '平均值'}]}
