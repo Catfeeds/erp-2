@@ -147,7 +147,7 @@ $("#username").text(parent.SYSTEM.realName);
             type: 'post',
             dataType: 'json',
             complete:function (res) {
-               
+
 
             }
         });
