@@ -133,7 +133,7 @@ class Home extends CI_Controller {
 
             $sql = "select * from `ci_invoice` where salesId = $id and year(createTime) = $year and month(createTime) = $month and day(createTime) = $day";
             $data = $this->mysql_model->query($sql,2);
-            $S = $year.'年'.$month.'月'.$day.'日';
+            $S = $year.'.'.$month.'.'.$day.'.';
             foreach ($data as $k=>$v){
                 $res[$t] += $v['totalExtractCount'];
             }
@@ -141,12 +141,29 @@ class Home extends CI_Controller {
             if(!$res[$t]){
                 $res[$t] = 0;
             }
-            $ri[$t] = $S;
+
+
+            if($i == 7){
+                $ri[$t] = $S;
+            }else if($i == 30 ){
+                if( $t%3 == 0){
+                    $ri[$t] = $S;
+                }else{
+                    $ri[$t] = "";
+                }
+            }else if($i == 365){
+                if( $t%30 == 0){
+                    $ri[$t] = $S;
+                }else{
+                    $ri[$t] = "";
+                }
+            }
         }
 
         $g = array();
-        $g['extract'] = $res;
-        $g['time'] = $ri;
+        $g['extract'] = array_reverse($res);
+        $g['time'] = array_reverse($ri);
+    
         return $g  ;
     }
 }
