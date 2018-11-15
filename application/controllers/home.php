@@ -57,8 +57,11 @@ class Home extends CI_Controller {
 	}
 
 	public function ranking(){
-        $json = "abc";
-        die(json_encode($json));
+
+        $sql =" SELECT * FROM `ci_admin` order by `extractCount` DESC limit 6";
+        $ret = $this->mysql_model->query($sql,2);
+
+        die(json_encode($ret));
     }
 	
 }

@@ -197,9 +197,8 @@ $("#username").text(parent.SYSTEM.realName);
     <div class="extra-wrap">
       <h2>提成排行榜</h2>
       <div class="list">
-        <ul>
+        <ul id = "extract_ul">
 
-            <li><a tabid="setting-goodsList" data-right="INVENTORY_QUERY" tabTxt="商品管理" parentOpen="true" rel="pageTab" href="<?=site_url('settings/goods_list')?>">商品管理</a></li>
 
         </ul>
       </div>
@@ -387,7 +386,14 @@ $('#manageAcct').click(function(e){
             type: 'post',
             dataType: 'json',
             complete:function (res) {
-                console.log(res);
+                var extract = ''
+                var extract1 = '<li><a href="">';
+                var extract2 = '</a></li>';
+                    $.each(res.responseJSON,function(index,val){
+                        extract += extract1 + val.username +extract2;
+                    });
+                $('#extract_ul').html(extract);
+                    console.log(res.responseJSON);
             }
         });
     })
