@@ -48,6 +48,7 @@ class InvSa extends CI_Controller {
 	}
 
 	public function saleList(){
+        $sum = 0;
 		$page = max(intval($this->input->get_post('page',TRUE)),1);
 		$rows = max(intval($this->input->get_post('rows',TRUE)),100);
 		$sidx = str_enhtml($this->input->get_post('sidx',TRUE));
@@ -80,6 +81,7 @@ class InvSa extends CI_Controller {
 		foreach ($list as $arr=>$row) {
 		    $v[$arr]['hxStateCode']  = intval($row['hxStateCode']);
 		    //add begin
+            $sum += (float)abs($row['totalExtractCount']);
 		    $hasCheck = (float)abs($row['hasCheck']);
 		    if($hasCheck <= 0)
 		        $hxStateCode = 0;
@@ -119,10 +121,12 @@ class InvSa extends CI_Controller {
 
 		$json['status'] = 200;
 		$json['msg']    = 'success';
+        $json['data']['extract']   = $sum;
 		$json['data']['page']      = $page;
 		$json['data']['records']   = $this->data_model->get_invoice($where,3);
 		$json['data']['total']     = ceil($json['data']['records']/$rows);
 		$json['data']['rows']      = isset($v) ? $v : array();
+//		var_dump($json);exit;
 		die(json_encode($json));
 	}
 

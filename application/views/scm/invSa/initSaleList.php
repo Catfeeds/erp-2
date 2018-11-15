@@ -51,6 +51,10 @@ a.ui-btn{margin-left:10px;}
         </li>
         <li><a class="mrb more" id="moreCon">(高级搜索)</a><a class="ui-btn" id="search">查询</a><!--<a class
 ="ui-btn ui-btn-refresh" id="refresh" title="刷新"><b></b></a>--></li>
+          <li>
+              <span>总提成：</span>
+              <input type="text" id="extractCount" class="ui-input ui-input-ph" value="">
+          </li>
       </ul>
     </div>
     <div class="fr"><a class="ui-btn ui-btn-sp" id="add">新增</a><a class="ui-btn" id="print" target="_blank"

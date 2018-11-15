@@ -175,7 +175,7 @@ var THISPAGE = {
 			},
 
 			loadComplete: function(a) {
-
+				$('#extractCount').val(a.data.extract);
 				if (billRequiredCheck) for (var b = a.data.rows, c = 0; c < b.length; c++) {
 					var d = b[c];
 					d.checked || $("#" + d.id).addClass("gray")

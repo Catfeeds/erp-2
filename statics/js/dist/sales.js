@@ -1636,7 +1636,6 @@ var curRow, curCol, loading, SYSTEM = system = parent.SYSTEM,
 								}), $("#grid").jqGrid("editCellByColName", g, "qty"), !1
 							}
 						}
-console.log($('#Cextract').val());
 						f = {
 							invId: i.id,
 							invNumber: i.number,
