@@ -64,6 +64,12 @@ $("#username").text(parent.SYSTEM.realName);
     .extra-wrap h2 {
         color: rgb(87,132,187);
     }
+
+    /*折线图*/
+    #line{
+        width: 150px;
+        margin-top: -5%;
+    }
 </style>
 <div id="bd" class="index-body cf">
   <div class="col-main">
@@ -88,7 +94,7 @@ $("#username").text(parent.SYSTEM.realName);
 		</table>
       </div>
         <p>提成折线图</p>
-        <div id="line" style="width:822px;height:492px;"></div>
+        <div id="line" style="width:90%;height:492px;"></div>
     </div>
   </div>
   <div class="col-extra">
@@ -104,7 +110,6 @@ $("#username").text(parent.SYSTEM.realName);
   </div>
 </div>
 
-<script type="text/javascript" src="<?php echo base_url()?>statics/k/js/jquery-1.7.2-min.js"></script>
 <script type="text/javascript" src="<?php echo base_url()?>statics/k/js/echarts.min.js"></script>
 <script type="text/javascript" src="<?php echo base_url()?>statics/k/js/index.js"></script>
 
