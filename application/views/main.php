@@ -381,6 +381,16 @@ $('#manageAcct').click(function(e){
 })();
 </script>
 <script>
+    $(function () {
+        $.ajax({
+            url: '../home/ranking?action=ranking',
+            type: 'post',
+            dataType: 'json',
+            complete:function (res) {
+                console.log(res);
+            }
+        });
+    })
 
 </script>
 </body>

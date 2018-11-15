@@ -55,6 +55,11 @@ class Home extends CI_Controller {
 >"}]})');
 		 
 	}
+
+	public function ranking(){
+        $json = "abc";
+        die(json_encode($json));
+    }
 	
 }
 
