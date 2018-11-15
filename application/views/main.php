@@ -70,6 +70,26 @@ $("#username").text(parent.SYSTEM.realName);
         width: 150px;
         margin-top: -5%;
     }
+    #btn>button{
+        display: block;
+        width: 80px;
+        height: 30px;
+        margin-top: 10px;
+        border: none;
+        border-radius: 5%;
+    }
+    #btn>button:nth-child(1){
+        background-color: #68bbef;
+        box-shadow: 0 0 10px #68bbef;
+    }
+    #btn>button:nth-child(2){
+        background-color: #f7c35b;
+        box-shadow: 0 0 10px #f7c35b;
+    }
+    #btn>button:nth-child(3){
+        background-color: #f77766;
+        box-shadow: 0 0 10px #f77766;
+    }
 </style>
 <div id="bd" class="index-body cf">
   <div class="col-main">
@@ -93,8 +113,16 @@ $("#username").text(parent.SYSTEM.realName);
 		  </tr>
 		</table>
       </div>
-        <p>提成折线图</p>
-        <div id="line" style="width:90%;height:492px;"></div>
+        <div>
+            <p>提成折线图</p>
+            <div id="btn" style="float: right">
+                <button type="button" onclick="show(7)">最近7天</button>
+                <button type="button" onclick="show(30)">最近30天</button>
+                <button type="button" onclick="show(365)">最近一年</button>
+            </div>
+            <div id="line" style="width:90%;height:492px;float: left"></div>
+        </div>
+
     </div>
   </div>
   <div class="col-extra">
