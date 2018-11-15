@@ -1,11 +1,11 @@
 $(function () {
-   show("week");
+   show(7);
 });
 function show(time) {
     $.ajax({
         url:"../home/k?action=k",
         method:"POST",
-        data:{time:time},
+        data:{id:'',time:time},
         dataType:"json",
         success:function (res) {
             echart(res.time,res.extract);
