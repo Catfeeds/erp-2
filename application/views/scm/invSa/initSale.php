@@ -90,7 +90,6 @@ $(function() {
           <span class="ui-combo-wrap" id="sales" style="display: none">
               <input type="text" class="input-txt" autocomplete="off">
           <i class="trigger"></i></span>
-
             <span class="ui-combo-wrap"><input type="text" id="Sextract" class="input-txt" autocomplete="off" value="<?php echo $username ?>" readonly></span>
             <input type="text" id="id" style="display: none" class="input-txt" autocomplete="off" value="<?php echo $id ?>" readonly>
         </dd>
@@ -233,7 +232,6 @@ $(function() {
     </div>
     <div id="mark"></div>
   </div>
-  
   <div id="initCombo" class="dn">
     <input type="text" class="textbox goodsAuto" name="goods" autocomplete="off">
     <input type="text" class="textbox storageAuto" name="storage" autocomplete="off">

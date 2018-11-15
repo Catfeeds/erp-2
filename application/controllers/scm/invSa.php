@@ -316,7 +316,6 @@ class InvSa extends CI_Controller {
 	    $this->common_model->checkpurview(6);
 	    $id   = intval($this->input->get_post('id',TRUE));
 		$data =  $this->data_model->get_invoice('a.id='.$id.' and a.billType="SALE"',1);
-//        var_dump($data);
         $this->mysql_model->update('admin',array('extractCount_before'=>$data['totalExtractCount']),array('uid'=>$data['salesId']));
 
 		if (count($data)>0) {
@@ -326,6 +325,7 @@ class InvSa extends CI_Controller {
 			$info['data']['buId']               = intval($data['buId']);
 			$info['data']['cLevel']             = 2;
 			$info['data']['contactName']        = $data['contactName'];
+			$info['data']['contactExtract']     = $data['contactExtract'];
 			$info['data']['salesId']            = intval($data['salesId']);
 			$info['data']['date']               = $data['billDate'];
 			$info['data']['billNo']             = $data['billNo'];
@@ -337,6 +337,7 @@ class InvSa extends CI_Controller {
 			$info['data']['checked']            = intval($data['checked']);
 			$info['data']['checkName']          = $data['checkName'];
 			$info['data']['disRate']            = (float)$data['disRate'];
+			$info['data']['extract']            = $data['extract'];
 			$info['data']['disAmount']          = (float)$data['disAmount'];
 			$info['data']['amount']             = (float)abs($data['amount']);
 			$info['data']['rpAmount']           = (float)abs($data['rpAmount']);
