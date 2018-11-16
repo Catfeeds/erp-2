@@ -90,6 +90,23 @@ $("#username").text(parent.SYSTEM.realName);
         background-color: #f77766;
         box-shadow: 0 0 10px #f77766;
     }
+
+    #data>button{
+        display: block;
+        width: 80px;
+        height: 30px;
+        margin-top: 10px;
+        border: none;
+        border-radius: 5%;
+    }
+    #data>button:nth-child(1){
+        background-color: #73a2e1;
+        box-shadow: 0 0 10px #73a2e1;
+    }
+    #data>button:nth-child(2){
+        background-color: #acda65;
+        box-shadow: 0 0 10px #acda65;
+    }
 </style>
 <div id="bd" class="index-body cf">
   <div class="col-main">
@@ -113,12 +130,18 @@ $("#username").text(parent.SYSTEM.realName);
 		  </tr>
 		</table>
       </div>
+        <div id="data" style="float: right">
+            <input type="hidden" id="person" value="1">
+            <button type="button" onclick="setPerson(1)">我的数据</button>
+            <button type="button" onclick="setPerson(0)">总数据</button>
+        </div>
         <div>
             <p>提成折线图</p>
             <div id="btn" style="float: right">
-                <button type="button" onclick="show(7)">最近7天</button>
-                <button type="button" onclick="show(30)">最近30天</button>
-                <button type="button" onclick="show(365)">最近一年</button>
+                <input type="hidden" id="time" value="7">
+                <button type="button" onclick="settime(7)">最近7天</button>
+                <button type="button" onclick="settime(30)">最近30天</button>
+                <button type="button" onclick="settime(365)">最近一年</button>
             </div>
             <div id="line" style="width:90%;height:492px;float: left"></div>
         </div>
@@ -140,7 +163,16 @@ $("#username").text(parent.SYSTEM.realName);
 
 <script type="text/javascript" src="<?php echo base_url()?>statics/k/js/echarts.min.js"></script>
 <script type="text/javascript" src="<?php echo base_url()?>statics/k/js/index.js"></script>
-
+<script>
+    function setPerson(data) {
+        $('#person').val(data);
+        show();
+    }
+    function settime(time) {
+        $('#time') .val(time);
+        show();
+    }
+</script>
 
 <script id="profile" type="text/html">
 		<table width="100%" border="0" cellspacing="0" cellpadding="20">
