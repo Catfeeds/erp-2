@@ -131,7 +131,7 @@ class Home extends CI_Controller {
                 $day = $day-1;
             }
 
-            $sql = "select * from `ci_invoice` where salesId = $id and year(createTime) = $year and month(createTime) = $month and day(createTime) = $day";
+            $sql = "select * from `ci_invoice` where salesId = $id and transTypeName = '销货'and year(createTime) = $year and month(createTime) = $month and day(createTime) = $day";
             $data = $this->mysql_model->query($sql,2);
             $S = $year.'.'.$month.'.'.$day.'.';
             foreach ($data as $k=>$v){
@@ -165,6 +165,82 @@ class Home extends CI_Controller {
         $g['time'] = array_reverse($ri);
 
         return $g  ;
+    }
+
+
+    public function getAllData(){
+        $i = $this->input->get_post('time',true);
+        $day = date('d',time());
+        $month = date('m',time());
+        $year = date('Y',time());
+        $res = array();
+        $ri = array();
+
+        for ($t=0;$t < $i;$t++){
+
+            if($day == 1 && $month == 1){
+                $year = $year - 1;
+                $month = 12;
+                $day = 31;
+            }elseif ($day == 1 && ($month == 2 || $month == 4 || $month == 6 || $month == 9 || $month == 11) ){
+                $year = $year;
+                $month = $month-1;
+                $day = 31;
+            }elseif ($day == 1 && ($month == 5 || $month == 7 || $month == 8 || $month == 10 || $month == 12) ){
+                $year = $year;
+                $month = $month-1;
+                $day = 30;
+            }elseif ($day == 1 && $month == 3){
+                if(($year%4==0&&$year%100!=0)||($year%400==0)){
+                    $year = $year;
+                    $month = $month-1;
+                    $day = 29;
+                }else{
+                    $year = $year;
+                    $month = $month-1;
+                    $day = 28;
+                }
+
+            }else{
+                $year = $year;
+                $month = $month;
+                $day = $day-1;
+            }
+
+            $sql = "select * from `ci_invoice` where transTypeName = '销货' and year(createTime) = $year and month(createTime) = $month and day(createTime) = $day";
+            $data = $this->mysql_model->query($sql,2);
+            $S = $year.'.'.$month.'.'.$day.'.';
+            foreach ($data as $k=>$v){
+                $res[$t] += $v['totalExtractCount'];
+            }
+
+            if(!$res[$t]){
+                $res[$t] = 0;
+            }
+
+
+            if($i == 7){
+                $ri[$t] = $S;
+            }else if($i == 30 ){
+                if( $t%3 == 0){
+                    $ri[$t] = $S;
+                }else{
+                    $ri[$t] = "";
+                }
+            }else if($i == 365){
+                if( $t%30 == 0){
+                    $ri[$t] = $S;
+                }else{
+                    $ri[$t] = "";
+                }
+            }
+        }
+
+        $g = array();
+        $g['extract'] = array_reverse($res);
+        $g['time'] = array_reverse($ri);
+
+        return json_encode($g);
     }
 }
 
