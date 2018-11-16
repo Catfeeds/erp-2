@@ -1,11 +1,13 @@
 $(function () {
-   show(7);
+   show();
 });
-function show(time) {
+function show() {
+    var person = $('#person').val();
+    var time = $('#time').val();
     $.ajax({
         url:"../home/k?action=k",
         method:"POST",
-        data:{id:'',time:time},
+        data:{id:'',time:time,person:person},
         dataType:"json",
         success:function (res) {
             echart(res.time,res.extract);
