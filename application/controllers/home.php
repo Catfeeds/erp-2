@@ -163,7 +163,7 @@ class Home extends CI_Controller {
         $g = array();
         $g['extract'] = array_reverse($res);
         $g['time'] = array_reverse($ri);
-    
+
         return $g  ;
     }
 }
