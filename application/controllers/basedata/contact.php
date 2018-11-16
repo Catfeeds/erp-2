@@ -187,7 +187,8 @@ class Contact extends CI_Controller {
 		switch ($data['type']) {
 			case 10:
 				$this->common_model->checkpurview(59);
-				$success = '新增客户:';	
+				$success = '新增客户:';
+                
 				break;  
 			case -10:
 				$this->common_model->checkpurview(64);
@@ -200,7 +201,7 @@ class Contact extends CI_Controller {
             $data['extract'] = 0;
         }
 		$this->mysql_model->get_count('contact',array('isDelete'=>0,'type'=>$data['type'],'number'=>$data['number'])) > 0 && str_alert(-1,'编号重复');
-        $this->mysql_model->get_count('contact',array('isDelete'=>0,'type'=>$data['type'],'taobao'=>$data['taobao'])) > 0 && str_alert(-1,'淘宝账号重复');
+
 		$data = elements(array(
 					'name','extract','taobao','number','amount','beginDate','cCategory',
 					'cCategoryName','cLevel','cLevelName','linkMans'
