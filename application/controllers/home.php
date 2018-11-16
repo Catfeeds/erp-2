@@ -83,14 +83,23 @@ class Home extends CI_Controller {
     public function k(){
         $id = $this->input->get_post('id',true);
         $e = $this->input->get_post('time',true);
+        $all = $this->input->get_post('person',true);
+
         if(!$id){
             $id = $this->jxcsys['uid'];
         }
         if(!$e){
             $e = 7;
         }
-        $res = $this->getData($id,$e);
-        die(json_encode($res));
+        if($all){
+            $res = $this->getData($id,$e);
+            die(json_encode($res));
+        }else{
+            $res = $this->getAllData($e);
+            die(json_encode($res));
+        }
+
+
     }
 
     public function getData($id,$i){
@@ -168,8 +177,8 @@ class Home extends CI_Controller {
     }
 
 
-    public function getAllData(){
-        $i = $this->input->get_post('time',true);
+    public function getAllData($i){
+
         $day = date('d',time());
         $month = date('m',time());
         $year = date('Y',time());
@@ -240,7 +249,7 @@ class Home extends CI_Controller {
         $g['extract'] = array_reverse($res);
         $g['time'] = array_reverse($ri);
 
-        return json_encode($g);
+        return $g;
     }
 }
 
