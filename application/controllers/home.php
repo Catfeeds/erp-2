@@ -66,7 +66,7 @@ class Home extends CI_Controller {
 
     public function run(){
 
-        $sql =" SELECT * FROM `ci_invoice` WHERE checked = 1 and billType = 'SALE' order by `modifyTime` DESC limit 3";
+        $sql =" SELECT * FROM `ci_invoice` WHERE checked = 1 and billType = 'SALE' order by `modifyTime` DESC limit 1";
         $ret = $this->mysql_model->query($sql,2);
 
         foreach($ret as $k=>$v){

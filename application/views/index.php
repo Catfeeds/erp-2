@@ -915,9 +915,6 @@ var _hmt = _hmt || [];
                 var extract3 = '&nbsp;的销货单！！！&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
                 var extract4 = '</a></li>';
 
-
-
-
                 $.each(res.responseJSON,function(index,val){
 
                     extract += extract1 + val.salesName + extract2 + val.totalAmount + extract3 + extract4;
