@@ -39,6 +39,16 @@ class Inventory extends CI_Controller {
 			$v[$arr]['number']        = $row['number'];
 			$v[$arr]['brand']         = $row['brand'];
 			$v[$arr]['extract']       = $row['extract'];
+			$v[$arr]['series']        = $row['series'];
+			$v[$arr]['serialNumber']  = $row['serialNumber'];
+			$v[$arr]['billing']       = $row['billing'];
+			$v[$arr]['display']       = $row['display'];
+			$v[$arr]['nameE']         = $row['nameE'];
+			$v[$arr]['barCode']       = $row['barCode'];
+			$v[$arr]['retailPrice']   = $row['retailPrice'];
+			$v[$arr]['packing']       = $row['packing'];
+			$v[$arr]['taobaoPrice']   = $row['taobaoPrice'];
+			$v[$arr]['fixPrice']      = $row['fixPrice'];
 			$v[$arr]['pinYin']        = $row['pinYin'];
 			$v[$arr]['locationId']    = intval($row['locationId']);
 			$v[$arr]['locationName']  = $row['locationName'];

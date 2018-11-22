@@ -155,8 +155,6 @@ class Import extends CI_Controller {
                 $good['remark']        = $row[14];//备注
 
 
-                empty($row[6])&&str_alert(-1,'商品【'.$row[6].'】条码不能为空！');
-
                 if ($good['packing']){
                     $reg = "/(\D+)/";
                     preg_match($reg,$good['packing'],$m);
@@ -182,8 +180,6 @@ class Import extends CI_Controller {
                     $rtn['id'] = $this->mysql_model->insert('goods',$info);
 //                    var_dump($info);exit;
 //                    $this->mysql_model->insert('goods_img',$good['img'],array('invId'=>$rtn['id']));
-                }else {
-                    str_alert(-1,'商品'. $good['number'] .'条码已存在！');
                 }
             }
         }else if($first[1]=='客户编号'){

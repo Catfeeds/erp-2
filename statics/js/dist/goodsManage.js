@@ -1568,9 +1568,6 @@ function initValidator() {
 					async: !1,
 					success: function(a, b) {
 						return a ? void(c = -1 == a.status ? rowData && rowData.barCode === c ? !0 : "商品条码已经存在！" : !0) : !1
-					},
-					error: function(a) {
-						c = "远程数据校验失败！"
 					}
 				}), c
 			},

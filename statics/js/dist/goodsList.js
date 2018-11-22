@@ -140,6 +140,66 @@ $(function() {
                 width: 50,
                 title: !0
             }, {
+                name: "series",
+                label: "系列",
+                index: "series",
+                width: 100,
+                title: !0
+            }, {
+                name: "serialNumber",
+                label: "序号",
+                index: "serialNumber",
+                width: 100,
+                title: !0
+            }, {
+                name: "billing",
+                label: "开单编码",
+                index: "billing",
+                width: 100,
+                title: !0
+            }, {
+                name: "display",
+                label: "陈列",
+                index: "display",
+                width: 100,
+                title: !0
+            }, {
+                name: "barCode",
+                label: "条码",
+                index: "barCode",
+                width: 100,
+                title: !0
+            }, {
+                name: "nameE",
+                label: "英文名",
+                index: "nameE",
+                width: 100,
+                title: !0
+            }, {
+                name: "retailPrice",
+                label: "零售价",
+                index: "retailPrice",
+                width: 100,
+                title: !0
+            }, {
+                name: "packing",
+                label: "装箱规格",
+                index: "packing",
+                width: 100,
+                title: !0
+            }, {
+                name: "taobaoPrice",
+                label: "淘宝出货价",
+                index: "taobaoPrice",
+                width: 100,
+                title: !0
+            }, {
+                name: "fixPrice",
+                label: "定价",
+                index: "fixPrice",
+                width: 100,
+                title: !0
+            }, {
                 name: "remark",
                 label: "备注",
                 index: "remark",
@@ -158,7 +218,8 @@ $(function() {
 			datatype: "json",
 			width: a.w,
 			height: a.h,
-			altRows: !0,
+            autoScroll: true,
+            altRows: !0,
 			gridview: !0,
 			onselectrow: !1,
 			colModel: l,

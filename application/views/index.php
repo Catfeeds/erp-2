@@ -679,6 +679,9 @@ var _hmt = _hmt || [];
         line-height:25px;
         text-align:right;
     }
+    .l-tab-links ul{
+        padding: 7px 0 0 1px;;
+    }
 </style>
 </head>
 <body>
@@ -805,86 +808,7 @@ var _hmt = _hmt || [];
       </ul>
     </div>
     <div id="main-bd">
-        <div class="nav">
-            <div class="nav_top">
-                <div class="nav_l">
-                    <ul class="clearfix">
-                        <li>我的工作台</li>
-                        <li class="space">｜</li>
-                    </ul>
-                </div>
-                <div class="nav_c">
-                    <ul class="clearfix">
-                        <li><a parentOpen="true" rel="pageTab" href="<?php echo site_url('scm/invPu?action=initPur')?>">购货单</a></li>
-<!--                        <li><a parentOpen="true" rel="pageTab" href="--><?php //echo site_url('scm/invPu?action=initPur&transType=150502')?><!--">购货退货单</a></li>-->
-                        <li><a parentOpen="true" rel="pageTab" href="<?php echo site_url('scm/invSo?action=initSo')?>">客户订单</a></li>
-                        <li><a parentOpen="true" rel="pageTab" href="<?php echo site_url('scm/invSa?action=initSale')?>">销货单</a></li>
-<!--                        <li><a parentOpen="true" rel="pageTab" href="--><?php //echo site_url('scm/invSa?action=initSale&transType=150602')?><!--">销货退货单</a></li>-->
-<!--                        <li><a parentOpen="true" rel="pageTab" href="--><?php //echo site_url('scm/invTf?action=initTf')?><!--">调拨单</a></li>-->
-<!--                        <li><a parentOpen="true" rel="pageTab" href="--><?php //echo site_url('storage/inventory')?><!--">库存查询</a></li>-->
-<!--                        <li><a parentOpen="true" rel="pageTab" href="--><?php //echo site_url('scm/invOi?action=initOi&type=in')?><!--">其他入库单</a></li>-->
-<!--                        <li><a parentOpen="true" rel="pageTab" href="--><?php //echo site_url('scm/invOi?action=initOi&type=out')?><!--">其他出库单</a></li>-->
-                        <li><a parentOpen="true" rel="pageTab" href="<?php echo site_url('scm/receipt?action=initReceipt')?>">收款单</a></li>
-                        <li><a parentOpen="true" rel="pageTab" href="<?php echo site_url('scm/payment?action=initPay')?>">付款单</a></li>
-<!--                        <li><a parentOpen="true" rel="pageTab" href="--><?php //echo site_url('scm/ori?action=initInc')?><!--">其他收入单</a></li>-->
-<!--                        <li><a parentOpen="true" rel="pageTab" href="--><?php //echo site_url('scm/ori?action=initExp')?><!--">其他支出单</a></li>-->
-<!--                        <li><a parentOpen="true" rel="pageTab" href="--><?php //echo site_url('report/pu_detail_new')?><!--">采购明细表</a></li>-->
-<!--                        <li><a parentOpen="true" rel="pageTab" href="--><?php //echo site_url('report/pu_summary_new')?><!--">采购汇总表(按商品)</a></li>-->
-<!--                        <li><a parentOpen="true" rel="pageTab" href="--><?php //echo site_url('report/pu_summary_supply_new')?><!--">采购汇总表(按供应商)</a></li>-->
-<!--                        <li><a parentOpen="true" rel="pageTab" href="--><?php //echo site_url('report/sales_detail')?><!--">销售明细表</a></li>-->
-<!--                        <li><a parentOpen="true" rel="pageTab" href="--><?php //echo site_url('report/sales_summary')?><!--">销售汇总表(按商品)</a></li>-->
-<!--                        <li><a parentOpen="true" rel="pageTab" href="--><?php //echo site_url('report/sales_summary_customer_new')?><!--">销售汇总表(按客户)</a></li>-->
-<!--                        <li><a parentOpen="true" rel="pageTab" href="--><?php //echo site_url('report/contact_debt_new')?><!--">往来单位欠款表</a></li>-->
-<!--                        <li><a parentOpen="true" rel="pageTab" href="--><?php //echo site_url('report/sales_profit')?><!--">销售利润表</a></li>-->
-<!--                        <li><a parentOpen="true" rel="pageTab" href="--><?php //echo site_url('report/goods_balance')?><!--">商品库存余额表</a></li>-->
-<!--                        <li><a parentOpen="true" rel="pageTab" href="--><?php //echo site_url('report/goods_flow_detail')?><!--">商品收发明细表</a></li>-->
-<!--                        <li><a parentOpen="true" rel="pageTab" href="--><?php //echo site_url('report/goods_flow_summary')?><!--">商品收发汇总表</a></li>-->
-<!--                        <li><a parentOpen="true" rel="pageTab" href="--><?php //echo site_url('report/cash_bank_journal_new')?><!--">现金银行报表</a></li>-->
-<!--                        <li><a parentOpen="true" rel="pageTab" href="--><?php //echo site_url('report/account_pay_detail_new?action=detailSupplier')?><!--">应付账款明细表</a></li>-->
-<!--                        <li><a parentOpen="true" rel="pageTab" href="--><?php //echo site_url('report/account_proceeds_detail_new?action=detail')?><!--">应收账款明细表</a></li>-->
-<!--                        <li><a parentOpen="true" rel="pageTab" href="--><?php //echo site_url('report/customers_reconciliation_new')?><!--">客户对账单</a></li>-->
-<!--                        <li><a parentOpen="true" rel="pageTab" href="--><?php //echo site_url('report/suppliers_reconciliation_new')?><!--">供应商对账单</a></li>-->
-<!--                        <li><a parentOpen="true" rel="pageTab" href="--><?php //echo site_url('report/other_income_expense_detail')?><!--">其他收支明细表</a></li>-->
-<!--                        <li><a parentOpen="true" rel="pageTab" href="--><?php //echo site_url('settings/customer_list')?><!--">客户管理</a></li>-->
-                        <li><a parentOpen="true" rel="pageTab" href="<?php echo site_url('settings/vendor_list')?>">供应商管理</a></li>
-                        <li><a parentOpen="true" rel="pageTab" href="<?php echo site_url('settings/goods_list')?>">商品管理</a></li>
-                        <li><a parentOpen="true" rel="pageTab" href="<?php echo site_url('settings/storage_list')?>">仓库管理</a></li>
-<!--                        <li><a parentOpen="true" rel="pageTab" href="--><?php //echo site_url('settings/staff_list')?><!--">职员管理</a></li>-->
-<!--                        <li><a parentOpen="true" rel="pageTab" href="--><?php //echo site_url('settings/settlement_account')?><!--">账户管理</a></li>-->
-<!--                        <li><a parentOpen="true" rel="pageTab" href="--><?php //echo site_url('settings/category_list?typeNumber=customertype')?><!--">客户类别</a></li>-->
-                        <li><a parentOpen="true" rel="pageTab" href="<?php echo site_url('settings/category_list?typeNumber=supplytype')?>">供应商类别</a></li>
-                        <li><a parentOpen="true" rel="pageTab" href="<?php echo site_url('settings/category_list?typeNumber=trade')?>">商品类别</a></li>
-                        <li><a parentOpen="true" rel="pageTab" href="<?php echo site_url('settings/brand_list?typeNumber=brand')?>">品牌</a></li>
-<!--                        <li><a parentOpen="true" rel="pageTab" href="--><?php //echo site_url('settings/category_list?typeNumber=paccttype')?><!--">支出类别</a></li>-->
-<!--                        <li><a parentOpen="true" rel="pageTab" href="--><?php //echo site_url('settings/category_list?typeNumber=raccttype')?><!--">收入类别</a></li>-->
-<!--                        <li><a parentOpen="true" rel="pageTab" href="--><?php //echo site_url('settings/unit_list')?><!--">计量单位</a></li>-->
-<!--                        <li><a parentOpen="true" rel="pageTab" href="--><?php //echo site_url('settings/settlement_category_list')?><!--">结算方式</a></li>-->
-<!--                        <li><a parentOpen="true" rel="pageTab" href="--><?php //echo site_url('settings/system_parameter')?><!--">系统参数</a></li>-->
-<!--                        <li><a parentOpen="true" rel="pageTab" href="--><?php //echo site_url('settings/authority')?><!--">权限设置</a></li>-->
-<!--                        <li><a parentOpen="true" rel="pageTab" href="--><?php //echo site_url('settings/log')?><!--">操作日志</a></li>-->
-<!--                        <li><a parentOpen="true" rel="pageTab" href="--><?php //echo site_url('settings/backup')?><!--">备份与恢复</a></li>-->
-                    </ul>
-                </div>
 
-                <div class="nav_r">
-                    <ul class="clearfix">
-<!--                        <li><a href="javascript:void(0);"><i class="iconfont" style="color: #fff">&#xe504;</i></a></li>-->
-<!--                        <li><a href="javascript:void(0);"><i class="iconfont" style="color: #fff">&#xe653;</i></a></li></a></li>-->
-                    </ul>
-                </div>
-
-            </div>
-            <div class="nav_bottom">
-                <div class="box">
-                    <div class="Box">
-                        <ul class="scroll" id = "run">
-
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-        </div>
 
       <div class="page-tab" id="page-tab">
       </div>
