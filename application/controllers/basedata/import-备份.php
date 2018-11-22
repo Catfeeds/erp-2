@@ -118,7 +118,6 @@ class Import extends CI_Controller {
         //$reader = new Excel_reader2(); // 实例化解析类Spreadsheet_Excel_Reader
 	    $reader = $this->excel_reader2;
         $reader->setOutputEncoding("utf-8");    // 设置编码方式
-
         $reader->read("{$path['tmp_name']}");
         $data = $reader->sheets[0]['cells'];
         if(!isset($data[2])||!isset($data[2][1]))
@@ -126,64 +125,83 @@ class Import extends CI_Controller {
         $first = array_shift($data);
         $itype = "";
         $this->db->trans_begin();
-        if($first[1]=='系列'){
+        if($first[1]=='商品编号'){
             $itype = "商品";
-            foreach ($data as $arr=>$row) {
-                $good['number']       = $row[6];//条码
-                $existgood = $this->mysql_model->get_rows('goods',array('isDelete'=>0,'number'=>$good['number']));
-                if(count($existgood) != 0){
-                    str_alert(-1,'商品'. $good['number'] .'条码已存在！');
-                }
-            }
             foreach ($data as $arr=>$row) {
                 if(empty($row[1]))
                     continue;
-                $good['series']        = $row[1];//系列
-                $good['serialNumber']  = $row[2];//序号
-//                $good['img']           = $row[3];//图片
-                $good['billing']       = $row[4];//开单编号
-                $good['display']       = $row[5];//陈列
-                $good['number']        = $row[6];//商品编号
-                $good['barCode']       = $row[6];//条码
-                $good['name']          = $row[7];//中文名
-                $good['nameE']         = $row[8];//英文名
-                $good['spec']          = $row[9];//规格
-                $good['retailPrice']   = $row[10];//零售价
-                $good['packing']       = $row[11];//装箱规格
-                $good['taobaoPrice']   = $row[12];//淘宝出货价
-                $good['fixPrice']      = $row[13];//定价
-                $good['remark']        = $row[14];//备注
-
-
-                empty($row[6])&&str_alert(-1,'商品【'.$row[6].'】条码不能为空！');
-
-                if ($good['packing']){
-                    $reg = "/(\D+)/";
-                    preg_match($reg,$good['packing'],$m);
-                    $unit = substr($m[0],0,strpos($m[0], '/'));
-                    $list = $this->mysql_model->get_rows('unit',array('name'=>$unit));
-                    if (count($list) > 0) {
-                        $good['baseUnitId']= $list['id'];
-                    }else{
-                        $good['baseUnitId'] = $this->mysql_model->insert('unit',array('name'=>$unit,'status'=>1,'unitTypeId'=>0,'default'=>0,'rate'=>0,'isDelete'=>0));
-                    }
-                    $good['unitName']= $unit;
+                $good['number'] = $row[1];
+                $good['name'] = $row[2];
+                $good['barCode'] = $row[3];
+                $good['spec'] = $row[4];
+                //$good['categoryId'] = 1;
+                //$good['categoryName'] = $row[5];
+                //$good['locationId'] = $row[6];
+                //$good['baseUnitId'] = $row[9];
+                $good['purPrice'] = floatval($row[10]);
+                $good['wholesalePrice'] = floatval($row[12]);
+                $good['salePrice'] = floatval($row[11]);
+                $good['pinYin'] = $this->getpinyin->getFirstPY($row[2]);
+                $good['sonGoods'] = '[]';
+                $good['dopey'] = 0;
+                $good['brand'] = $row[24];
+                empty($row[5])&&str_alert(-1,'商品【'.$row[2].'】类别不能为空！');
+                empty($row[6])&&str_alert(-1,'商品【'.$row[2].'】仓库不能为空！');
+                empty($row[9])&&str_alert(-1,'商品【'.$row[2].'】计量单位不能为空！');
+                $list = $this->mysql_model->get_rows('storage',array('isDelete'=>0,'name'=>$row[6]));
+                if (count($list) > 0) {
+                    $good['locationId']= $list['id'];
+                    $good['locationName']= $row[6];
+                }else 
+                    str_alert(-1,'仓库【'.$row[6].'】不存在,请先添加仓库后再导入！');
+                $list = $this->mysql_model->get_rows('category',array('name'=>$row[5],'typeNumber'=>'trade'));
+                if (count($list) > 0) {
+                    $good['categoryId']= $list['id'];
+                    $good['categoryName']= $row[5];
+                }else{
+                    str_alert(-1,'商品类别【'.$row[5].'】不存在,请先添加商品类别再导入！');
+                }
+                $list = $this->mysql_model->get_rows('unit',array('name'=>$row[9]));
+                if (count($list) > 0) {
+                    $good['baseUnitId']= $list['id'];
+                    $good['unitName']= $row[9];
+                }else{
+                    str_alert(-1,'计量单位【'.$row[9].'】不存在,请先添加计量单位再导入！');
                 }
 
-
                 $info = array(
-                    'series','serialNumber','billing','display','number','barCode','name','nameE',
-                    'spec','retailPrice','packing','taobaoPrice','fixPrice','remark','baseUnitId','unitName'
+                    'number','name','barCode','spec','categoryId','locationId','baseUnitId','purPrice','salePrice',
+                    'locationName','unitName','categoryName','pinYin','sonGoods','dopey','wholesalePrice','brand'
                 );
                 $info = elements($info,$good,NULL);
 
                 $existgood = $this->mysql_model->get_rows('goods',array('isDelete'=>0,'number'=>$good['number']));
+//                 if($this->mysql_model->get_count('goods',array('isDelete'=>0,'number'=>$good['number'])) <= 0){
                 if(count($existgood) <= 0){
                     $rtn['id'] = $this->mysql_model->insert('goods',$info);
-//                    var_dump($info);exit;
-//                    $this->mysql_model->insert('goods_img',$good['img'],array('invId'=>$rtn['id']));
                 }else {
-                    str_alert(-1,'商品'. $good['number'] .'条码已存在！');
+                    $rtn['id'] = $existgood['id'];
+                    $this->mysql_model->delete('invoice_info',array('billType'=>'INI','invId'=>$rtn['id']));
+                    $this->mysql_model->update('goods',$info,array('number'=>$good['number']));
+                }
+                if(!empty($row[19])){
+                    $list = $this->mysql_model->get_rows('storage',array('isDelete'=>0,'name'=>$row[19]));
+                    if (count($list) > 0) {
+                        $arr = 0;
+                        $v[$arr]['invId']         = $rtn['id'];
+                        $v[$arr]['locationId']    = $list['id'];
+                        $v[$arr]['qty']           = floatval($row[21]);
+                        $v[$arr]['price']         = floatval($row[22]);
+                        $v[$arr]['amount']        = floatval($row[21])*floatval($row[22]);
+                        $v[$arr]['skuId']         = 0;
+                        $v[$arr]['billDate']      = date('Y-m-d');;
+                        $v[$arr]['billNo']        = '期初数量';
+                        $v[$arr]['billType']      = 'INI';
+                        $v[$arr]['transTypeName'] = '期初数量';
+                        if (isset($v)) {
+                            $this->mysql_model->insert('invoice_info',$v);
+                        }
+                    }
                 }
             }
         }else if($first[1]=='客户编号'){
