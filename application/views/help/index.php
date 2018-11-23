@@ -973,7 +973,7 @@ $(document).keydown(function(event) {
                     $(".select-menu-ul").eq(index).hide();
                     $(".select-menu-div").eq(index).find("i").removeClass("select-menu-i");
                     $(".select-menu-ul").eq(index).animate({marginTop:"50px",opacity:"0"},"fast");
-                    a
+
                 }
             });
         }

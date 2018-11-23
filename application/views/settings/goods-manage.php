@@ -212,6 +212,42 @@ i{
                         <div class="label-wrap"><label for="extract">提成点</label></div>
                         <div class="ctn-wrap"><input type="number" max="100" min="0" step="0.001" value="" class="ui-input" name="extract" id="extract"></div>
                     </li>
+                    <li class="row-item">
+                        <div class="label-wrap"><label for="series">系列</label></div>
+                        <div class="ctn-wrap"><input type="text" value="" class="ui-input" name="series" id="series"></div>
+                    </li>
+                    <li class="row-item">
+                        <div class="label-wrap"><label for="display">陈列</label></div>
+                        <div class="ctn-wrap"><input type="text" value="" class="ui-input" name="display" id="display"></div>
+                    </li>
+                    <li class="row-item">
+                        <div class="label-wrap"><label for="serialNumber">序号</label></div>
+                        <div class="ctn-wrap"><input type="number" value="" class="ui-input" name="serialNumber" id="serialNumber"></div>
+                    </li>
+                    <li class="row-item">
+                        <div class="label-wrap"><label for="nameE">英文名称</label></div>
+                        <div class="ctn-wrap"><input type="text" value="" class="ui-input" name="nameE" id="nameE"></div>
+                    </li>
+                    <li class="row-item">
+                        <div class="label-wrap"><label for="retailPrice">零售价</label></div>
+                        <div class="ctn-wrap"><input type="number" value="" class="ui-input" name="retailPrice" id="retailPrice"></div>
+                    </li>
+                    <li class="row-item">
+                        <div class="label-wrap"><label for="packing">装箱规格</label></div>
+                        <div class="ctn-wrap"><input type="text" value="" class="ui-input" name="packing" id="packing"></div>
+                    </li>
+                    <li class="row-item">
+                        <div class="label-wrap"><label for="taobaoPrice">淘宝出货价</label></div>
+                        <div class="ctn-wrap"><input type="number" value="" class="ui-input" name="taobaoPrice" id="taobaoPrice"></div>
+                    </li>
+                    <li class="row-item">
+                        <div class="label-wrap"><label for="fixPrice">定价</label></div>
+                        <div class="ctn-wrap"><input type="number" value="" class="ui-input" name="fixPrice" id="fixPrice"></div>
+                    </li>
+                    <li class="row-item">
+                        <div class="label-wrap"><label for="billing">开单编号</label></div>
+                        <div class="ctn-wrap"><input type="text" value="" class="ui-input" name="billing" id="billing"></div>
+                    </li>
 
                     <li class="row-item dn">
                         <div class="label-wrap"><label for="guarantDate">保质期天数</label></div>

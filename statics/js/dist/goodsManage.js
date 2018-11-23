@@ -71,7 +71,16 @@ function getCustomerData() {
 			number: $.trim($("#number").val()),
 			name: $.trim($("#name").val()),
 			brand: $.trim($("#brand").val()),
-            extract: $.trim($("#extract").val()),
+            series: $.trim($("#series").val()),
+            serialNumber: Number($.trim($("#serialNumber").val())) || 0,
+            display: $.trim($("#display").val()),
+            nameE: $.trim($("#nameE").val()),
+            retailPrice: Number($.trim($("#retailPrice").val())) || 0,
+            packing: $.trim($("#packing").val()),
+            taobaoPrice: Number($.trim($("#taobaoPrice").val())) || 0,
+            fixPrice: Number($.trim($("#fixPrice").val())) || 0,
+            billing: $.trim($("#billing").val()),
+            extract: Number($.trim($("#extract").val())) || 0,
 			categoryId: categoryTree.getValue(),
 			spec: $.trim($("#specs").val()),
 			locationId: storageCombo.getValue(),
@@ -300,7 +309,7 @@ function getTempData(a) {
 	})
 }
 function initField() {
-	$("#note").placeholder(), "edit" == oper ? ($("#number").val(rowData.number), $("#name").val(rowData.name), $category.data("defItem", rowData.categoryId), $("#brand").val(rowData.brand),$("#extract").val(rowData.extract), $("#specs").val(rowData.spec), $("#storage").data("defItem", rowData.locationId), $("#unit").data("defItem", ["id", rowData.baseUnitId]), void 0 != rowData.purPrice && $("#purchasePrice").val(Public.numToCurrency(rowData.purPrice, pricePlaces)), void 0 != rowData.salePrice && ($("#salePrice").val(Public.numToCurrency(rowData.salePrice, pricePlaces)), $("#wholesalePrice").val(Public.numToCurrency(rowData.wholesalePrice, pricePlaces)), $("#vipPrice").val(Public.numToCurrency(rowData.vipPrice, pricePlaces)), $("#discountRate1").val(rowData.discountRate1), $("#discountRate2").val(rowData.discountRate2)), $("#minInventory").val(rowData.lowQty), $("#maxInventory").val(rowData.highQty), rowData.remark && $("#note").val(rowData.remark), $("#barCode").val(rowData.barCode), $("#length").val(rowData.length), $("#width").val(rowData.width), $("#height").val(rowData.height), $("#weight").val(rowData.weight), rowData.isSerNum && ($isSerNum[0].checked = !0), rowData.isWarranty && ($isWarranty[0].checked = !0, $(".isWarrantyIn").show(), $safeDays.val(rowData.safeDays), $advanceDay.val(rowData.advanceDay))) : $("#storage").data("defItem", 0), api.opener.parent.SYSTEM.isAdmin || (rights.AMOUNT_INAMOUNT || $("#purchasePrice").closest("li").hide(), rights.AMOUNT_OUTAMOUNT || ($("#salePrice").closest("li").hide(), $("#wholesalePrice").closest("li").hide(), $("#vipPrice").closest("li").hide(), $("#discountRate1").closest("li").hide(), $("#discountRate2").closest("li").hide())), SYSTEM.enableStorage && $("#jdInfo").show(), SYSTEM.enableAssistingProp && ($(".prop-wrap").show().on("click", "input", function(a) {
+	$("#note").placeholder(), "edit" == oper ? ($("#number").val(rowData.number), $("#name").val(rowData.name), $category.data("defItem", rowData.categoryId), $("#brand").val(rowData.brand),$("#series").val(rowData.series),$("#serialNumber").val(rowData.serialNumber),$("#display").val(rowData.display),$("#nameE").val(rowData.nameE),$("#retailPrice").val(rowData.retailPrice),$("#packing").val(rowData.packing),$("#taobaoPrice").val(rowData.taobaoPrice),$("#extract").val(rowData.extract),$("#fixPrice").val(rowData.fixPrice),$("#billing").val(rowData.billing), $("#specs").val(rowData.spec), $("#storage").data("defItem", rowData.locationId), $("#unit").data("defItem", ["id", rowData.baseUnitId]), void 0 != rowData.purPrice && $("#purchasePrice").val(Public.numToCurrency(rowData.purPrice, pricePlaces)), void 0 != rowData.salePrice && ($("#salePrice").val(Public.numToCurrency(rowData.salePrice, pricePlaces)), $("#wholesalePrice").val(Public.numToCurrency(rowData.wholesalePrice, pricePlaces)), $("#vipPrice").val(Public.numToCurrency(rowData.vipPrice, pricePlaces)), $("#discountRate1").val(rowData.discountRate1), $("#discountRate2").val(rowData.discountRate2)), $("#minInventory").val(rowData.lowQty), $("#maxInventory").val(rowData.highQty), rowData.remark && $("#note").val(rowData.remark), $("#barCode").val(rowData.barCode), $("#length").val(rowData.length), $("#width").val(rowData.width), $("#height").val(rowData.height), $("#weight").val(rowData.weight), rowData.isSerNum && ($isSerNum[0].checked = !0), rowData.isWarranty && ($isWarranty[0].checked = !0, $(".isWarrantyIn").show(), $safeDays.val(rowData.safeDays), $advanceDay.val(rowData.advanceDay))) : $("#storage").data("defItem", 0), api.opener.parent.SYSTEM.isAdmin || (rights.AMOUNT_INAMOUNT || $("#purchasePrice").closest("li").hide(), rights.AMOUNT_OUTAMOUNT || ($("#salePrice").closest("li").hide(), $("#wholesalePrice").closest("li").hide(), $("#vipPrice").closest("li").hide(), $("#discountRate1").closest("li").hide(), $("#discountRate2").closest("li").hide())), SYSTEM.enableStorage && $("#jdInfo").show(), SYSTEM.enableAssistingProp && ($(".prop-wrap").show().on("click", "input", function(a) {
 		var b = $(this);
 		if (hasEntriesData()) return a.preventDefault(), void defaultPage.Public.tips({
 			type: 2,
@@ -1568,7 +1577,10 @@ function initValidator() {
 					async: !1,
 					success: function(a, b) {
 						return a ? void(c = -1 == a.status ? rowData && rowData.barCode === c ? !0 : "商品条码已经存在！" : !0) : !1
-					}
+					},
+                    // error: function(a) {
+                    //     c = "远程数据校验失败！"
+                    // }
 				}), c
 			},
 			myRemote: function(a, b, c) {

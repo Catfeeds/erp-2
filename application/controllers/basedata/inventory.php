@@ -247,7 +247,8 @@ class Inventory extends CI_Controller {
 			$this->mysql_model->get_count('goods',array('isDelete'=>0,'number'=>$data['number'])) > 0 && str_alert(-1,'商品编号重复');
 			$this->db->trans_begin();
 			$info = array(
-			    'barCode','baseUnitId','unitName','brand','extract','categoryId','categoryName','propertys',
+			    'barCode','baseUnitId','unitName','brand','series','serialNumber','display','nameE','retailPrice',
+                'packing','taobaoPrice','extract','fixPrice','billing','categoryId','categoryName','propertys',
 				'discountRate1','discountRate2','highQty','locationId','pinYin',
 				'locationName','lowQty','name','number','purPrice','warehouseWarning',
 				'remark','salePrice','spec','vipPrice','wholesalePrice','warehousePropertys','sonGoods','dopey'
@@ -275,7 +276,6 @@ class Inventory extends CI_Controller {
 			$data['id'] = $this->mysql_model->insert('goods',$info);
 			if (strlen($data['propertys'])>0) {
 				$list = (array)json_decode($data['propertys'],true);
-				var_dump($list);
 				foreach ($list as $arr=>$row) {
 					$v[$arr]['invId']         = $data['id'];
 					$v[$arr]['locationId']    = intval($row['locationId']);
@@ -327,7 +327,8 @@ class Inventory extends CI_Controller {
 			$this->mysql_model->get_count('goods',array('id !='=>$data['id'],'isDelete'=>0,'number'=>$data['number'])) > 0 && str_alert(-1,'商品编号重复');
 			$this->db->trans_begin();
 			$info = array(
-			    'barCode','baseUnitId','unitName','brand','extract','categoryId','categoryName','propertys',
+			    'barCode','baseUnitId','unitName','brand','series','serialNumber','display','nameE','retailPrice',
+                'packing','taobaoPrice','extract','fixPrice','billing','categoryId','categoryName','propertys',
 				'discountRate1','discountRate2','highQty','locationId','pinYin',
 				'locationName','lowQty','name','number','purPrice','warehouseWarning',
 				'remark','salePrice','spec','vipPrice','wholesalePrice','warehousePropertys','sonGoods','dopey'
