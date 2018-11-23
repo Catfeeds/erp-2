@@ -6,20 +6,37 @@ function callback(a) {
 		d.id = c;
 		var e = d.number + " " + d.name,//  + " " + d.contacter,//add by michen 20170720 for add d.contacter
 			f = parent.THISPAGE.$_customer;
-		f.find("input").val(e),
-		parent.THISPAGE.$Cextract.val(d.extract);
-		//add by michen 20170724 begin
-		linkMen=JSON.parse(d.linkMen),
-		SYSTEM.linkinfo = linkMen,
-		linkMen=$.grep(linkMen,function(n,i){
-			return n.linkName==d.contacter&&n.linkMobile==d.mobile;
-		}),
-		linkMan=linkMen[0],		
-		(parent.THISPAGE.$linkMan && linkMan && linkMan.linkName && parent.THISPAGE.$linkMan.find("input").val(linkMan.linkName)),
-		(parent.THISPAGE.$linkMan && linkMan && linkMan.linkName && parent.THISPAGE.$linkPhone.find("input").val(linkMan.linkMobile?linkMan.linkMobile:linkMan.linkPhone)),
-		(parent.THISPAGE.$linkMan && linkMan && linkMan.linkName && parent.THISPAGE.$linkAddress.find("input").val((linkMan.province?linkMan.province:'')+(linkMan.city?linkMan.city:'')+(linkMan.county?linkMan.county:'')+linkMan.address)),
-		//add by michen 20170724 end//mody by michen 20170813 for add && for 修正选择后不关闭的bug
-		f.data("contactInfo", d), api.data.type && b.SYSTEM[api.data.type].push(d);
+		if (parent.THISPAGE.$Cextract) {
+            	f.find("input").val(e),
+                parent.THISPAGE.$Cextract.val(d.extract),
+                //add by michen 20170724 begin
+                linkMen=JSON.parse(d.linkMen),
+                SYSTEM.linkinfo = linkMen,
+                linkMen=$.grep(linkMen,function(n,i){
+                    return n.linkName==d.contacter&&n.linkMobile==d.mobile;
+                }),
+                linkMan=linkMen[0],
+                (parent.THISPAGE.$linkMan && linkMan && linkMan.linkName && parent.THISPAGE.$linkMan.find("input").val(linkMan.linkName)),
+                (parent.THISPAGE.$linkMan && linkMan && linkMan.linkName && parent.THISPAGE.$linkPhone.find("input").val(linkMan.linkMobile?linkMan.linkMobile:linkMan.linkPhone)),
+                (parent.THISPAGE.$linkMan && linkMan && linkMan.linkName && parent.THISPAGE.$linkAddress.find("input").val((linkMan.province?linkMan.province:'')+(linkMan.city?linkMan.city:'')+(linkMan.county?linkMan.county:'')+linkMan.address)),
+                //add by michen 20170724 end//mody by michen 20170813 for add && for 修正选择后不关闭的bug
+                f.data("contactInfo", d), api.data.type && b.SYSTEM[api.data.type].push(d);
+		}else{
+            	f.find("input").val(e),
+                //add by michen 20170724 begin
+                linkMen=JSON.parse(d.linkMen),
+                SYSTEM.linkinfo = linkMen,
+                linkMen=$.grep(linkMen,function(n,i){
+                    return n.linkName==d.contacter&&n.linkMobile==d.mobile;
+                }),
+                linkMan=linkMen[0],
+                (parent.THISPAGE.$linkMan && linkMan && linkMan.linkName && parent.THISPAGE.$linkMan.find("input").val(linkMan.linkName)),
+                (parent.THISPAGE.$linkMan && linkMan && linkMan.linkName && parent.THISPAGE.$linkPhone.find("input").val(linkMan.linkMobile?linkMan.linkMobile:linkMan.linkPhone)),
+                (parent.THISPAGE.$linkMan && linkMan && linkMan.linkName && parent.THISPAGE.$linkAddress.find("input").val((linkMan.province?linkMan.province:'')+(linkMan.city?linkMan.city:'')+(linkMan.county?linkMan.county:'')+linkMan.address)),
+                //add by michen 20170724 end//mody by michen 20170813 for add && for 修正选择后不关闭的bug
+                f.data("contactInfo", d), api.data.type && b.SYSTEM[api.data.type].push(d);
+		}
+
 		var g = f.data("callback");
 		"function" == typeof g && g(d)
 	}
